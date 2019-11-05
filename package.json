@@ -1,0 +1,19 @@
+{
+  "name": "doras",
+  "version": "1.0.0",
+  "description": "All things door related",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roisingoodman1/doras.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roisingoodman1/doras/issues"
+  },
+  "homepage": "https://github.com/roisingoodman1/doras#readme"
+}
