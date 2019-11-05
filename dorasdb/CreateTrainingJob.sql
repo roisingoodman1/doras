@@ -1,7 +1,7 @@
 CREATE TABLE TrainingJob(
-    tid int PRIMARYKEY NOT NULL,
-    jid int PRIMARYKEY NOT NULL,
+    tId int PRIMARY KEY NOT NULL,
+    jId int PRIMARY KEY NOT NULL,
 
-    FOREIGN KEY (tid) REFERENCES Training(tid)
-    FOREIGN KEY (jid) REFERENCES Job(jid)
+    FOREIGN KEY (tId) REFERENCES Training(tId)
+    FOREIGN KEY (jId) REFERENCES Job(jId)
 )

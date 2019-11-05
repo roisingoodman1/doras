@@ -3,6 +3,6 @@ CREATE TABLE CompetenciesJob(
     compId INT, 
     PRIMARY KEY(jId, compId), -- declaring composite key
 
-    FOREIGN KEY (jId) REFERENCES Job(jid), -- foreign key referencing - getting keys from other tables 
-    FOREIGN KEY (compID) REFERENCES Competencies(compId)
+    FOREIGN KEY (jId) REFERENCES Job(jId), -- foreign key referencing - getting keys from other tables 
+    FOREIGN KEY (compId) REFERENCES Competencies(compId)
 );
