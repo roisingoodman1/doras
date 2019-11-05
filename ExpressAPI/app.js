@@ -9,7 +9,7 @@ testArr = [{
         "age": "At least 60"
     }
 ]
-app.get('/', function(req, res) {
+app.get('/test', function(req, res) {
     res.send(testArr)
     console.log('Request processed')
 })
