@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.page-header {
+    margin-top: 0;
+      padding-bottom: 9px;
+  }
+
+  .hr-page-top {
+    background: linear-gradient(to right, #61a83f , #283583);
+    height: 8px;
+  }
