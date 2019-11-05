@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/roisingoodman1/doras/issues"
   },
-  "homepage": "https://github.com/roisingoodman1/doras#readme"
+  "homepage": "https://github.com/roisingoodman1/doras#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
