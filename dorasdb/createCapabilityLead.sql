@@ -1,5 +1,5 @@
 CREATE TABLE CapabilityLead(
-    leadid INT NOT NULL,
-    capleadname VARCHAR(30) NOT NULL,
-    capleadpath VARCHAR(60) NOT NULL
+    leadId INT NOT NULL,
+    capLeadName VARCHAR(30) NOT NULL,
+    capLeadPath VARCHAR(60) NOT NULL
 );

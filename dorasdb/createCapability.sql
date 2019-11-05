@@ -1,7 +1,7 @@
 CREATE TABLE Capability(
-    capid INT PRIMARY KEY AUTO_INCREMENT,
+    capId INT PRIMARY KEY AUTO_INCREMENT,
     capName VARCHAR(30) NOT NULL,
-    leadid INT NOT NULL,
+    leadId INT NOT NULL,
 
-    FOREIGN KEY (leadid) REFERENCES CapabilityLead(leadid)
+    FOREIGN KEY (leadId) REFERENCES CapabilityLead(leadId)
 );

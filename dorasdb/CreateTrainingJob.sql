@@ -2,6 +2,6 @@ CREATE TABLE TrainingJob(
     tId int PRIMARY KEY NOT NULL,
     jId int PRIMARY KEY NOT NULL,
 
-    FOREIGN KEY (tId) REFERENCES Training(tId)
+    FOREIGN KEY (tId) REFERENCES Training(tId),
     FOREIGN KEY (jId) REFERENCES Job(jId)
 )
