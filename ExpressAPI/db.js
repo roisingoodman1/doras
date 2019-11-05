@@ -20,11 +20,19 @@ exports.getBand = function(callback) {
         })
 }
 
+<<<<<<< HEAD
 exports.getCapabilities = function(callback) {
     db.query(
         "SELECT capName FROM Capability",
         function(err, rows) {
             if (err) {throw err}
+=======
+exports.getCapabilites = function(callback) {
+    db.query(
+        "SELECT capName FROM Capability",
+        function(err, rows) {
+            if (err) { throw err }
+>>>>>>> basic ui infrastructure including sliders
             callback(rows)
         }
     )

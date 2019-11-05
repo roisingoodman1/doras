@@ -15,7 +15,6 @@
   "bugs": {
     "url": "https://github.com/roisingoodman1/doras/issues"
   },
-
   "homepage": "https://github.com/roisingoodman1/doras#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
