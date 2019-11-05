@@ -4,4 +4,4 @@ CREATE TABLE Training(
     trainingType varchar(255),
     link varchar(89),
     trainingDescription varchar(510) DEFAULT ' '
-)
+);
