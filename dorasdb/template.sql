@@ -1,3 +1,0 @@
-DROP DATABASE dorasdb;
-CREATE DATABASE dorasdb;
-USE DATABASE dorasdb;
