@@ -3,5 +3,5 @@ CREATE TABLE Users(
     username VARCHAR(50) NOT NULL,
     password VARCHAR(128) NOT NULL,
     salt VARCHAR(50) NOT NULL,
-    admin CHAR(1)
+    admin CHAR(1) DEFAULT 'N'
 );
