@@ -11,12 +11,11 @@ db.connect(function(err) {
     console.log('Connected to MySQL')
 })
 
-exports.getBand(function(callback) {
+exports.getBand = function(callback) {
     db.query(
-            "SELECT*FROM Band"
-        ),
+        "SELECT * FROM Band",
         function(err, rows) {
             if (err) throw err
             callback(rows)
-        }
-})
+        })
+}
