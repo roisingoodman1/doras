@@ -19,6 +19,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
     }
     .carousel-indicators{
       color: chartreuse;
+      height: 10px;
     }
   `]
 })
