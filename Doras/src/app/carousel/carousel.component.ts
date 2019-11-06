@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselConfig, NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgElement, WithProperties } from '@angular/elements';
+import { CarouselTabsComponent } from '../carousel-tabs/carousel-tabs.component';
+
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
@@ -30,7 +33,14 @@ export class CarouselComponent implements OnInit {
     config.keyboard = false;
     config.pauseOnHover = false;
   }
+  currentTabs : string[] = ["Business Development",	"Account Management",	"Sales",	"Inside Sales Development",	"Pre Sales & Bid Management",	"Marketing"];
   ngOnInit() {
+    
   }
+  
+  onSlide(slideEvent: NgbSlideEvent) {
+    const carouselTabs = document.getElementsByClassName('doras-carousel-tabs')[0] as NgElement & WithProperties<CarouselTabsComponent>;
+    //carouselTabs.setTabs(this.currentTabs);
 
+  }
 }
