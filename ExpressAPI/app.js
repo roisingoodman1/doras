@@ -15,6 +15,19 @@ app.get('/getBand', function(req, res) {
     })
 })
 
+function getCapabilities(capReadyFn) {
+    db.getCapabilities(function(rows) {
+        cap = rows
+        capReadyFn()
+    })
+}
+
+app.get('/getCapabilities', function(req, res) {
+    getCapabilities(function() {
+        res.send(cap)
+    })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })

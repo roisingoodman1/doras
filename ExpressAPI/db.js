@@ -19,3 +19,13 @@ exports.getBand = function(callback) {
             callback(rows)
         })
 }
+
+exports.getCapabilites = function(callback) {
+    db.query(
+        "SELECT capName FROM Capability",
+        function(err, rows) {
+            if (err) throw err
+            callback(rows)
+        }
+    )
+}
