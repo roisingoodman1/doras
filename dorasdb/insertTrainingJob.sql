@@ -1,0 +1,3 @@
+INSERT INTO TrainingJob VALUES
+(1,1),
+(4,11)
