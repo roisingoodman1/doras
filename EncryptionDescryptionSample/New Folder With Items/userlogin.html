@@ -1,0 +1,90 @@
+
+
+
+<head>
+  <link rel="stylesheet" type="text/css" href="userlogin.css">
+</head>
+
+<script>
+function script(){
+'use strict';
+
+console.log(el);
+const crypto = require('crypto');
+
+
+const genRandomString = function(length){
+    return crypto.randomBytes(Math.ceil(length/2))
+            .toString('hex')
+            .slice(0,length);
+};
+
+
+const sha512 = function(password, salt){
+    const hash = crypto.createHmac('sha512', salt);
+    hash.update( password );
+    const value = hash.digest('hex');
+    return {
+        salt:salt,
+        passwordHash:value
+    };
+};
+
+function saltHashPassword( userpassword ) {
+    const salt = genRandomString(16);
+    const passwordData = sha512(userpassword, salt);
+    //console.log('UserPassword = ' + userpassword);
+    //console.log('Passwordhash = ' + passwordData.passwordHash);
+    //console.log('nSalt = ' + passwordData.salt);
+}
+
+saltHashPassword('MYPASSWORD');
+saltHashPassword('MYPASSWORD');
+}
+
+
+</script>
+
+<form (ngSubmit) ="saltHashPassword()">
+  <div><label for="uname"><b>Username</b></label><input [(ngModel)]="user.username" name="username" placeholder="Username"></div>
+  <div><label for="psw"><b>Password</b></label><input [(ngModel)]="user.password" name="password" placeholder="password"></div>
+  <input type="submit" name="saltPassword" value="Login">
+</form>
+<label>
+  <input type="checkbox" checked="checked" name="remember"> Remember me
+</label>
+<br>
+<br>
+<label for="output"><b>Output</b></label>
+<input type="text" placeholder="Hashed Password" name="uname" required>
+
+</div>
+
+<div class="container" style="background-color:#f1f1f1">
+<button type="button" class="cancelbtn">Cancel</button>
+<span class="psw">Forgot <a href="#">password?</a></span>
+</div> -->
+
+
+<!-- <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" onClick="function script()">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+<br>
+<br>
+    <label for="output"><b>Output</b></label>
+    <input type="text" placeholder="Hashed Password" name="uname" required>
+
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div> -->
