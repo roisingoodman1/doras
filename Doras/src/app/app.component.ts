@@ -9,6 +9,6 @@ import { Test } from './test';
 })
 export class AppComponent {
   constructor(private http: HttpClient) {}
-  test = this.http.get<Test[]>('/api/test');
+  tests = this.http.get<Test[]>('/api/test');
 
 }
