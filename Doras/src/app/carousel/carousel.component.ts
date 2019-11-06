@@ -32,6 +32,7 @@ export class CarouselComponent implements OnInit {
     config.wrap = true;
     config.keyboard = false;
     config.pauseOnHover = false;
+    config.showNavigationIndicators = false;
   }
   ngOnInit() {
     
