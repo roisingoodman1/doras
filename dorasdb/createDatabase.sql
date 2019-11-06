@@ -2,6 +2,9 @@ DROP DATABASE dorasdb;
 CREATE DATABASE dorasdb;
 USE dorasdb;
 
+CREATE USER kladderUser@localhost IDENTIFIED WITH mysql_native_password BY 'klu_master'; 
+GRANT ALL on dorasdb.* to kladderUser@localhost;
+
 SOURCE createCompetencies.sql
 SOURCE createBand.sql
 SOURCE createCompetenciesBand.sql

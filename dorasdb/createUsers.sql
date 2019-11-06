@@ -5,3 +5,4 @@ CREATE TABLE Users(
     salt VARCHAR(50) NOT NULL,
     admin CHAR(1) DEFAULT 'N'
 );
+
