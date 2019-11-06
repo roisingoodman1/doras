@@ -1,23 +1,29 @@
 <div class='container-fluid' data-interval="false">
     <div class='col-12'>
-        <ngb-carousel data-interval="false" (slide)="onSlide($event)">
+        <ngb-carousel data-interval="false">
             <ng-template ngbSlide>
               <p> Sales and Marketing </p>
+              <doras-carousel-tabs class='carousel-tabs-view' [tabs]='["Business Development",	"Account Management",	"Sales",	"Inside Sales Development",	"Pre Sales & Bid Management",	"Marketing"]'></doras-carousel-tabs>
             </ng-template>
             <ng-template ngbSlide>
               <p> Technical </p>
+              <doras-carousel-tabs class='carousel-tabs-view' [tabs]='["Software Engineering",	"Data Engineering",	"Cyber Security",	"Architect",	"Ops",	"Infrastructure", "Testing", "Analytics", "Integration", "Product Specialist", "Product Support", "Technical Specialist"]'></doras-carousel-tabs>
             </ng-template>
             <ng-template ngbSlide>
               <p> Consulting </p>
+              <doras-carousel-tabs class='carousel-tabs-view' [tabs]='["Product", "Agile", "HCM"]'></doras-carousel-tabs>
             </ng-template>
             <ng-template ngbSlide>
               <p> Experience Design </p>
+              <doras-carousel-tabs class='carousel-tabs-view' [tabs]='["Research", "UX Design", "Creative Design", "Service Design"]'></doras-carousel-tabs>
             </ng-template>
             <ng-template ngbSlide>
               <p> Management </p>
+              <doras-carousel-tabs class='carousel-tabs-view' [tabs]='["Project Management", "Support Management"]'></doras-carousel-tabs>
             </ng-template>
             <ng-template ngbSlide>
               <p> Central Services Teams </p>
+              <doras-carousel-tabs class='carousel-tabs-view' [tabs]='[]'></doras-carousel-tabs>
             </ng-template>
         </ngb-carousel>
     </div>

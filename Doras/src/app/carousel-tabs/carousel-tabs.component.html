@@ -1,2 +1,9 @@
 <ngb-tabset justify="fill">
+    <li *ngFor="let tab of tabs">
+        <ngb-tab title="{{tab}}">
+            <ng-template NgbTabContent>
+               <p>placeholder for {{tab}}</p>
+            </ng-template>
+        </ngb-tab>
+    </li>
 </ngb-tabset>
