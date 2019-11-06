@@ -9,6 +9,9 @@ import { Band } from './Band';
 })
 export class AppComponent {
   constructor(private http: HttpClient) {}
-  bands = this.http.get<Band[]>('/api/getBand');
+  bands = this.getBand();
+  getBand() {
+    return this.http.get<Band[]>('/api/getBand');
+  }
 
 }

@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const env = require('dotenv').config()
 const db = require('./db.js')
 
 function getBand(bandsReadyFn) {

@@ -20,3 +20,31 @@
     margin-left: 20cm;
     vertical-align: 0.5cm;
   }
+
+  .table1 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70.5%;
+    margin-left: 14.75%;
+    
+  }
+
+  .th1{
+    text-align: center;
+  }
+  
+  .table1 td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .table1 tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .table1 tr:hover {background-color: #ddd;}
+  
+  .table1 th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+  }
