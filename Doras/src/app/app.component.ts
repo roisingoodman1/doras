@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Test } from './test';
+import { Band } from './Band';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,6 @@ import { Test } from './test';
 })
 export class AppComponent {
   constructor(private http: HttpClient) {}
-  tests = this.http.get<Test[]>('/api/test');
+  bands = this.http.get<Band[]>('/api/getBand');
 
 }

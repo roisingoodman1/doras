@@ -1,17 +1,17 @@
 const express = require('express')
 const app = express()
-testArr = [{
-        "name": "Patrick",
-        "age": "N/A"
-    },
-    {
-        "name": "Ryan C",
-        "age": "At least 60"
-    }
-]
-app.get('/test', function(req, res) {
-    res.send(testArr)
-    console.log('Request processed')
+const db = require('./db.js')
+
+function getBand(bandsReadyFn) {
+    db.getBand(function(rows) {
+        bands = rows
+        bandsReadyFn()
+    })
+}
+app.get('/getBand', function(req, res) {
+    getBand(function() {
+        res.send(bands)
+    })
 })
 
 app.listen(8003, function() {
