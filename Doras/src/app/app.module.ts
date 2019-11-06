@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RolesComponent } from './roles/roles.component';
+import { Table1Component } from './table1/table1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarouselTabsComponent,
-    CarouselComponent
+    CarouselComponent,
+    RolesComponent,
+    Table1Component
   ],
   imports: [
     BrowserModule,
