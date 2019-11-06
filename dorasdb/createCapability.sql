@@ -4,7 +4,6 @@ CREATE TABLE Capability(
     leadId INT NOT NULL,
     jfid int Not NULL,
 
-    FOREIGN KEY (jfid) REFERENCES JobFamily(jfid)
-    FOREIGN KEY (leadId) REFERENCES CapabilityLead(lead
-    Id)
+    FOREIGN KEY (jfid) REFERENCES JobFamily(jfid),
+    FOREIGN KEY (leadId) REFERENCES CapabilityLead(leadId)
 );

@@ -17,3 +17,9 @@ SOURCE createCompetenciesJob.sql
 SOURCE createTrainingJob.sql
 
 SOURCE createUsers.sql
+
+SOURCE insertCompetencies.sql
+SOURCE insertBand.sql
+SOURCE 
+
+
