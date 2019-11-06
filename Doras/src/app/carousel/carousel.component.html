@@ -1,6 +1,6 @@
 <div class='container-fluid' data-interval="false">
     <div class='col-12'>
-        <ngb-carousel data-interval="false" (slide)="onSlide($event)">
+        <ngb-carousel data-interval="false" (slide)="onSlide($event)" #c="ngbCarousel">
             <ng-template ngbSlide>
               <p> Sales and Marketing </p>
             </ng-template>

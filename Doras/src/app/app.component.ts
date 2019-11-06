@@ -14,4 +14,15 @@ export class AppComponent {
     return this.http.get<Band[]>('/api/getBand');
   }
 
+  getJobIdAndCapId() {
+    return this.http.get<number[]>('/api/getJobIdAndCapId');
+  }
+
+  getBandId() {
+    return this.http.get<number[]>('/api/getBandId');
+  }
+
+  getJobTitle() {
+    return this.http.get<string[]>('/api/getJobTitle');
+  }
 }
