@@ -2,20 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselTabsComponent
+    CarouselTabsComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     HttpClientModule,
     FormsModule,
     NgbModule
@@ -23,4 +25,4 @@ import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { }  
