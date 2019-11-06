@@ -12,3 +12,5 @@ SOURCE createJobFamily.sql
 SOURCE createJob.sql
 SOURCE createCompetenciesJob.sql
 SOURCE createTrainingJob.sql
+
+SOURCE createUsers.sql
