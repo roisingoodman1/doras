@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RolesComponent } from './roles/roles.component';
-import { Table1Component } from './table1/table1.component';
+import { tableBandComponent } from './tableBand/tableBand.component';
 import { PopupsComponent } from './popups/popups.component';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { PopupsComponent } from './popups/popups.component';
     CarouselTabsComponent,
     CarouselComponent,
     RolesComponent,
-    Table1Component,
+    tableBandComponent,
     PopupsComponent
   ],
   imports: [
