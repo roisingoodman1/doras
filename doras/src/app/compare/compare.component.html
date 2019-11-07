@@ -1,13 +1,51 @@
-<div>
-    <h2>Hello {{name}}</h2>
-    
-    <select (change)="firstDropDownChanged($event.target.selectedIndex - 1)" >
-      <option>Select</option>
+<div class="container">
+  <div class="row">
+    <label for="capability1">Capability</label>
+  </div>
+  <div class="row">
+    <select name="capability1" (change)="firstDropDownChanged($event.target.selectedIndex - 1)" >
+      <option disabled>Choose a capability</option>
       <option *ngFor="let v of _values1">{{ v.val }}</option>
     </select>
-    
-    <select >
-      <option>Select</option>
+
+    <select>
+      <option disabled>Choose a capability</option>
       <option *ngFor='let v of _values2'>{{ v }}</option>
     </select>
   </div>
+
+  <br>
+
+  <div class="row">
+    <label for="jobFamily1">Job family</label>
+  </div>
+  <div class="row">
+    <select (change)="firstDropDownChanged($event.target.selectedIndex - 1)" >
+      <option disabled>Choose a job family</option>
+      <option *ngFor="let v of _values1">{{ v.val }}</option>
+    </select>
+
+    <select>
+      <option disabled>Choose a job family</option>
+      <option *ngFor='let v of _values2'>{{ v }}</option>
+    </select>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <label for="jobRole1">Job role</label>
+  </div>
+  <div class="row">
+    <select (change)="firstDropDownChanged($event.target.selectedIndex - 1)" >
+      <option disabled>Choose a job role</option>
+      <option *ngFor="let v of _values1">{{ v.val }}</option>
+    </select>
+
+    <select>
+      <option disabled>Choose a job role</option>
+      <option *ngFor='let v of _values2'>{{ v }}</option>
+    </select>
+  </div>
+
+</div>

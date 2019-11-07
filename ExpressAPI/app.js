@@ -38,6 +38,9 @@ function getJobFamily(jobReadyFn) {
 app.get('/getJobFamily', function(req, res) {
     getJobFamily(function() {
         res.send(job)
+app.get('/getJobFamilyByCap/:id', function(req, res) {
+    getBand(req.params.id, function() {
+        res.send(rows)
     })
 })
 

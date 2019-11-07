@@ -1,51 +1,31 @@
-//our root app component
-import {Component, NgModule} from '@angular/core'
-import {BrowserModule} from '@angular/platform-browser'
+// our root app component
+import {Component, NgModule, OnInit} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import { DataService } from '../data.service';
+import { JobFamily } from '../models/jobFamily';
+import { JobRole } from '../models/jobRole';
+import { Capability } from '../models/capability';
 
 @Component({
-    selector: 'doras-compare',
+    selector: 'app-doras-compare',
     templateUrl: './compare.component.html',
     styleUrls: ['./compare.component.css'],
 })
-export class App {
-  name:string;
-  
-  private _values1 = [
-    { id: 1, val: "huhu" },
-    { id: 2, val: "val2" },
-    { id: 3, val: "yep" },
-    { id: 4, val: "cool" }
-  ];
-  private _values2 = [];
-  
-  constructor() {
-    this.name = 'Angular2'
+export class CompareComponent implements OnInit {
+  private capabilities: Capability[]
+  private jobFamilies: JobFamily[]
+  private jobRoles: JobRole[]
+
+  constructor(private data: DataService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.capabilities = await this.data.getCapabilities()
+    this.jobRoles = await this.data.getJobRoles()
   }
-  
-  firstDropDownChanged(val: any) {
-    const obj = this._values1[val];
-    console.log(val, obj);
-    
-    if (!obj) return;
-    
-    if (obj.id == 1) {
-      this._values2 = ["1.1", "1.2", "1.3"];
-    }
-    else if (obj.id == 2) {
-      this._values2 = ["2.1", "2.2", "2.3"];
-    }
-    else if (obj.id == 3) {
-      this._values2 = ["3.1", "3.2", "3.3"];
-    }
-    else {
-      this._values2 = [];
-    }
+
+  private async firstDropDownChanged(idx: number) {
+    if (!this.capabilities) { return; }
+
+    this.jobFamilies = await this.data.getJobFamilies(idx)
   }
 }
-
-@NgModule({
-  imports: [ BrowserModule ],
-  declarations: [ App ],
-  bootstrap: [ App ]
-})
-export class AppModule {}

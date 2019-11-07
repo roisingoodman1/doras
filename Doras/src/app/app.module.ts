@@ -10,6 +10,7 @@ import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
 import { RolesComponent } from './roles/roles.component';
 import { tableBandComponent } from './tableBand/tableBand.component';
 import { PopupsComponent } from './popups/popups.component';
+import { CompareComponent } from './compare/compare.component';
 
 @NgModule({
   declarations: [
@@ -32,4 +33,4 @@ import { PopupsComponent } from './popups/popups.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }  
+export class AppModule { }
