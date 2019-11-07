@@ -15,6 +15,32 @@ app.get('/getBand', function(req, res) {
     })
 })
 
+function getCapabilities(capReadyFn) {
+    db.getCapabilities(function(rows) {
+        cap = rows
+        capReadyFn()
+    })
+}
+
+app.get('/getCapabilities', function(req, res) {
+    getCapabilities(function() {
+        res.send(cap)
+    })
+})
+
+function getJobFamily(jobReadyFn) {
+    db.getJobFamily(function(rows) {
+        job = rows
+        jobReadyFn()
+    })
+}
+
+app.get('/getJobFamily', function(req, res) {
+    getJobFamily(function() {
+        res.send(job)
+    })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })

@@ -1,8 +1,8 @@
-
-@import '~bootstrap/dist/css/bootstrap.css';
+/* You can add global styles to this file, and also import other style files */
 .carousel1_br{
   vertical-align: bottom;
 }
+@import '~bootstrap/dist/css/bootstrap.css';
 .page-header {
     margin-top: 0;
   }
@@ -21,7 +21,7 @@
     vertical-align: 0.5cm;
   }
 
-  .table1 {
+  .tableBand {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 70.5%;
@@ -33,16 +33,16 @@
     text-align: center;
   }
   
-  .table1 td, #customers th {
+  .tableBand td, #customers th {
     border: 1px solid #ddd;
     padding: 8px;
   }
   
-  .table1 tr:nth-child(even){background-color: #f2f2f2;}
+  .tableBand tr:nth-child(even){background-color: #f2f2f2;}
   
-  .table1 tr:hover {background-color: #ddd;}
+  .tableBand tr:hover {background-color: #ddd;}
   
-  .table1 th {
+  .tableBand th {
     padding-top: 12px;
     padding-bottom: 12px;
     background-color: #4CAF50;

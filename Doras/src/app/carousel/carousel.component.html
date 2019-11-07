@@ -1,24 +1,12 @@
 <div class='container-fluid' data-interval="false">
-    <div class='col-12'>
-        <ngb-carousel data-interval="false" (slide)="onSlide($event)" #c="ngbCarousel">
-            <ng-template ngbSlide>
-              <p> Sales and Marketing </p>
-            </ng-template>
-            <ng-template ngbSlide>
-              <p> Technical </p>
-            </ng-template>
-            <ng-template ngbSlide>
-              <p> Consulting </p>
-            </ng-template>
-            <ng-template ngbSlide>
-              <p> Experience Design </p>
-            </ng-template>
-            <ng-template ngbSlide>
-              <p> Management </p>
-            </ng-template>
-            <ng-template ngbSlide>
-              <p> Central Services Teams </p>
-            </ng-template>
-        </ngb-carousel>
+  <div class='col-12'>
+    <ngb-carousel data-interval="false">
+      <li *ngFor ="let cap of capabilities|async">
+        <ng-template ngbSlide>
+          <p>
+            {{ cap.capName }}
+          </p>
+        </ng-template>
+      </ngb-carousel>
     </div>
-</div>
+  </div>

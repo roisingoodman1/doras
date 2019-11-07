@@ -7,32 +7,35 @@ const db = mysql.createConnection({
 })
 
 db.connect(function(err) {
-    if (err) throw err
+    if (err) {throw err}
     console.log('Connected to MySQL')
 })
 
 exports.getBand = function(callback) {
     db.query(
-        "SELECT * FROM Band",
+        "SELECT bandId, bandNo, bandName FROM Band",
         function(err, rows) {
-            if (err) throw err
+            if (err) { throw err }
             callback(rows)
         })
 }
-exports.getJobFamily = function(callback){
+
+exports.getCapabilities = function(callback) {
     db.query(
-        "SELECT * FROM JobFamily",
+        "SELECT capName FROM Capability",
         function(err, rows) {
-            if (err) throw err
+            if (err) { throw err }
             callback(rows)
         }
     )
 }
-exports.getFullJob = function(callback){
+
+exports.getJobFamily = function(callback) { 
     db.query(
-        "SELECT jId.Job,BandId,bandName.Band,title.Job,responsbilities.Job,capId.Job,CapName,Capability,title.JobFamily,CompName.Competencies,CompDesc.Competencies FROM Job  FULL OUTER JOIN Capability ON Job.capId = Capability.capId  FULL OUTER JOIN JobFamily ON Capability.jfId = JobFamily.jfId FULL OUTER JOIN CompetenciesJob ON Job.jId = CompetenciesJob.jId FULL OUTER JOIN Competencies ON CompetenciesJob.compId = Competencies.compId ",
+        "SELECT jfid, title FROM JobFamily",
         function(err, rows) {
-            if (err) throw err
+            if (err) { throw err }   
             callback(rows)
-        })
+        }
+    )
 }
