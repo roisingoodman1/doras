@@ -49,7 +49,6 @@ function getCapNameByJfId(id, capNameReadyFn) {
 }
 
 app.get('/getCapNameByJfId/:id', function(req, res) {
-  console.log('hello');
   getCapNameByJfId(req.params.id, function() {
     res.send(capName)
   })

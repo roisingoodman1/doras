@@ -1,4 +1,5 @@
-<ngb-tabset justify="fill">
+<div class='container-fluid'>
+<ngb-tabset justify="fill" style="padding-left: 10%; padding-right: 10%;">
   <ul>
     <li *ngFor ="let capability of capabilities">
         <ngb-tab title="{{ capability.capName }}">
@@ -9,3 +10,4 @@
     </li>
   </ul>
 </ngb-tabset>
+</div>
