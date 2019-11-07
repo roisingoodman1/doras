@@ -1,0 +1,13 @@
+<div>
+    <h2>Hello {{name}}</h2>
+    
+    <select (change)="firstDropDownChanged($event.target.selectedIndex - 1)" >
+      <option>Select</option>
+      <option *ngFor="let v of _values1">{{ v.val }}</option>
+    </select>
+    
+    <select >
+      <option>Select</option>
+      <option *ngFor='let v of _values2'>{{ v }}</option>
+    </select>
+  </div>
