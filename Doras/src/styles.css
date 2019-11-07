@@ -27,7 +27,7 @@
     border-collapse: collapse;
     width: 70.5%;
     margin-left: 14.75%;
-
+    table-layout: fixed
   }
 
   .th1{
@@ -39,9 +39,9 @@
     padding: 8px;
   }
 
-  .tableBand tr:nth-child(even){background-color: #f2f2f2;}
+  .tableBand tr:nth-child(even){background-color: white;}
 
-  .tableBand tr:hover {background-color: #ddd;}
+  .tableBand tr:hover {background-color: white;}
 
   .tableBand th {
     padding-top: 12px;
@@ -53,3 +53,15 @@
   .carousel-indicators li{
     visibility: hidden;
   }
+
+  .centralWrap{
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .button{
+      margin:auto;
+      display:block;
+  }
+
+  

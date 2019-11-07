@@ -22,7 +22,7 @@ import { SwitchBoardService } from '../switch-board.service';
       background-color: green;
     }
     .carousel-indicators{
-      color: chartreuse;
+      height: 0px;
     }
   `]
 })

@@ -9,6 +9,10 @@ export class tableBandComponent implements OnInit {
 
   constructor() { }
 
+  recieveID (id:number) : void {
+    
+  }
+
   ngOnInit() {
   }
 
