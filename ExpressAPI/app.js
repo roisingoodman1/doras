@@ -41,6 +41,21 @@ app.get('/getJobFamily', function(req, res) {
     })
 })
 
+function getCapNameByJfId(id, capNameReadyFn) {
+  db.getCapNameByJfid(id, function(rows) {
+      capName = rows
+      capNameReadyFn()
+  })
+}
+
+app.get('/getCapNameByJfId/:id', function(req, res) {
+  console.log('hello');
+  getCapNameByJfId(req.params.id, function() {
+    res.send(capName)
+  })
+
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })
