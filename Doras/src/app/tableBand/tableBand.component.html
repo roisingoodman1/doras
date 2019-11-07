@@ -1,8 +1,8 @@
 <table class="tableBand">
-        <tr>
-            <th class="th1" scope="col">Apprentice</th>
-            <th align="center" scope="col">Trainee</th>
-            <th align="center" scope="col">Associate</th>
+        <tr *ngFor ="let band of bands; let i = index">
+            <th class="th1" scope="col">{{ band.bandName }} {{i}}</th>
+            <th align="center" scope="col">{{ band.bandName }}</th>
+            <th align="center" scope="col">{{ band.bandName }}</th>
         </tr>
         <tr>
             <td>
@@ -18,8 +18,8 @@
             <td>
                 <app-responsibilities></app-responsibilities>
                 <p></p>
-                <app-training-popup></app-training-popup>    
+                <app-training-popup></app-training-popup>
             </td>
         </tr>
-    
+
 </table>
