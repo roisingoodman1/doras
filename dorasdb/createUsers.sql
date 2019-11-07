@@ -2,6 +2,6 @@ CREATE TABLE Users(
     userID INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     userPassword VARCHAR(128) NOT NULL,
-    isAdmin CHAR(1) DEFAULT 'N'
+    isAdmin BOOLEAN DEFAULT false
 );
 
