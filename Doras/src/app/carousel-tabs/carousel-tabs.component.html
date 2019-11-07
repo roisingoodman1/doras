@@ -1,5 +1,5 @@
 <ngb-tabset justify="fill">
-    <li *ngFor ="let tab of tabs">
+    <li *ngFor ="let capability of capabilities|async">
         <ngb-tab title="{{tab}}">
             <ng-template ngbTabContent>
                 <app-roles></app-roles>

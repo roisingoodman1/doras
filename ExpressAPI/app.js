@@ -17,7 +17,6 @@ app.get('/getBand', function(req, res) {
 
 function getCapabilities(capReadyFn) {
     db.getCapabilities(function(rows) {
-        console.log(1);
         cap = rows
         capReadyFn()
     })
@@ -25,9 +24,20 @@ function getCapabilities(capReadyFn) {
 
 app.get('/getCapabilities', function(req, res) {
     getCapabilities(function() {
-        console.log(cap);
         res.send(cap)
-        console.log(3);
+    })
+})
+
+function getJobFamily(jobReadyFn) {
+    db.getJobFamily(function(rows) {
+        job = rows
+        jobReadyFn()
+    })
+}
+
+app.get('/getJobFamily', function(req, res) {
+    getJobFamily(function() {
+        res.send(job)
     })
 })
 

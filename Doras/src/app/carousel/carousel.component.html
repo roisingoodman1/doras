@@ -1,10 +1,10 @@
 <div class='container-fluid' data-interval="false">
   <div class='col-12'>
     <ngb-carousel data-interval="false">
-      <li *ngFor ="let cap of capabilities|async">
+      <li *ngFor ="let job of jobFamily|async">
         <ng-template ngbSlide>
           <p>
-            {{ cap.capName }}
+            {{ job.title }}
           </p>
         </ng-template>
       </ngb-carousel>
