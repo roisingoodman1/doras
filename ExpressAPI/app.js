@@ -9,9 +9,23 @@ function getBand(bandsReadyFn) {
         bandsReadyFn()
     })
 }
+
+function getCapLeads(capLeadsReadyFn) {
+    db.getCapLeads(function(rows) {
+        capLeads = rows
+        capLeadsReadyFn()
+    })
+}
+
 app.get('/getBand', function(req, res) {
     getBand(function() {
         res.send(bands)
+    })
+})
+
+app.get('/getCapLeads', function(req, res){
+    getCapLeads(function(){
+        res.send(caplead)
     })
 })
 

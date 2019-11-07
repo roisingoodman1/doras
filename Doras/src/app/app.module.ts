@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RolesComponent } from './roles/roles.component';
 import { Table1Component } from './table1/table1.component';
 import { PopupsComponent } from './popups/popups.component';
+import { CapleadComponent } from './caplead/caplead.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PopupsComponent } from './popups/popups.component';
     CarouselComponent,
     RolesComponent,
     Table1Component,
-    PopupsComponent
+    PopupsComponent,
+    CapleadComponent
   ],
   imports: [
     BrowserModule,

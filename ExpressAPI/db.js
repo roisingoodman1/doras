@@ -19,3 +19,12 @@ exports.getBand = function(callback) {
             callback(rows)
         })
 }
+
+exports.getCapLeads = function(callback){
+    db.query(
+        "SELECT leadId, capLeadName, capLeadPath FROM CapabilityLead",
+        function(err, rows){
+            if(err) throw err
+            callback (rows)
+        })
+}

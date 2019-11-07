@@ -25,4 +25,8 @@ export class AppComponent {
   getJobTitle() {
     return this.http.get<string[]>('/api/getJobTitle');
   }
+
+  getCapLead(){
+    return this.http.get<string[]>('/api/getCapLead');
+  }
 }
