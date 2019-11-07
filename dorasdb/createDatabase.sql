@@ -5,6 +5,7 @@ USE dorasdb;
 CREATE USER kladderUser@localhost IDENTIFIED WITH mysql_native_password BY 'klu_master'; 
 GRANT ALL on dorasdb.* to kladderUser@localhost;
 
+/*Create statements*/
 SOURCE createCompetencies.sql
 SOURCE createBand.sql
 SOURCE createCompetenciesBand.sql
@@ -18,6 +19,7 @@ SOURCE createTrainingJob.sql
 
 SOURCE createUsers.sql
 
+/*Insert statements*/
 SOURCE insertCompetencies.sql
 SOURCE insertBand.sql
 SOURCE insertCompetenciesBand.sql
