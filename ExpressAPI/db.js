@@ -13,9 +13,9 @@ db.connect(function(err) {
 
 exports.getBand = function(callback) {
     db.query(
-        "SELECT * FROM Band",
+        "SELECT bandId, bandNo, bandName FROM Band",
         function(err, rows) {
-            if (err) throw err
+            if (err) { throw err }
             callback(rows)
         })
 }
@@ -25,6 +25,16 @@ exports.getCapabilities = function(callback) {
         "SELECT capName FROM Capability",
         function(err, rows) {
             if (err) throw err
+            callback(rows)
+        }
+    )
+}
+
+exports.getJobFamily = function(callback) {
+    db.query(
+        "SELECT jfid, title FROM JobFamily",
+        function(err, rows) {
+            if (err) { throw err } 
             callback(rows)
         }
     )
