@@ -16,24 +16,27 @@ export class DataService {
     return this.http.get<Capability[]>('/api/getCapabilities');
   }
 
-  public getJobFamily(): Promise<JobFamily[]> {
-    return this.http.get<JobFamily[]>('/api/getJobFamily').toPromise();
+  public getJobFamily(): Observable<JobFamily[]> {
+    return this.http.get<JobFamily[]>('/api/getJobFamily');
   }
 
-  public getJobFamilyByCap(id): Promise<JobFamily> {
-    return this.http.get<JobFamily>('/api/getJobFamilyByCap/' + id).toPromise();
+  public getJobFamilyByCap(id): Observable<JobFamily> {
+    return this.http.get<JobFamily>('/api/getJobFamilyByCap/' + id);
   }
 
-  public getJobRoles(): Promise<JobRole[]> {
-    return this.http.get<JobRole[]>('/api/getJobRoles').toPromise();
+  public getJobRoles(): Observable<JobRole[]> {
+    return this.http.get<JobRole[]>('/api/getJobRoles');
   }
 
-  public getBand(): Promise<Band[]> {
-    return this.http.get<Band[]>('/api/getBand').toPromise();
+  public getBand(): Observable<Band[]> {
+    return this.http.get<Band[]>('/api/getBand');
   }
 
   public getCapNameByJfId(id): Observable<Capability[]> {
     return this.http.get<Capability[]>('/api/getCapNameByJfId/' + id);
   }
 
+  public getDistinctJfids(): Observable<JobFamily[]> {
+    return this.http.get<JobFamily[]>('/api/getDistinct');
+  }
 }
