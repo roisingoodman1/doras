@@ -1,0 +1,12 @@
+<div class='container-fluid' data-interval="false">
+  <div class='col-12'>
+    <ngb-carousel data-interval="false">
+      <li *ngFor ="let cap of capabilities|async">
+        <ng-template ngbSlide>
+          <p>
+            {{ cap.capName }}
+          </p>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>

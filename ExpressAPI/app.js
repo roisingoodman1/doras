@@ -50,6 +50,17 @@ app.get('/getJobIdAndCapId', function(req,res) {
   getJobIdAndCapId(function() {
     res.send(jobIdCapId)
   })
+function getCapabilities(capReadyFn) {
+    db.getCapabilities(function(rows) {
+        cap = rows
+        capReadyFn()
+    })
+}
+
+app.get('/getCapabilities', function(req, res) {
+    getCapabilities(function() {
+        res.send(cap)
+    })
 })
 
 app.listen(8003, function() {
