@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
-import { tableBandComponent } from './../tableBand/tableBand.component';
+import { TableSlideNumberService } from './../table-slide-number.service'
 
 @Component({
   selector: 'app-roles',
@@ -9,10 +9,11 @@ import { tableBandComponent } from './../tableBand/tableBand.component';
 })
 export class RolesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private slideService : TableSlideNumberService) { }
 
   onSlide(slideEvent: NgbSlideEvent) {
-    slideEvent.current
+    let index = +(slideEvent.current.split('-')[2]);
+    this.slideService.currentSlide = index;
   }
 
   ngOnInit() {

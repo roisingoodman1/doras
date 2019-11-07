@@ -38,9 +38,7 @@ export class CarouselComponent implements OnInit {
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
-    let index = slideEvent.current.split('-')[2];
-    let indexNumber = +index;
-    console.log(this.distinct[indexNumber]);
+    let indexNumber = +(slideEvent.current.split('-')[2]);
     this.data.getCapNameByJfId(this.distinct[indexNumber].jfid).subscribe(c => {
       this.capabilities = c;
       this.switchBoard.getCapability(this.capabilities);
