@@ -33,7 +33,7 @@ export class CarouselComponent implements OnInit {
 
   }
   capabilities = this.http.get<string[]>('/api/getCapabilities');
-  
+
 
   ngOnInit() {
   }
