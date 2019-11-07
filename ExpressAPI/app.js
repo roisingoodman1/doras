@@ -15,6 +15,12 @@ app.get('/getBand', function(req, res) {
     })
 })
 
+app.get('/getJobFamilyByCap/:id', function(req, res) {
+    getBand(req.params.id, function() {
+        res.send(rows)
+    })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })

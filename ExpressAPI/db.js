@@ -36,3 +36,16 @@ exports.getFullJob = function(callback){
             callback(rows)
         })
 }
+
+exports.getJobFamilyByCapId = function(id, callback) {
+    db.query(
+        "SELECT title FROM JobFamily WHERE jfid = ?",
+        [id],
+        function(err, rows) {
+            if (err) {
+                throw err
+            }
+            callback(rows)
+        }
+    )
+}

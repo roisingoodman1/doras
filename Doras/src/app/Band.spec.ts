@@ -1,4 +1,4 @@
-import { Band } from './Band';
+import { Band } from './models/Band';
 
 describe('Test', () => {
   it('should create an instance', () => {
