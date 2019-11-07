@@ -10,6 +10,7 @@ import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
 import { RolesComponent } from './roles/roles.component';
 import { tableBandComponent } from './tableBand/tableBand.component';
 import { PopupsComponent } from './popups/popups.component';
+import { TrainingModalComponent } from './training-modal/training-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PopupsComponent } from './popups/popups.component';
     CarouselComponent,
     RolesComponent,
     tableBandComponent,
-    PopupsComponent
+    PopupsComponent,
+    TrainingModalComponent
   ],
   imports: [
     BrowserModule,

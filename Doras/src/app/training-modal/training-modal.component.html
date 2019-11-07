@@ -13,7 +13,7 @@
 
 <div class="container">
   <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="button" data-toggle="modal" data-target="#myModal">
     Training
   </button>
 
@@ -24,14 +24,27 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">{{Training}}</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Training - {{title}}</h4>
+          <div class="wrapper">
+          <button type="button" class="button buttonExit" data-dismiss="modal">&times;</button>
+          </div>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
         <!--TODO-->
-          {{internal}}
+        <h3>Training Type</h3>
+        <hr>
+          {{trainingType}}
+        <hr>
+        <h3>Description</h3>
+        <hr>
+          {{trainingDescription}}
+        <hr>
+        <h3>Link</h3>
+        <hr>
+          {{trainingLink}}
+        <hr>
         </div>
         
         <!-- Modal footer -->

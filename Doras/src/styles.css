@@ -49,3 +49,38 @@
     background-color: #4CAF50;
     color: white;
   }
+
+  .wrapper {
+    text-align: center;
+  }
+
+  .close{
+    position: absolute;
+    top: 50%;
+  }
+
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    height: 10%;
+    margin:auto;
+    display:block;
+  }
+
+  .buttonExit{
+    padding: 5px 20px;
+  }
+
+  .button:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
