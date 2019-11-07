@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -8,13 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselTabsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  capabilities = this.http.get<string[]>('/api/getCapabilities');
 
-  tabs : string[] = [
-    "Business Development",	"Account Management",	"Sales",	"Inside Sales Development",	"Pre Sales & Bid Management",	"Marketing"
-  ];
 
   ngOnInit() {
   }
-
 }

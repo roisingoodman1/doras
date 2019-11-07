@@ -32,7 +32,6 @@ export class CarouselComponent implements OnInit {
     config.pauseOnHover = false;
 
   }
-  capabilities = this.http.get<string[]>('/api/getCapabilities');
   jobFamily = this.http.get<string[]>('/api/getJobFamily');
 
   ngOnInit() {
