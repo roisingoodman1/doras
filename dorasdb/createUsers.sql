@@ -1,8 +1,7 @@
 CREATE TABLE Users(
     userID INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
-    password VARCHAR(128) NOT NULL,
-    salt VARCHAR(50) NOT NULL,
-    admin CHAR(1) DEFAULT 'N'
+    userPassword VARCHAR(128) NOT NULL,
+    isAdmin CHAR(1) DEFAULT 'N'
 );
 
