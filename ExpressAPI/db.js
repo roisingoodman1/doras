@@ -30,12 +30,23 @@ exports.getCapabilities = function(callback) {
     )
 }
 
-exports.getJobFamily = function(callback) { 
+exports.getJobFamily = function(callback) {
     db.query(
         "SELECT jfid, title FROM JobFamily",
         function(err, rows) {
-            if (err) { throw err }   
+            if (err) { throw err }
             callback(rows)
         }
     )
+}
+
+exports.getCapNameByJfid = function(id, callback) {
+  db.query(
+      "SELECT capName FROM Capability WHERE jfid = ?",
+      [id],
+      function(err, rows) {
+          if (err) { throw err }
+          callback(rows)
+      }
+  )
 }

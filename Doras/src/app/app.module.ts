@@ -32,4 +32,4 @@ import { PopupsComponent } from './popups/popups.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }  
+export class AppModule { }

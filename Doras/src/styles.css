@@ -27,25 +27,29 @@
     border-collapse: collapse;
     width: 70.5%;
     margin-left: 14.75%;
-    
+
   }
 
   .th1{
     text-align: center;
   }
-  
+
   .tableBand td, #customers th {
     border: 1px solid #ddd;
     padding: 8px;
   }
-  
+
   .tableBand tr:nth-child(even){background-color: #f2f2f2;}
-  
+
   .tableBand tr:hover {background-color: #ddd;}
-  
+
   .tableBand th {
     padding-top: 12px;
     padding-bottom: 12px;
     background-color: #4CAF50;
     color: white;
+  }
+
+  .carousel-indicators li{
+    visibility: hidden;
   }
