@@ -50,3 +50,13 @@ exports.getCapNameByJfid = function(id, callback) {
       }
   )
 }
+
+exports.getDistinct = function(callback)  {
+  db.query(
+    "SELECT DISTINCT jfid FROM JobFamily",
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
+}

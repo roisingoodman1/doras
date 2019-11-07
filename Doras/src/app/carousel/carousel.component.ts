@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { NgbCarouselConfig, NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../data.service';
@@ -30,7 +30,7 @@ import { SwitchBoardService } from '../switch-board.service';
 export class CarouselComponent implements OnInit {
   public jobFamily: JobFamily[];
   public capabilities: Capability[];
-
+  public distinct: JobFamily[];
 
   constructor(config: NgbCarouselConfig, private data: DataService, private switchBoard: SwitchBoardService) {
     config.wrap = true;
@@ -41,17 +41,25 @@ export class CarouselComponent implements OnInit {
   onSlide(slideEvent: NgbSlideEvent) {
     let index = slideEvent.current.split('-')[2];
     let indexNumber = +index;
-    this.data.getCapNameByJfId(indexNumber + 1).subscribe(c => {
+    console.log(this.distinct[indexNumber]);
+    this.data.getCapNameByJfId(this.distinct[indexNumber].jfid).subscribe(c => {
       this.capabilities = c;
       this.switchBoard.getCapability(this.capabilities);
     });
   }
   async ngOnInit() {
+    this.data.getJobFamily().subscribe(c => {
+      this.jobFamily = c;
+    });
+
+    this.data.getDistinctJfids().subscribe(c => {
+      this.distinct = c;
+    });
+
     this.data.getCapNameByJfId(1).subscribe(c => {
       this.capabilities = c;
       this.switchBoard.getCapability(this.capabilities);
     });
-    this.jobFamily = await this.data.getJobFamily();
   }
 
 }

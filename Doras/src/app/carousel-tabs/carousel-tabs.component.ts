@@ -13,7 +13,6 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
   public capabilities: Capability[];
 
   constructor(private switchBoard: SwitchBoardService) {
-    console.log(this.capabilities);
   }
 
   subCapabilities: Subscription;

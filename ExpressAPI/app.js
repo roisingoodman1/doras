@@ -53,7 +53,19 @@ app.get('/getCapNameByJfId/:id', function(req, res) {
   getCapNameByJfId(req.params.id, function() {
     res.send(capName)
   })
+})
 
+function getDistinct(distinctReadyFn) {
+  db.getDistinct(function(rows) {
+    distinct = rows
+    distinctReadyFn()
+  })
+}
+
+app.get('/getDistinct', function(req, res){
+  getDistinct(function(){
+    res.send(distinct)
+  })
 })
 
 app.listen(8003, function() {

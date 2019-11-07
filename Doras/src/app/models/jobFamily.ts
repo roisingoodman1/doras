@@ -1,5 +1,5 @@
 export class JobFamily {
-    id: number
-    title: string
-    capabilityId: number
+    id?: number;
+    title?: string;
+    capabilityId: number;
 }

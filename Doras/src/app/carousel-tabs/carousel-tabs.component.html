@@ -1,7 +1,6 @@
 <ngb-tabset justify="fill">
   <ul>
     <li *ngFor ="let capability of capabilities">
-      <p>{{capabilities}}</p>
         <ngb-tab title="{{ capability.capName }}">
             <ng-template ngbTabContent>
                 <app-roles></app-roles>
