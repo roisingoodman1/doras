@@ -6,27 +6,33 @@
 
                     <table class="tableBand">
                         <tr>
-                            <th class="th1" scope="col">{{endArray[i][0].bandName}}</th>
-                            <th align="center" scope="col">{{endArray[i][1].bandName}}</th>
-                            <th align="center" scope="col">{{endArray[i][2].bandName}}</th>
+                            <th 
+                                class="th1" scope="col">{{endArray[i][0].bandName}}
+                                <h4>{{job1Title}}</h4>
+                            </th>
+                                <th align="center" scope="col">{{endArray[i][1].bandName}}
+                                <h4>{{job2Title}}</h4>
+                            </th>
+                                <th align="center" scope="col">{{endArray[i][2].bandName}}
+                                <h4>{{job3Title}}</h4>
+                                </th>
                         </tr>
                         <tr>
                             <td>
-                                <h4>{{job1Title}}</h4>
+                                
                                 <p></p>
                                 <app-responsibilities></app-responsibilities>
                                 <p></p>
                                 <app-training-popup></app-training-popup>
                             </td>
                             <td>
-                                <h4>{{job2Title}}</h4>
+                                
                                 <p></p>
                                 <app-responsibilities></app-responsibilities>
                                 <p></p>
                                 <app-training-popup></app-training-popup>
                             </td>
                             <td>
-                                <h4>{{job3Title}}</h4>
                                 <p></p>
                                 <app-responsibilities></app-responsibilities>
                                 <p></p>

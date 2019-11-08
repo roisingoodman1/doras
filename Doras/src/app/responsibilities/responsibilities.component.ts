@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-responsibilities',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./responsibilities.component.css']
 })
 export class ResponsibilitiesComponent implements OnInit {
+  
+  constructor(private modalService: NgbModal) { }
 
-  constructor() { }
-
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
   ngOnInit() {
   }
 
