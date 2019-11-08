@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Band } from './Band';
+import { Band } from '../Band';
 
 @Component({
   selector: 'app-root',
