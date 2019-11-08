@@ -3,6 +3,7 @@ import { DataService } from './../data.service';
 import { Capability } from '../models/capability';
 import { SwitchBoardService } from '../switch-board.service';
 import { Subscription } from 'rxjs';
+import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'doras-carousel-tabs',
@@ -24,6 +25,10 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subCapabilities.unsubscribe();
+ }
+
+  onTabChange(tabChange: NgbTabChangeEvent) {
+    console.log(tabChange.nextId)
  }
 
 }

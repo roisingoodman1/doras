@@ -42,7 +42,7 @@ exports.getJobFamily = function(callback) {
 
 exports.getCapNameByJfid = function(id, callback) {
   db.query(
-      "SELECT capName FROM Capability WHERE jfid = ?",
+      "SELECT capName, capId FROM Capability WHERE jfid = ?",
       [id],
       function(err, rows) {
           if (err) { throw err }
