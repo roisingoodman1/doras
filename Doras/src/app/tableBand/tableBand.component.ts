@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Band } from '../models/Band';
+import { Key } from 'protractor';
 
 @Component({
   selector: 'app-tableBand',
@@ -8,16 +9,10 @@ import { Band } from '../models/Band';
   styleUrls: ['./tableBand.component.css']
 })
 export class tableBandComponent implements OnInit {
-  public bands: Band[];
 
-  constructor(private data: DataService) { }
+  constructor() { }
 
 
   ngOnInit() {
-    this.data.getBand().subscribe(c => {
-      this.bands = c;
-      this.bands = (this.bands.reverse()).slice(0, 3)
-    });
   }
-
 }

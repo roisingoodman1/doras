@@ -11,6 +11,7 @@ function getBand(bandsReadyFn) {
 }
 app.get('/getBand', function(req, res) {
     getBand(function() {
+        console.log(bands)
         res.send(bands)
     })
 })

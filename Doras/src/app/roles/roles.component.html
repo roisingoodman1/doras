@@ -1,16 +1,36 @@
 <div class='container-fluid' data-interval="false">
     <div class='col-12'>
-        <ngb-carousel data-interval="false" (slide)="onSlide($event)">
-            <ng-template ngbSlide>
-                <app-tableBand></app-tableBand>
-            </ng-template>
-            <ng-template ngbSlide>
-              
-            </ng-template>
-            <ng-template ngbSlide>
-              
-            </ng-template>
-        </ngb-carousel>
-    </div>
+        <ngb-carousel data-interval="false">
+            <li *ngFor ="let band of endArray; let i = index">
+                <ng-template ngbSlide>
 
-</div>
+                    <table class="tableBand">
+                        <tr>
+                            <th class="th1" scope="col">{{endArray[i][0].bandName}}</th>
+                            <th align="center" scope="col">{{endArray[i][1].bandName}}</th>
+                            <th align="center" scope="col">{{endArray[i][2].bandName}}</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <app-responsibilities></app-responsibilities>
+                                <p></p>
+                                <app-training-popup></app-training-popup>
+                            </td>
+                            <td>
+                                <app-responsibilities></app-responsibilities>
+                                <p></p>
+                                <app-training-popup></app-training-popup>
+                            </td>
+                            <td>
+                                <app-responsibilities></app-responsibilities>
+                                <p></p>
+                                <app-training-popup></app-training-popup>
+                            </td>
+                        </tr>
+
+                    </table>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+
+    </div>
