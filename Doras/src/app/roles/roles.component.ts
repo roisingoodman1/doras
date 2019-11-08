@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
-import { TableSlideNumberService } from './../table-slide-number.service'
 import { DataService } from '../data.service';
 import { Band } from '../models/Band';
 
@@ -13,12 +12,7 @@ export class RolesComponent implements OnInit {
   public bands: Band[];
   public endArray: any[];
 
-  constructor(private slideService : TableSlideNumberService, private data: DataService) { }
-
-  onSlide(slideEvent: NgbSlideEvent) {
-    let index = +(slideEvent.current.split('-')[2]);
-    this.slideService.currentSlide = index;
-  }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
     this.data.getBand().subscribe(c => {
