@@ -20,7 +20,7 @@ export class RolesComponent implements OnInit {
   public jobs3: Job[];
   public job1Title;
   public job2Title;
-  public job3Title;   
+  public job3Title;
 
   get capability(): Capability | null {
     return this.dataTransferService.capability;
@@ -42,7 +42,25 @@ export class RolesComponent implements OnInit {
       }
       this.endArray = array
     })
-
+    console.log(this.endArray)
+    this.data.getJobRoleTitle(this.capability.capId, this.endArray[0][0].bandId).subscribe(c => {
+      this.jobs1 = c
+      let obj = {};
+      this.jobs1.forEach(item => obj[item.bandId] = item.title);
+      this.job1Title = Object.values(obj)[0];
+    })
+    this.data.getJobRoleTitle(this.capability.capId, this.endArray[0][1].bandId).subscribe(c => {
+      this.jobs2 = c
+      let obj = {};
+      this.jobs2.forEach(item => obj[item.bandId] = item.title);
+      this.job2Title = Object.values(obj)[0];
+  })
+    this.data.getJobRoleTitle(this.capability.capId, this.endArray[0][2].bandId).subscribe(c => {
+      this.jobs3 = c
+      let obj = {};
+      this.jobs3.forEach(item => obj[item.bandId] = item.title);
+      this.job3Title = Object.values(obj)[0];
+  })
   }
 
   onSlide(slideEvent: NgbSlideEvent){
@@ -59,9 +77,6 @@ export class RolesComponent implements OnInit {
         this.count++
       }
     }
-    //console.log(this.capability.capId, this.endArray[this.count][0].bandId)
-    //console.log(this.capability.capId, this.endArray[this.count][1].bandId)
-    //console.log(this.capability.capId, this.endArray[this.count][2].bandId)
 
     this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][0].bandId).subscribe(c => {
       this.jobs1 = c

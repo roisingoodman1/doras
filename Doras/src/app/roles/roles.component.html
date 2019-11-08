@@ -6,27 +6,30 @@
 
                     <table class="tableBand">
                         <tr>
-                            <th 
+                            <th
                                 class="th1" scope="col">{{endArray[i][0].bandName}}
-                                <h4>{{job1Title}}</h4>
+                                <h4 *ngIf="job1Title; else notShowBlock">{{job1Title}}</h4>
                             </th>
                                 <th align="center" scope="col">{{endArray[i][1].bandName}}
-                                <h4>{{job2Title}}</h4>
+                                <h4 *ngIf="job2Title; else notShowBlock">{{job2Title}}</h4>
                             </th>
                                 <th align="center" scope="col">{{endArray[i][2].bandName}}
-                                <h4>{{job3Title}}</h4>
+                                <h4 *ngIf="job3Title; else notShowBlock">{{job3Title}}</h4>
                                 </th>
+                                <ng-template #notShowBlock>
+                                  <h4>Unavailable</h4>
+                                </ng-template>
                         </tr>
                         <tr>
                             <td>
-                                
+
                                 <p></p>
                                 <app-responsibilities></app-responsibilities>
                                 <p></p>
                                 <app-training-popup></app-training-popup>
                             </td>
                             <td>
-                                
+
                                 <p></p>
                                 <app-responsibilities></app-responsibilities>
                                 <p></p>
