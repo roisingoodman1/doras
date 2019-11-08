@@ -48,3 +48,36 @@ exports.getJobFamily = function(callback) {
         }
     )
 }
+
+exports.getCapNameByJfid = function(id, callback) {
+  db.query(
+      "SELECT capName, capId FROM Capability WHERE jfid = ?",
+      [id],
+      function(err, rows) {
+          if (err) { throw err }
+          callback(rows)
+      }
+  )
+}
+
+exports.getDistinct = function(callback)  {
+  db.query(
+    "SELECT DISTINCT jfid FROM JobFamily ORDER BY jfid asc",
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
+}
+
+exports.getJobRoleTitle = function(capId, bandId, callback) {
+  db.query(
+    "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?",
+    [bandId, capId],
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
+
+}

@@ -1,20 +1,13 @@
-<div class='container-fluid' data-interval="false">
+
+<div class='container-fluid p-0' data-interval="false">
   <div class='col-12'>
-    <ngb-carousel data-interval="false">
-      <li *ngFor ="let cap of capabilities|async">
+    <ngb-carousel class="carouselTop" data-interval="false" (slide)="onSlide($event, fam)">
+      <li *ngFor ="let fam of jobFamily">
         <ng-template ngbSlide>
-          <p>
-            {{ cap.capName }}
-          </p>
+          <h4>
+            {{ fam.title }}
+          </h4>
         </ng-template>
-      </li>
-      <li *ngFor ="let job of jobFamily|async">
-        <ng-template ngbSlide>
-          <p>
-            {{ job.title }}
-          </p>
-        </ng-template>
-      </li>
-    </ngb-carousel>
+      </ngb-carousel>
+    </div>
   </div>
-</div>

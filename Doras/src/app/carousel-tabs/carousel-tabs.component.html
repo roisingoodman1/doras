@@ -1,9 +1,13 @@
-<ngb-tabset justify="fill">
-    <li *ngFor ="let tab of tabs">
-        <ngb-tab title="{{tab}}">
+<div class='container-fluid'>
+<ngb-tabset justify="fill" style="padding-left: 10%; padding-right: 10%;" (tabChange)="onTabChange($event)">
+  <ul>
+    <li *ngFor ="let capability of capabilities; let i = index">
+        <ngb-tab title="{{ capability.capName }}" [id]="i">
             <ng-template ngbTabContent>
                 <app-roles></app-roles>
             </ng-template>
         </ngb-tab>
     </li>
+  </ul>
 </ngb-tabset>
+</div>
