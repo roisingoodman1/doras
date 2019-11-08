@@ -8,8 +8,9 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
 import { RolesComponent } from './roles/roles.component';
-import { tableBandComponent } from './tableBand/tableBand.component';
 import { PopupsComponent } from './popups/popups.component';
+import { TrainingPopupComponent } from './training-popup/training-popup.component';
+import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { PopupsComponent } from './popups/popups.component';
     CarouselTabsComponent,
     CarouselComponent,
     RolesComponent,
-    tableBandComponent,
-    PopupsComponent
+    PopupsComponent,
+    TrainingPopupComponent,
+    ResponsibilitiesComponent
   ],
   imports: [
     BrowserModule,
@@ -32,4 +34,4 @@ import { PopupsComponent } from './popups/popups.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }  
+export class AppModule { }

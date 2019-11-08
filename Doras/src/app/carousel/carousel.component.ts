@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { NgbCarouselConfig, NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from '@angular/common/http';
-
+import { DataService } from '../data.service';
+import { JobFamily } from '../models/jobFamily';
+import { Capability } from '../models/capability';
+import { SwitchBoardService } from '../switch-board.service';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
@@ -20,22 +22,40 @@ import { HttpClient } from '@angular/common/http';
       background-color: green;
     }
     .carousel-indicators{
-      color: chartreuse;
+      height: 0px;
     }
   `]
 })
 export class CarouselComponent implements OnInit {
+  public jobFamily: JobFamily[];
+  public capabilities: Capability[];
+  public distinct: JobFamily[];
 
-  constructor(config: NgbCarouselConfig, private http: HttpClient) {
+  constructor(config: NgbCarouselConfig, private data: DataService, private switchBoard: SwitchBoardService) {
     config.wrap = true;
     config.keyboard = false;
     config.pauseOnHover = false;
-
   }
-  capabilities = this.http.get<string[]>('/api/getCapabilities');
-  
 
-  ngOnInit() {
+  onSlide(slideEvent: NgbSlideEvent) {
+    this.data.getCapNameByJfId(this.distinct[+(slideEvent.current.split('-')[2])].jfid).subscribe(c => {
+      this.capabilities = c;
+      this.switchBoard.getCapability(this.capabilities);
+    });
+  }
+  async ngOnInit() {
+    this.data.getJobFamily().subscribe(c => {
+      this.jobFamily = c;
+    });
+
+    this.data.getDistinctJfids().subscribe(c => {
+      this.distinct = c;
+    });
+
+    this.data.getCapNameByJfId(1).subscribe(c => {
+      this.capabilities = c;
+      this.switchBoard.getCapability(this.capabilities);
+    });
   }
 
 }
