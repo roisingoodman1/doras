@@ -32,50 +32,48 @@ export class RolesComponent implements OnInit {
     this.data.getBand().subscribe(c => {
       this.bands = c.reverse();
 
-      let array = []
-      let chunk = 3
-      let next
-      let length = this.bands.length
-      for (let i = 0; i < length; i+=chunk) {
-        next = i + 3
-        array.push(this.bands.slice(i, next))
+      let newArray = [];
+      let chunkOfArray = 3;
+      let nextValue;
+      let length = this.bands.length;
+      for (let i = 0; i < length; i+=chunkOfArray) {
+        nextValue = i + 3;
+        newArray.push(this.bands.slice(i, nextValue));
       }
-      this.endArray = array
+      this.endArray = newArray;
     })
   }
 
   onSlide(slideEvent: NgbSlideEvent){
      if (slideEvent.source === NgbSlideEventSource.ARROW_LEFT){
         if (this.count === 0) {
-          this.count = 2
+          this.count = 2;
         } else {
-          this.count--
+          this.count--;
         }
     } else if ( slideEvent.source === NgbSlideEventSource.ARROW_RIGHT) {
       if (this.count === 2) {
-        this.count = 0
+        this.count = 0;
       } else {
-        this.count++
+        this.count++;
       }
     }
-    //console.log(this.capability.capId, this.endArray[this.count][0].bandId)
-    //console.log(this.capability.capId, this.endArray[this.count][1].bandId)
-    //console.log(this.capability.capId, this.endArray[this.count][2].bandId)
 
     this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][0].bandId).subscribe(c => {
-      this.jobs1 = c
+      this.jobs1 = c;
       let obj = {};
       this.jobs1.forEach(item => obj[item.bandId] = item.title);
       this.job1Title = Object.values(obj)[0];
     })
+
     this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][1].bandId).subscribe(c => {
-      this.jobs2 = c
+      this.jobs2 = c;
       let obj = {};
       this.jobs2.forEach(item => obj[item.bandId] = item.title);
       this.job2Title = Object.values(obj)[0];
   })
     this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][2].bandId).subscribe(c => {
-      this.jobs3 = c
+      this.jobs3 = c;
       let obj = {};
       this.jobs3.forEach(item => obj[item.bandId] = item.title);
       this.job3Title = Object.values(obj)[0];

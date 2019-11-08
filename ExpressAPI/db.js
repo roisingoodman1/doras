@@ -53,7 +53,7 @@ exports.getCapNameByJfid = function(id, callback) {
 
 exports.getDistinct = function(callback)  {
   db.query(
-    "SELECT DISTINCT jfid FROM JobFamily ORDER BY asc",
+    "SELECT DISTINCT jfid FROM JobFamily ORDER BY jfid asc",
     function(err, rows) {
       if (err) { throw err }
       callback(rows)

@@ -55,16 +55,3 @@ INSERT INTO Job(title,speclink,summary,responsibilities,bandId,capId) VALUES
 ("Infrastructure Engineer", " ", " ", " ", 6, 12),
 ("Infrastructure Consultant", " ", " ", " ", 5, 12),
 ("Infrastructure Leader", " ", " ", " ", 2, 12)
-
-
-
-
-
-
-
-
-
-
-
-
-
