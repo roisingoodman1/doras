@@ -8,7 +8,6 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
 import { RolesComponent } from './roles/roles.component';
-import { tableBandComponent } from './tableBand/tableBand.component';
 import { PopupsComponent } from './popups/popups.component';
 import { TrainingPopupComponent } from './training-popup/training-popup.component';
 import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
@@ -20,7 +19,6 @@ import { ResponsibilitiesComponent } from './responsibilities/responsibilities.c
     CarouselTabsComponent,
     CarouselComponent,
     RolesComponent,
-    tableBandComponent,
     PopupsComponent,
     TrainingPopupComponent,
     ResponsibilitiesComponent

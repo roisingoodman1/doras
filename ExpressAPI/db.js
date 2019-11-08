@@ -60,3 +60,14 @@ exports.getDistinct = function(callback)  {
     }
   )
 }
+
+exports.getJobRoleTitle = function(capId, bandId, callback) {
+  db.query(
+    "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?",
+    [bandId, capId],
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
+}

@@ -11,7 +11,6 @@ function getBand(bandsReadyFn) {
 }
 app.get('/getBand', function(req, res) {
     getBand(function() {
-        console.log(bands)
         res.send(bands)
     })
 })
@@ -65,6 +64,19 @@ function getDistinct(distinctReadyFn) {
 app.get('/getDistinct', function(req, res){
   getDistinct(function(){
     res.send(distinct)
+  })
+})
+
+function getJobRoleTitle(capId, bandId, getRoleReadyfn) {
+  db.getJobRoleTitle(capId, bandId, function(rows) {
+    title = rows
+    getRoleReadyfn()
+  })
+}
+
+app.get('/getJobRoleTitle/:capId/:bandId', function(req, res){
+  getJobRoleTitle(req.params.capId, req.params.bandId, function(){
+    res.send(title)
   })
 })
 

@@ -5,6 +5,7 @@ import { JobFamily } from './models/jobFamily'
 import { JobRole } from './models/jobRole'
 import { Band } from './models/Band'
 import { Observable } from 'rxjs'
+import { Job } from './models/job'
 
 @Injectable({
   providedIn: 'root'
@@ -39,4 +40,9 @@ export class DataService {
   public getDistinctJfids(): Observable<JobFamily[]> {
     return this.http.get<JobFamily[]>('/api/getDistinct');
   }
+
+  public getJobRoleTitle(capId, bandId): Observable<Job[]> {
+    return this.http.get<Job[]>('/api/getJobRoleTitle/' + capId + '/' + bandId);
+  }
+
 }

@@ -1,6 +1,6 @@
 <div class='container-fluid' data-interval="false">
     <div class='col-12'>
-        <ngb-carousel data-interval="false">
+        <ngb-carousel data-interval="false" (slide)="onSlide($event)">
             <li *ngFor ="let band of endArray; let i = index">
                 <ng-template ngbSlide>
 
@@ -11,22 +11,22 @@
                             <th align="center" scope="col">{{endArray[i][2].bandName}}</th>
                         </tr>
                         <tr>
-                            <td>
-                                <h4>Software Engineer</h4>
+                            <td *ngFor ="let job of jobs1">
+                                <h4>{{job.title}}</h4>
                                 <p></p>
                                 <app-responsibilities></app-responsibilities>
                                 <p></p>
                                 <app-training-popup></app-training-popup>
                             </td>
-                            <td>
-                                <h4>Software Engineer</h4>
+                            <td *ngFor ="let job of jobs2">
+                                <h4>{{job.title}}</h4>
                                 <p></p>
                                 <app-responsibilities></app-responsibilities>
                                 <p></p>
                                 <app-training-popup></app-training-popup>
                             </td>
-                            <td>
-                                <h4>Software Engineer</h4>
+                            <td *ngFor ="let job of jobs3">
+                                <h4>{{job.title}}</h4>
                                 <p></p>
                                 <app-responsibilities></app-responsibilities>
                                 <p></p>

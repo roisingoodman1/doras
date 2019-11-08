@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbSlideEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../data.service';
 import { Band } from '../models/Band';
+import { DataTransferService } from '../data-transfer.service'
+import { Capability } from '../models/capability';
+import { Job } from '../models/job';
 
 @Component({
   selector: 'app-roles',
@@ -11,8 +14,16 @@ import { Band } from '../models/Band';
 export class RolesComponent implements OnInit {
   public bands: Band[];
   public endArray: any[];
+  public count: number = 0;
+  public jobs1: Job[];
+  public jobs2: Job[];
+  public jobs3: Job[];
 
-  constructor(private data: DataService) { }
+  get capability(): Capability | null {
+    return this.dataTransferService.capability;
+}
+
+  constructor(private data: DataService, private dataTransferService : DataTransferService) { }
 
   ngOnInit() {
     this.data.getBand().subscribe(c => {
@@ -27,10 +38,37 @@ export class RolesComponent implements OnInit {
         array.push(this.bands.slice(i, next))
       }
       this.endArray = array
-      console.log(this.endArray)
-      
-
     })
+
+  }
+
+  onSlide(slideEvent: NgbSlideEvent){
+     if (slideEvent.source === NgbSlideEventSource.ARROW_LEFT){
+        if (this.count === 0) {
+          this.count = 2
+        } else {
+          this.count--
+        }
+    } else if ( slideEvent.source === NgbSlideEventSource.ARROW_RIGHT) {
+      if (this.count === 2) {
+        this.count = 0
+      } else {
+        this.count++
+      }
+    }
+    console.log(this.capability.capId, this.endArray[this.count][1].bandId)
+    this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][0].bandId).subscribe(c => {
+        this.jobs1 = c
+        console.log(this.jobs1)
+    })
+    this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][1].bandId).subscribe(c => {
+      this.jobs2 = c
+      console.log(this.jobs2)
+  })
+    this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][2].bandId).subscribe(c => {
+      this.jobs3 = c
+      console.log(this.jobs3)
+  })
   }
 
 }
