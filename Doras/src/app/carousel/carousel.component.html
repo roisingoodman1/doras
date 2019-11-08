@@ -1,6 +1,6 @@
 <div class='container-fluid p-0' data-interval="false">
   <div class='col-12'>
-    <ngb-carousel data-interval="false" (slide)="onSlide($event, fam)">
+    <ngb-carousel class="carouselTop" data-interval="false" (slide)="onSlide($event, fam)">
       <li *ngFor ="let fam of jobFamily">
         <ng-template ngbSlide>
           <h4>

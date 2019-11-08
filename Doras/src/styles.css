@@ -11,6 +11,8 @@
     padding: 0;
   }
 
+  button:focus {outline:0;}
+
   .bodyMain
   {
     padding-left: 2%;
@@ -24,6 +26,7 @@
   .hr-page-top {
     background: linear-gradient(to right, #61a83f , #283583);
     height: 8px;
+    margin-bottom: 3%;
   }
 
   .hr-page-bottom {
@@ -48,6 +51,10 @@
     float: left;
     width: 50%;
   }
+
+  h4{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
   
   .row:after {
     content: "";
@@ -57,7 +64,7 @@
 
   .header-careers {
     color: #61a83f;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto Slab', serif;
     position: absolute;
     margin-top: 4%;
     margin-left: 30%;
@@ -67,7 +74,7 @@
   .tableBand {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 70.5%;
+    width: 70.55%;
     margin-left: 14.75%;
     table-layout: fixed
   }
@@ -114,6 +121,11 @@
     background-color: transparent;
   }
 
+  button:focus {
+    outline:none;
+    box-shadow: none;
+  }
+
   .buttonTable{
       margin:auto;
       display:block;
@@ -123,6 +135,14 @@
       padding-top: 2%;
       padding-bottom: 2%;
       border-radius: 25px;
+      outline:none;
+      box-shadow: none;
+      box-shadow: none !important;
   }
+
+  .buttonTable:focus {outline:0 !important;}
+  .carouselTop:focus {outline:0 !important;}
+
+  
 
   
