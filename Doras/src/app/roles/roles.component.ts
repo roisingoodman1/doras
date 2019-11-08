@@ -56,7 +56,10 @@ export class RolesComponent implements OnInit {
         this.count++
       }
     }
+    console.log(this.capability.capId, this.endArray[this.count][0].bandId)
     console.log(this.capability.capId, this.endArray[this.count][1].bandId)
+    console.log(this.capability.capId, this.endArray[this.count][2].bandId)
+
     this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][0].bandId).subscribe(c => {
         this.jobs1 = c
         console.log(this.jobs1)
