@@ -7,6 +7,8 @@ import { Capability } from '../models/capability';
 import { Job } from '../models/job';
 import { ResponsibilitiesComponent } from '../responsibilities/responsibilities.component'
 import { SwitchBoardService } from '../switch-board.service';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-roles',
@@ -26,7 +28,13 @@ export class RolesComponent implements OnInit {
     return this.dataTransferService.capability;
 }
 
-  constructor(private data: DataService, private dataTransferService : DataTransferService, private responsibilities: ResponsibilitiesComponent, private switchBoard: SwitchBoardService) { }
+  constructor(private data: DataService, private dataTransferService : DataTransferService,  public dialog: MatDialog) { }
+
+  openDialog(job: Job[]): void {
+    this.dialog.open(ResponsibilitiesComponent, {
+      data: { responsibility: job[0].responsibilities != " " ? job[0].responsibilities : "No responsibilities" }
+    });
+  }
 
   ngOnInit() {
     this.data.getBand().subscribe(c => {
@@ -80,21 +88,16 @@ export class RolesComponent implements OnInit {
   })
 }
 
-private subscribeAndOpenResponsibility(job) {
-  this.switchBoard.getJob(job);
-  this.responsibilities.openResponsibilites();
-}
+  openFirstResponsibility() {
+    this.openDialog(this.firstJob)
+  }
 
-openFirstResponsibility() {
-  this.subscribeAndOpenResponsibility(this.firstJob)
-}
+  openSecondResponsibility() {
+    this.openDialog(this.secondJob)
+  }
 
-openSecondResponsibility() {
-  this.subscribeAndOpenResponsibility(this.secondJob)
-}
-
-openThirdResponsibility() {
-  this.subscribeAndOpenResponsibility(this.thirdJob)
-}
+  openThirdResponsibility() {
+    this.openDialog(this.thirdJob)
+  }
 
 }
