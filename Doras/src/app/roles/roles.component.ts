@@ -7,12 +7,9 @@ import { Capability } from '../models/capability';
 import { Job } from '../models/job';
 import { ResponsibilitiesComponent } from '../responsibilities/responsibilities.component'
 import { SwitchBoardService } from '../switch-board.service';
-<<<<<<< HEAD
 import { Competency } from '../models/Competency';
-=======
 import { MatDialog } from '@angular/material/dialog';
 
->>>>>>> 4b23e2c... Working modal
 
 @Component({
   selector: 'app-roles',
@@ -34,19 +31,15 @@ export class RolesComponent implements OnInit {
     return this.dataTransferService.capability;
   }
 
-<<<<<<< HEAD
-  constructor(private data: DataService, private dataTransferService: DataTransferService, private responsibilities: ResponsibilitiesComponent, private switchBoard: SwitchBoardService) {
-=======
-  constructor(private data: DataService, private dataTransferService : DataTransferService,  public dialog: MatDialog) { }
-
+  constructor(private data: DataService, private dataTransferService: DataTransferService, private responsibilities: ResponsibilitiesComponent, private switchBoard: SwitchBoardService, public dialog: MatDialog) {}
+  
   openDialog(job: Job[]): void {
     this.dialog.open(ResponsibilitiesComponent, {
       data: { responsibility: job[0].responsibilities != " " ? job[0].responsibilities : "No responsibilities" }
     });
   }
->>>>>>> 4b23e2c... Working modal
 
-  }
+  
   ngOnInit() {
     this.data.getBand().subscribe(c => {
       this.bands = c.reverse();
@@ -99,11 +92,11 @@ export class RolesComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
   private subscribeAndOpenResponsibility(job) {
     this.switchBoard.getJob(job);
     this.responsibilities.openResponsibilites();
   }
+
   showCol1Competencies() {
     this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
       this.firstCompetency = c;
@@ -111,17 +104,6 @@ export class RolesComponent implements OnInit {
     })
   }
 
-  openFirstResponsibility() {
-    this.subscribeAndOpenResponsibility(this.firstJob)
-  }
-
-  openSecondResponsibility() {
-    this.subscribeAndOpenResponsibility(this.secondJob)
-  }
-
-  openThirdResponsibility() {
-    this.subscribeAndOpenResponsibility(this.thirdJob)
-=======
   openFirstResponsibility() {
     this.openDialog(this.firstJob)
   }
@@ -132,7 +114,5 @@ export class RolesComponent implements OnInit {
 
   openThirdResponsibility() {
     this.openDialog(this.thirdJob)
->>>>>>> 4b23e2c... Working modal
   }
-
 }

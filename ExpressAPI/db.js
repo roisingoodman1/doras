@@ -91,3 +91,14 @@ exports.getCompetenciesForBand = function(bandId, callback) {
     }
   )
 }
+
+exports.getCompetenciesForBand = function(bandId, callback) {
+  db.query(
+    "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",
+    [bandId],
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
+}
