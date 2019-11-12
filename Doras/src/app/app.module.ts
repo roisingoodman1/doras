@@ -25,6 +25,7 @@ import { AdminComponent } from './admin/admin.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { OtherJobsComponent } from './other-jobs/other-jobs.component';
 import { CapabilityLeadsComponent } from './capability-leads/capability-leads.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CapabilityLeadsComponent } from './capability-leads/capability-leads.co
     BandCompetenciesComponent,
     AdminComponent,
     OtherJobsComponent,
-    CapabilityLeadsComponent
+    CapabilityLeadsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
