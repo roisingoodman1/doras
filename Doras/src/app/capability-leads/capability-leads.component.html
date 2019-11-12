@@ -1,8 +1,12 @@
-<h2>Capability Leads</h2>
+<h2>Capability Lead</h2>
 <div *ngFor="let capLead of capabilityLeads">
-        <h4>{{capLead.capName}}</h4>
+        <div *ngIf = "capLead.capName == capability.capName">
+        <h3>{{capLead.capName}}</h3>
     <hr>
         <h6>{{capLead.capLeadName}}</h6>
         <img src = "../assets/img/defaultPhoto.jpg" width="250" height="264">
+    <hr>
+        <h6>{{capLead.capLeadQuote}}</h6>
         <h6>Lead ID: {{capLead.leadId}}</h6>
+            </div>
     </div>

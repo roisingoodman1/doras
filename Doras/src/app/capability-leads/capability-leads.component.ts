@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { DataTransferService } from '../data-transfer.service'
+import { Capability } from '../models/capability';
 import { CapabilityLeads } from '../models/capabilityLeads';
 
 @Component({
@@ -10,7 +12,11 @@ import { CapabilityLeads } from '../models/capabilityLeads';
 export class CapabilityLeadsComponent implements OnInit {
   public capabilityLeads: CapabilityLeads[];
 
-  constructor(private data: DataService) { }
+  get capability(): Capability | null {
+    return this.dataTransferService.capability;
+}
+
+  constructor(private data: DataService, private dataTransferService: DataTransferService) { }
 
   ngOnInit() {
     this.data.getCapabilityLeads().subscribe(c => {
