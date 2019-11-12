@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
-import { Capability } from './models/capability'
-import { JobFamily } from './models/jobFamily'
-import { JobRole } from './models/jobRole'
-import { Band } from './models/Band'
-import { Observable } from 'rxjs'
-import { Job } from './models/job'
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Capability } from './models/capability';
+import { JobFamily } from './models/jobFamily';
+import { JobRole } from './models/jobRole';
+import { Band } from './models/Band';
+import { Observable } from 'rxjs';
+import { Job } from './models/job';
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,10 @@ export class DataService {
 
   public getJobRoleTitle(capId, bandId): Observable<Job[]> {
     return this.http.get<Job[]>('/api/getJobRoleTitle/' + capId + '/' + bandId);
+  }
+
+  public getUser(username): Observable<User> {
+    return this.http.get<User>('/api/getUser/' + username);
   }
 
 }

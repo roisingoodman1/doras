@@ -1,0 +1,7 @@
+.form input .ng-valid {
+    background: lightgreen;
+}
+
+.form input .ng-invalid {
+    background: lightpink;
+}
