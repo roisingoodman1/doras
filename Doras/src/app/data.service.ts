@@ -1,14 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Capability } from './models/capability';
-import { JobFamily } from './models/jobFamily';
-import { JobRole } from './models/jobRole';
-import { Band } from './models/Band';
-import { Observable } from 'rxjs';
-import { Job } from './models/job';
-import { User } from './models/user';
-import { Training } from './models/training';
-import { Competency } from './models/Competency'
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Capability } from './models/capability'
+import { JobFamily } from './models/jobFamily'
+import { JobRole } from './models/jobRole'
+import { Band } from './models/Band'
+import { Observable } from 'rxjs'
+import { Job } from './models/job'
+import { CapabilityLeads} from './models/capabilityLeads'
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +18,14 @@ export class DataService {
     return this.http.get<Capability[]>('/api/capabilities');
   }
 
+  public getCapabilityLeads(): Observable<CapabilityLeads[]>{
+    return this.http.get<CapabilityLeads[]>('/api/getCapLeads');
+  }
+
   public getJobFamily(): Observable<JobFamily[]> {
     return this.http.get<JobFamily[]>('/api/jobFamily');
   }
-  
+
   public getBand(): Observable<Band[]> {
     return this.http.get<Band[]>('/api/band');
   }
