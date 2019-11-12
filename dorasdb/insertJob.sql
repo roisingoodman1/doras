@@ -7,7 +7,7 @@ INSERT INTO Job(title,speclink,summary,responsibilities,bandId,capId) VALUES
 ("Chief Technology Officer", " ", " ", " ", 1, 1),
 ("Ops Engineer", " ", " ", " ", 8, 2),
 ("Ops Engineer", " ", " ", " ", 7, 2),
-("Ops Engineer", " ", " ", " ", 6, 2),
+("Ops Engineer", " ", " ", "this is a responsibility", 6, 2),
 ("Lead Ops Engineer", " ", " ", " ", 5, 2),
 ("Test Engineer", " ", " ", " ", 9, 3),
 ("Test Engineer", " ", " ", " ", 8, 3),

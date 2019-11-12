@@ -43,7 +43,8 @@ export class CarouselComponent implements OnInit {
       this.switchBoard.getCapability(this.capabilities);
     });
   }
-  async ngOnInit() {
+
+  ngOnInit() {
     this.data.getJobFamily().subscribe(c => {
       this.jobFamily = c;
     });
