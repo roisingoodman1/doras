@@ -15,6 +15,13 @@ import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -37,9 +44,19 @@ import { BandCompetenciesComponent } from './band-competencies/band-competencies
     NgbModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {},
+  }, {
+  provide: MAT_DIALOG_DATA,
+  useValue: {},
+},
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ResponsibilitiesComponent]
 })
 export class AppModule { }
