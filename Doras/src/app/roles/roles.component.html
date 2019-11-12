@@ -1,51 +1,59 @@
 <div class='container-fluid' data-interval="false">
-    <div class='col-12'>
-        <ngb-carousel data-interval="false" class="carouselTop" (slide)="onSlide($event)">
-            <li *ngFor ="let band of endArray; let i = index">
-                <ng-template ngbSlide>
-
-                    <table class="tableBand">
-                        <tr>
-                            <th
-                                class="th1" scope="col">{{endArray[i][0].bandName}}
-                                <h4 *ngIf="job1Title; else notShowBlock">{{job1Title}}</h4>
-                            </th>
-                                <th align="center" scope="col">{{endArray[i][1].bandName}}
-                                <h4 *ngIf="job2Title; else notShowBlock">{{job2Title}}</h4>
-                            </th>
-                                <th align="center" scope="col">{{endArray[i][2].bandName}}
-                                <h4 *ngIf="job3Title; else notShowBlock">{{job3Title}}</h4>
-                                </th>
-                                <ng-template #notShowBlock>
-                                  <h4>Unavailable</h4>
-                                </ng-template>
-                        </tr>
-                        <tr>
-                            <td>
-
-                                <p></p>
-                                <app-responsibilities></app-responsibilities>
-                                <p></p>
-                                <app-training-popup></app-training-popup>
-                            </td>
-                            <td>
-
-                                <p></p>
-                                <app-responsibilities></app-responsibilities>
-                                <p></p>
-                                <app-training-popup></app-training-popup>
-                            </td>
-                            <td>
-                                <p></p>
-                                <app-responsibilities></app-responsibilities>
-                                <p></p>
-                                <app-training-popup></app-training-popup>
-                            </td>
-                        </tr>
-
-                    </table>
-                </ng-template>
-            </ngb-carousel>
-        </div>
-
+  <div class='col-12'>
+    <ngb-carousel data-interval="false" class="carouselTop" (slide)="onSlide($event)">
+      <li *ngFor="let band of jobBandArray; let i = index">
+        <ng-template ngbSlide>
+          <table class="tableBand">
+            <tr>
+              <th class="th1" scope="col">
+              <h2 class="jobName">{{jobBandArray[i][0].bandName}}</h2>
+                <a *ngFor="let job1 of firstJob">
+                <h1 *ngIf="job1; else notShowBlock">{{job1.title}}</h1>
+                <div *ngIf="job1;">
+                <p></p>
+                <img title="Responsibilities" src='assets/responsibilities.png' onmouseover="this.src='assets/responsibilities_hover.png';" onmouseout="this.src='assets/responsibilities.png';"class="topLeftIcon" (click)="openDialog('responsibility', 'job1')"/>
+                <img title="Training" src='assets/training.png' onmouseover="this.src='assets/training_hover.png';" onmouseout="this.src='assets/training.png';" class="topRightIcon" (click)="openDialog('training', 'training1')"/>
+                <p></p>
+                <img title="Job Specification" src='assets/jobSpec.png' onmouseover="this.src='assets/jobSpec_hover.png';" onmouseout="this.src='assets/jobSpec.png';" class="topLeftIcon" (click)="openDialog('spec', 'spec1')"/>
+                <img title="Other Jobs in the Same Band" src='assets/sjsb.png' onmouseover="this.src='assets/sjsb_hover.png';" onmouseout="this.src='assets/sjsb.png';" class="topRightIcon" />
+                </div>
+                </a>
+              </th>
+              <th class="th1" scope="col">
+              <h2 class="jobName">{{jobBandArray[i][1].bandName}}</h2>
+                <a *ngFor="let job2 of secondJob">
+                <h1 *ngIf="job2; else notShowBlock">{{job2.title}}</h1>
+                <div *ngIf="job2;">
+                <p></p>
+                <img title="Responsibilities" src='assets/responsibilities.png' onmouseover="this.src='assets/responsibilities_hover.png';" onmouseout="this.src='assets/responsibilities.png';"class="topLeftIcon" (click)="openDialog('responsibility', 'job2')"/>
+                <img title="Training" src='assets/training.png' onmouseover="this.src='assets/training_hover.png';" onmouseout="this.src='assets/training.png';" class="topRightIcon" (click)="openDialog('training', 'training2')"/>
+                <p></p>
+                <img title="Job Specification" src='assets/jobSpec.png' onmouseover="this.src='assets/jobSpec_hover.png';" onmouseout="this.src='assets/jobSpec.png';" class="topLeftIcon" (click)="openDialog('spec', 'spec2')"/>
+                <img title="Other Jobs in the Same Band" src='assets/sjsb.png' onmouseover="this.src='assets/sjsb_hover.png';" onmouseout="this.src='assets/sjsb.png';" class="topRightIcon" />
+                </div>
+                </a>
+              </th>
+              <th class="th1" scope="col">
+              <h2 class="jobName">{{jobBandArray[i][2].bandName}}</h2>
+                <a *ngFor="let job3 of thirdJob">
+                <h1 *ngIf="job3; else notShowBlock">{{job3.title}}</h1>
+                <div *ngIf="job3;">
+                <p></p>
+                <img title="Responsibilities" src='assets/responsibilities.png' onmouseover="this.src='assets/responsibilities_hover.png';" onmouseout="this.src='assets/responsibilities.png';"class="topLeftIcon" (click)="openDialog('responsibility', 'job3')"/>
+                <img title="Training" src='assets/training.png' onmouseover="this.src='assets/training_hover.png';" onmouseout="this.src='assets/training.png';" class="topRightIcon" (click)="openDialog('training', 'training3')"/>
+                <p></p>
+                <img title="Job Specification" src='assets/jobSpec.png' onmouseover="this.src='assets/jobSpec_hover.png';" onmouseout="this.src='assets/jobSpec.png';" class="topLeftIcon" (click)="openDialog('spec', 'spec3')"/>
+                <img title="Other Jobs in the Same Band" src='assets/sjsb.png' onmouseover="this.src='assets/sjsb_hover.png';" onmouseout="this.src='assets/sjsb.png';" class="topRightIcon" />
+                </div>
+                </a>
+              </th>
+              <ng-template #notShowBlock>
+                <h4>No Role</h4>
+              </ng-template>
+            </tr>
+          </table>
+        </ng-template>
+      </ngb-carousel>
     </div>
+
+</div>

@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Inject } from '@angular/core';
+import { Job } from '../models/job';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-responsibilities',
   templateUrl: './responsibilities.component.html',
-  styleUrls: ['./responsibilities.component.css']
+  styleUrls: ['./responsibilities.component.css'],
+  providers: [MatDialogModule]
 })
-export class ResponsibilitiesComponent implements OnInit {
-  
-  constructor(private modalService: NgbModal) { }
+export class ResponsibilitiesComponent {
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  constructor(public dialogRef: MatDialogRef<ResponsibilitiesComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Job) {
+      console.log(data)
   }
-  ngOnInit() {
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
+
