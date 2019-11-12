@@ -7,6 +7,15 @@ import { Band } from './models/Band';
 import { Observable } from 'rxjs';
 import { Job } from './models/job';
 import { User } from './models/user';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Capability } from './models/capability'
+import { JobFamily } from './models/jobFamily'
+import { JobRole } from './models/jobRole'
+import { Band } from './models/Band'
+import { Observable } from 'rxjs'
+import { Job } from './models/job'
+import { Competency } from './models/Competency'
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +55,13 @@ export class DataService {
     return this.http.get<Job[]>('/api/getJobRoleTitle/' + capId + '/' + bandId);
   }
 
+<<<<<<< HEAD
   public getUser(username): Observable<User> {
     return this.http.get<User>('/api/getUser/' + username);
+=======
+  public getCompetenciesBand(bandId): Observable<Competency[]> {
+    return this.http.get<Competency[]>('/api/getCompetenciesForBand/' + bandId);
+>>>>>>> additions to header component
   }
 
 }

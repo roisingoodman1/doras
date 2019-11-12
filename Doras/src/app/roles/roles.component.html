@@ -1,61 +1,64 @@
 <div class='container-fluid' data-interval="false">
-  <div class='col-12'>
-    <ngb-carousel data-interval="false" class="carouselTop" (slide)="onSlide($event)">
-      <li *ngFor="let band of jobBandArray; let i = index">
-        <ng-template ngbSlide>
-          <table class="tableBand">
-            <tr>
-              <th class="th1" scope="col">{{jobBandArray[i][0].bandName}}
-                <li *ngFor="let job1 of firstJob">
-                  <h4 *ngIf="job1; else notShowBlock">{{job1.title}}</h4>
-                </li>
-              </th>
-              <th align="center" scope="col">{{jobBandArray[i][1].bandName}}
-                <li *ngFor="let job2 of secondJob">
-                  <h4 *ngIf="job2; else notShowBlock">{{job2.title}}</h4>
-                </li>
-              </th>
-              <th align="center" scope="col">{{jobBandArray[i][2].bandName}}
+    <div class='col-12'>
+        <ngb-carousel data-interval="false" class="carouselTop" (slide)="onSlide($event)">
+            <li *ngFor="let band of jobBandArray; let i = index">
+                <ng-template ngbSlide>
+                    <table class="tableBand">
+                        <tr>
+                            <th class="th1" scope="col" (click)="showCol1Competencies()">
+                                {{jobBandArray[i][0].bandName}}
+                                    <li *ngFor="let job1 of firstJob">
+                                        <h4 *ngIf="job1; else notShowBlock">{{job1.title}}</h4>
+                                    </li>
+                             </th>
+                             <th align="center" scope="col">
+                                {{jobBandArray[i][1].bandName}}
+                                     <li *ngFor="let job2 of secondJob">
+                                        <h4 *ngIf="job2; else notShowBlock">{{job2.title}}</h4>
+                                    </li>
+                            </th>
+            <th align="center" scope="col">
+                {{jobBandArray[i][2].bandName}}
                 <li *ngFor="let job3 of thirdJob">
-                  <h4 *ngIf="job3; else notShowBlock">{{job3.title}}</h4>
+                    <h4 *ngIf="job3; else notShowBlock">{{job3.title}}</h4>
                 </li>
-              </th>
-              <ng-template #notShowBlock>
+            </th>
+            <ng-template #notShowBlock>
                 <h4>No Role</h4>
-              </ng-template>
+            </ng-template>
             </tr>
             <tr>
-              <td>
+                <td>
 
-                <p></p>
-                <button class="buttonTable" (click)="openFirstResponsibility()">Responsibilities</button>
-                <app-responsibilities></app-responsibilities>
-                <hr>
-                <p></p>
-                <app-training-popup></app-training-popup>
-              </td>
-              <td>
+                    <p></p>
+                    <button class="buttonTable" (click)="openFirstResponsibility()">Responsibilities</button>
+                    <app-responsibilities></app-responsibilities>
+                    <hr>
+                    <p></p>
+                    <app-training-popup></app-training-popup>
+                </td>
+                <td>
 
-                <p></p>
-                <button class="buttonTable" (click)="openSecondResponsibility()">Responsibilities</button>
-                <hr>
-                <app-responsibilities></app-responsibilities>
-                <p></p>
-                <app-training-popup></app-training-popup>
-              </td>
-              <td>
-                <p></p>
-                <button class="buttonTable" (click)="openThirdResponsibility()">Responsibilities</button>
-                <hr>
-                <app-responsibilities></app-responsibilities>
-                <p></p>
-                <app-training-popup></app-training-popup>
-              </td>
+                    <p></p>
+                    <button class="buttonTable" (click)="openSecondResponsibility()">Responsibilities</button>
+                    <hr>
+                    <app-responsibilities></app-responsibilities>
+                    <p></p>
+                    <app-training-popup></app-training-popup>
+                </td>
+                <td>
+                    <p></p>
+                    <button class="buttonTable" (click)="openThirdResponsibility()">Responsibilities</button>
+                    <hr>
+                    <app-responsibilities></app-responsibilities>
+                    <p></p>
+                    <app-training-popup></app-training-popup>
+                </td>
             </tr>
 
-          </table>
-        </ng-template>
-      </ngb-carousel>
+            </table>
+            </ng-template>
+        </ngb-carousel>
     </div>
 
 </div>

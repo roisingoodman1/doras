@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupsComponent } from './popups.component';
+import { BandCompetenciesComponent } from './band-competencies.component';
 
-describe('PopupsComponent', () => {
-  let component: PopupsComponent;
-  let fixture: ComponentFixture<PopupsComponent>;
+describe('BandCompetenciesComponent', () => {
+  let component: BandCompetenciesComponent;
+  let fixture: ComponentFixture<BandCompetenciesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopupsComponent ]
+      declarations: [ BandCompetenciesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupsComponent);
+    fixture = TestBed.createComponent(BandCompetenciesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

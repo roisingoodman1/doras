@@ -93,6 +93,19 @@ app.get('/getUser/:username', function(req, res) {
     })
 })
 
+function getCompetenciesForBand(bandId, getCompReadyfn) {
+  db.getCompetenciesForBand(bandId, function(rows) {
+    comp = rows
+    getCompReadyfn()
+  })
+}
+
+app.get('/getCompetenciesForBand/:bandId', function(req, res){
+  getCompetenciesForBand(req.params.bandId, function(){
+    res.send(comp)
+  })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })

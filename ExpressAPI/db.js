@@ -71,11 +71,23 @@ exports.getDistinct = function(callback) {
 }
 
 exports.getJobRoleTitle = function(capId, bandId, callback) {
-    db.query(
-        "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?", [bandId, capId],
-        function(err, rows) {
-            if (err) { throw err }
-            callback(rows)
-        }
-    )
+  db.query(
+    "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?",
+    [bandId, capId],
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
+}
+
+exports.getCompetenciesForBand = function(bandId, callback) {
+  db.query(
+    "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",
+    [bandId],
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
 }
