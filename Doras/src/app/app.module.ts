@@ -11,6 +11,7 @@ import { RolesComponent } from './roles/roles.component';
 import { PopupsComponent } from './popups/popups.component';
 import { TrainingPopupComponent } from './training-popup/training-popup.component';
 import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
+import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ResponsibilitiesComponent } from './responsibilities/responsibilities.c
     RolesComponent,
     PopupsComponent,
     TrainingPopupComponent,
-    ResponsibilitiesComponent
+    ResponsibilitiesComponent,
+    BandCompetenciesComponent
   ],
   imports: [
     BrowserModule,
