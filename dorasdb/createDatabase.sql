@@ -27,6 +27,7 @@ SOURCE insertCapability.sql
 SOURCE insertJob.sql
 SOURCE insertCompetenciesJob.sql
 SOURCE insertTrainingJob.sql 
+SOURCE insertUsers.sql
 
 
 
