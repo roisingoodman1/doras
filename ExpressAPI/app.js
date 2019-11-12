@@ -28,6 +28,19 @@ app.get('/getCapabilities', function(req, res) {
     })
 })
 
+function getCapLeads(capLeadsReadyFn) {
+      db.getCapLeads(function(rows) {
+          capLeads = rows
+          capLeadsReadyFn()
+      })
+  }
+  
+  app.get('/getCapLeads', function(req, res){
+      getCapLeads(function(){
+          res.send(capLeads)
+      })
+  })
+
 function getJobFamily(jobReadyFn) {
     db.getJobFamily(function(rows) {
         job = rows
