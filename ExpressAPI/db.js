@@ -79,3 +79,25 @@ exports.getJobRoleTitle = function(capId, bandId, callback) {
         }
     )
 }
+
+exports.getTraining = function(jId, callback) {
+  db.query(
+      "SELECT Training.tId, Training.title, Training.trainingType, Training.link, Training.trainingDescription FROM Job INNER JOIN TrainingJob ON Job.jId = TrainingJob.jId INNER JOIN Training ON TrainingJob.tId = Training.tId WHERE Job.jId = ?",
+      [jId],
+      function(err, rows) {
+          if (err) { throw err }
+          callback(rows)
+      }
+  )
+}
+
+exports.getCompetenciesForBand = function(bandId, callback) {
+  db.query(
+    "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",
+    [bandId],
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
+}
