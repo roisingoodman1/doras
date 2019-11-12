@@ -1,0 +1,10 @@
+<h3>Add new job family</h3>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<div class="col-sm">
+        <label for="title">Job family name</label>
+		<br>
+		<input ngModel name="title" required>
+	</div>
+	<br>
+	<button type="submit">Submit</button>
+</form>

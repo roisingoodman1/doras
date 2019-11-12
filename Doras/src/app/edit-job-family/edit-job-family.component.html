@@ -1,0 +1,25 @@
+<hr>
+<h3>Edit Job Family</h3>
+<hr>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<div class="row">
+		<div class="col-sm">
+			<label for="jfid">Job Family to edit</label>
+			<br>
+			<select [(ngModel)]="jf.jfid" #jfDropdown name="jfid" required (change)="onChange(jfDropdown.value)">
+				<option disabled>Please select...</option>
+				<option *ngFor="let jobf of jobfamily" value="{{ jobf.jfid }}">{{ jobf.title }}</option>
+			</select>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-sm">
+			<label for="title">Job Family title</label>
+			<br>
+			<input [(ngModel)]="jf.title" name="title" required>
+		</div>
+	</div>
+	<br>
+	<button type="submit">Submit</button>
+</form>

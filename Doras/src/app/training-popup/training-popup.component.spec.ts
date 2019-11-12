@@ -1,25 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RolesComponent } from '../roles/roles.component'
 import { TrainingPopupComponent } from './training-popup.component';
+import { NgbSlideEvent, NgbSlideEventDirection } from '@ng-bootstrap/ng-bootstrap';
+import { Competency } from '../models/Competency';
 
 describe('TrainingPopupComponent', () => {
-  let component: TrainingPopupComponent;
-  let fixture: ComponentFixture<TrainingPopupComponent>;
+  let componentTraining: TrainingPopupComponent;
+  let fixtureTraining: ComponentFixture<TrainingPopupComponent>;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrainingPopupComponent ]
+      declarations: [ TrainingPopupComponent, RolesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TrainingPopupComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixtureTraining = TestBed.createComponent(TrainingPopupComponent);
+    fixtureTraining.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(componentTraining).toBeTruthy();
   });
 });
