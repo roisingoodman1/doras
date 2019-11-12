@@ -88,7 +88,7 @@ function getCapLeads(capLeadsReadyFn) {
           capLeadsReadyFn()
       })
   }
-  
+
   app.get('/getCapLeads', function(req, res){
       getCapLeads(function(){
           res.send(capLeads)
@@ -223,6 +223,18 @@ function getSameJobByBand(bandId, getSameJobReadyfn) {
       res.send(sameJob)
     })
   })
+function getJobRole(jobRoleReadyFn){
+	db.getJobRoles(function(rows){
+		jobRoles = rows
+		jobRoleReadyFn()
+	})
+}
+
+app.get('/getJobRoles', function(req, res){
+	getJobRole(function(){
+		res.send(jobRoles)
+	})
+})
 
 app.listen(8003, function() {
     console.log('Express started')

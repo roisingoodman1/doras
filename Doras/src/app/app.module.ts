@@ -26,6 +26,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { OtherJobsComponent } from './other-jobs/other-jobs.component';
 import { CapabilityLeadsComponent } from './capability-leads/capability-leads.component';
 import { SearchComponent } from './search/search.component';
+import { ComparePageComponent } from './compare-page/compare-page.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SearchComponent } from './search/search.component';
     AdminComponent,
     OtherJobsComponent,
     CapabilityLeadsComponent,
-    SearchComponent
+    SearchComponent,
+    ComparePageComponent
   ],
   imports: [
     BrowserModule,
