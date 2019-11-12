@@ -5,79 +5,96 @@ import { Band } from '../models/Band';
 import { DataTransferService } from '../data-transfer.service'
 import { Capability } from '../models/capability';
 import { Job } from '../models/job';
+import { ResponsibilitiesComponent } from '../responsibilities/responsibilities.component'
+import { SwitchBoardService } from '../switch-board.service';
 
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
-  styleUrls: ['./roles.component.css']
+  styleUrls: ['./roles.component.css'],
+  providers: [ResponsibilitiesComponent]
 })
 export class RolesComponent implements OnInit {
   public bands: Band[];
-  public endArray: any[];
-  public count: number = 0;
-  public jobs1: Job[];
-  public jobs2: Job[];
-  public jobs3: Job[];
-  public job1Title;
-  public job2Title;
-  public job3Title;
+  public jobBandArray: any[];
+  public pageCount: number = 0;
+  public firstJob: Job[];
+  public secondJob: Job[];
+  public thirdJob: Job[];
 
   get capability(): Capability | null {
     return this.dataTransferService.capability;
 }
 
-  constructor(private data: DataService, private dataTransferService : DataTransferService) { }
+  constructor(private data: DataService, private dataTransferService : DataTransferService, private responsibilities: ResponsibilitiesComponent, private switchBoard: SwitchBoardService) { }
 
   ngOnInit() {
     this.data.getBand().subscribe(c => {
       this.bands = c.reverse();
 
-      let newArray = [];
-      let chunkOfArray = 3;
-      let nextValue;
-      let length = this.bands.length;
-      for (let i = 0; i < length; i+=chunkOfArray) {
-        nextValue = i + 3;
-        newArray.push(this.bands.slice(i, nextValue));
+      let tempArray: any[] = [];
+      let step: number = 3;
+      let nextSplitValue: number;
+      let length: number = this.bands.length;
+      for (let i = 0; i < length; i+=step) {
+        nextSplitValue = i + 3;
+        tempArray.push(this.bands.slice(i, nextSplitValue));
       }
-      this.endArray = newArray;
+      this.jobBandArray = tempArray;
     })
   }
 
   onSlide(slideEvent: NgbSlideEvent){
      if (slideEvent.source === NgbSlideEventSource.ARROW_LEFT){
-        if (this.count === 0) {
-          this.count = 2;
+        if (this.pageCount === 0) {
+          this.pageCount = 2;
         } else {
-          this.count--;
+          this.pageCount--;
         }
     } else if ( slideEvent.source === NgbSlideEventSource.ARROW_RIGHT) {
-      if (this.count === 2) {
-        this.count = 0;
+      if (this.pageCount === 2) {
+        this.pageCount = 0;
       } else {
-        this.count++;
+        this.pageCount++;
       }
     }
 
-    this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][0].bandId).subscribe(c => {
-      this.jobs1 = c;
-      let obj = {};
-      this.jobs1.forEach(item => obj[item.bandId] = item.title);
-      this.job1Title = Object.values(obj)[0];
+    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+      this.firstJob = c;
+      if (!this.firstJob[0]) {
+        this.firstJob.push(null);
+      }
     })
 
-    this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][1].bandId).subscribe(c => {
-      this.jobs2 = c;
-      let obj = {};
-      this.jobs2.forEach(item => obj[item.bandId] = item.title);
-      this.job2Title = Object.values(obj)[0];
+    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+      this.secondJob = c;
+      if (!this.secondJob[0]) {
+        this.secondJob.push(null);
+      }
   })
-    this.data.getJobRoleTitle(this.capability.capId, this.endArray[this.count][2].bandId).subscribe(c => {
-      this.jobs3 = c;
-      let obj = {};
-      this.jobs3.forEach(item => obj[item.bandId] = item.title);
-      this.job3Title = Object.values(obj)[0];
+    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+      this.thirdJob = c;
+      if (!this.thirdJob[0]) {
+        this.thirdJob.push(null);
+      }
   })
+}
+
+private subscribeAndOpenResponsibility(job) {
+  this.switchBoard.getJob(job);
+  this.responsibilities.openResponsibilites();
+}
+
+openFirstResponsibility() {
+  this.subscribeAndOpenResponsibility(this.firstJob)
+}
+
+openSecondResponsibility() {
+  this.subscribeAndOpenResponsibility(this.secondJob)
+}
+
+openThirdResponsibility() {
+  this.subscribeAndOpenResponsibility(this.thirdJob)
 }
 
 }

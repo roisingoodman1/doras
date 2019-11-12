@@ -11,6 +11,10 @@ import { RolesComponent } from './roles/roles.component';
 import { PopupsComponent } from './popups/popups.component';
 import { TrainingPopupComponent } from './training-popup/training-popup.component';
 import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { ResponsibilitiesComponent } from './responsibilities/responsibilities.c
     RolesComponent,
     PopupsComponent,
     TrainingPopupComponent,
-    ResponsibilitiesComponent
+    ResponsibilitiesComponent,
+    LoginComponent,
+    MainComponent,
+    PageNotFoundComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
