@@ -6,16 +6,17 @@
     </button>
   </div>
   <div class="modal-body">
-    <!--TODO-->
-    <app-capability-leads></app-capability-leads>>
-    </div>
+    <ul>
+      <li *ngFor="let job of job">
+        {{ job.responsibilities }}
+      </li>
+  </ul>
+  </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()" (click)="unsubscribe()">Close</button>
   </div>
 </ng-template>
 
-<button class="buttonTable" (click)="open(content)">Responsibilities</button>
 
-<hr>
+<button class="buttonTable" (click)="open(content)" id="open" hidden></button>
 
-<pre>{{closeResult}}</pre>

@@ -11,7 +11,12 @@ import { RolesComponent } from './roles/roles.component';
 import { PopupsComponent } from './popups/popups.component';
 import { TrainingPopupComponent } from './training-popup/training-popup.component';
 import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
-import { CapabilityLeadsComponent } from './capability-leads/capability-leads.component';
+import { CapabilityLeadsComponent } from './capability-leads/capability-leads.component'
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +28,11 @@ import { CapabilityLeadsComponent } from './capability-leads/capability-leads.co
     PopupsComponent,
     TrainingPopupComponent,
     ResponsibilitiesComponent,
-    CapabilityLeadsComponent
+    CapabilityLeadsComponent,
+    LoginComponent,
+    MainComponent,
+    PageNotFoundComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

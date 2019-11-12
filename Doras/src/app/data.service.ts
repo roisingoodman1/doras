@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Capability } from './models/capability'
@@ -7,6 +8,7 @@ import { Band } from './models/Band'
 import { Observable } from 'rxjs'
 import { Job } from './models/job'
 import { CapabilityLeads} from './models/capabilityLeads'
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +48,12 @@ export class DataService {
     return this.http.get<JobFamily[]>('/api/getDistinct');
   }
 
-  public getJobRoleTitle(capId, bandId): Observable<Job[]> {
+  public getJobRole(capId, bandId): Observable<Job[]> {
     return this.http.get<Job[]>('/api/getJobRoleTitle/' + capId + '/' + bandId);
+  }
+
+  public getUser(username): Observable<User> {
+    return this.http.get<User>('/api/getUser/' + username);
   }
 
 }
