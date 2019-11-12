@@ -2,8 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { Job } from '../models/job';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-
-
 @Component({
   selector: 'app-responsibilities',
   templateUrl: './responsibilities.component.html',

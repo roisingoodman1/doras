@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpecificationComponent } from './specification/specification.component'
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     MainComponent,
     PageNotFoundComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SpecificationComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ResponsibilitiesComponent]
+  entryComponents: [ResponsibilitiesComponent, SpecificationComponent]
 })
 export class AppModule { }

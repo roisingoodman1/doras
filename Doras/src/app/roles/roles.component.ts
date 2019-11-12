@@ -8,6 +8,7 @@ import { Job } from '../models/job';
 import { ResponsibilitiesComponent } from '../responsibilities/responsibilities.component'
 import { SwitchBoardService } from '../switch-board.service';
 import { MatDialog } from '@angular/material/dialog';
+import { SpecificationComponent } from '../specification/specification.component';
 
 
 @Component({
@@ -28,11 +29,11 @@ export class RolesComponent implements OnInit {
     return this.dataTransferService.capability;
 }
 
-  constructor(private data: DataService, private dataTransferService : DataTransferService,  public dialog: MatDialog) { }
+  constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog) { }
 
-  openDialog(job: Job[]): void {
-    this.dialog.open(ResponsibilitiesComponent, {
-      data: { responsibility: job[0].responsibilities != " " ? job[0].responsibilities : "No responsibilities" }
+  openDialog(job: Job[], component: any): void {
+    this.dialog.open(component, {
+      data: { job: job[0] }
     });
   }
 
@@ -89,15 +90,27 @@ export class RolesComponent implements OnInit {
 }
 
   openFirstResponsibility() {
-    this.openDialog(this.firstJob)
+    this.openDialog(this.firstJob, ResponsibilitiesComponent)
   }
 
   openSecondResponsibility() {
-    this.openDialog(this.secondJob)
+    this.openDialog(this.secondJob, ResponsibilitiesComponent)
   }
 
   openThirdResponsibility() {
-    this.openDialog(this.thirdJob)
+    this.openDialog(this.thirdJob, ResponsibilitiesComponent)
+  }
+
+  openFirstSpec() {
+    this.openDialog(this.firstJob, SpecificationComponent)
+  }
+
+  openSecondSpec() {
+    this.openDialog(this.secondJob, SpecificationComponent)
+  }
+
+  openThirdSpec() {
+    this.openDialog(this.thirdJob, SpecificationComponent)
   }
 
 }
