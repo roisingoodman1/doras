@@ -80,6 +80,19 @@ app.get('/getJobRoleTitle/:capId/:bandId', function(req, res){
   })
 })
 
+function getJobRole(jobRoleReadyFn){
+	db.getJobRoles(function(rows){
+		jobRoles = rows
+		jobRoleReadyFn()
+	})
+}
+
+app.get('/getJobRoles', function(req, res){
+	getJobRole(function(){
+		res.send(jobRoles)
+	})
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })

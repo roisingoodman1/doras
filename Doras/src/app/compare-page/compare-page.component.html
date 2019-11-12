@@ -1,0 +1,53 @@
+<div>
+    <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="jobDropdown1" ngbDropdownToggle>First Job to Compare</button>
+        <div ngbDropdownMenu aria-labelledby="jobDropdown1">
+            <li *ngFor="let job of jobList; let i = index">
+                <button ngbDropdownItem (click)="onJob1Click(i)">{{job.title}} - {{job.bandId}}</button>
+            </li>
+        </div>
+    </div>
+    <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="jobDropdown2" ngbDropdownToggle>Second Job to Compare</button>
+            <div ngbDropdownMenu aria-labelledby="jobDropdown2">
+                <li *ngFor="let job of jobList; let i = index">
+                    <button ngbDropdownItem (click)="onJob2Click(i)">{{job.title}} - {{job.bandId}}</button>
+                </li>
+            </div>
+        </div>
+</div>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <th>{{job1.family}}</th>
+            <th>{{job2.family}}</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{job1.title}}</td>
+                <td>{{job2.title}}</td>
+            </tr>
+            <tr>
+                <td>{{job1.summary}}</td>
+                <td>{{job2.summary}}</td>
+            </tr>
+            <tr>
+                <td>{{job1.competencies}}</td>
+                <td>{{job2.competencies}}</td>
+            </tr>
+            <tr>
+                <td>{{job1.responsibilities}}</td>
+                <td>{{job2.responsibilities}}</td>
+            </tr>
+            <tr>
+                <td>{{job1.band}}</td>
+                <td>{{job2.band}}</td>
+            </tr>
+            <tr>
+                <td>{{job1.training}}</td>
+                <td>{{job2.training}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

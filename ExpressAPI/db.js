@@ -20,6 +20,16 @@ exports.getBand = function(callback) {
         })
 }
 
+exports.getJobRoles = function(callback) {
+	db.query(
+		"SELECT * FROM Job",
+		function(err, rows) {
+			if (err) {throw err}
+			callback(rows)
+		}
+	)
+}
+
 exports.getCapabilities = function(callback) {
     db.query(
         "SELECT capName FROM Capability",
