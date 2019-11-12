@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { JobRole } from '../models/jobRole';
 import { DataService } from '../data.service';
 import { Band } from '../models/Band'
+=======
+
+>>>>>>> inital set yp
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+<<<<<<< HEAD
   titles: JobRole[];
   bandList: Band[] = [];
   div: HTMLElement;
@@ -43,4 +48,12 @@ export class SearchComponent implements OnInit {
 
   
 
+=======
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+>>>>>>> inital set yp
 }

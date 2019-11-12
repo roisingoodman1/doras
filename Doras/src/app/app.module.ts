@@ -31,7 +31,6 @@ import { AddCapabilityComponent } from './add-capability/add-capability.componen
 import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 import { JobRoleTitlePipe } from './search/job-role-title.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +54,8 @@ import { JobRoleTitlePipe } from './search/job-role-title.pipe';
     AddCapabilityComponent,
     AddJobRoleComponent,
     SearchComponent,
-    JobRoleTitlePipe
+    JobRoleTitlePipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

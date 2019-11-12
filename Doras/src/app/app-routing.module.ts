@@ -7,8 +7,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthGuard } from './_helpers/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { SearchComponent } from './search/search.component'
+<<<<<<< HEAD
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
+=======
+>>>>>>> inital set yp
 
 const routes: Routes = [
   {
@@ -22,6 +25,10 @@ const routes: Routes = [
   },
   {
     path: 'search', component: SearchComponent
+  },
+  { path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   },
   {
     path: 'admin', component: AdminComponent, children: [
