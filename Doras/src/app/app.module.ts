@@ -20,6 +20,7 @@ import { SpecificationComponent } from './specification/specification.component'
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { AdminComponent } from './admin/admin.component';
 
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AdminComponent } from './admin/admin.component';
     ForgotPasswordComponent,
     SpecificationComponent,
     BandCompetenciesComponent,
-    AdminComponent
+    AdminComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

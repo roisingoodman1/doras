@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminComponent } from './admin/admin.component';
+import { SearchComponent } from './search/search.component'
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'forgot-password', component: ForgotPasswordComponent
+  },
+  {
+    path: 'search', component: SearchComponent
   },
   { path: '',
     redirectTo: '/login',
