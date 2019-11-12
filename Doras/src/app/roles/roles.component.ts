@@ -10,11 +10,12 @@ import { SwitchBoardService } from '../switch-board.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SpecificationComponent } from '../specification/specification.component';
 
+import { OtherJobsComponent } from '../other-jobs/other-jobs.component';
 
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
-  styleUrls: ['./roles.component.css'],
+  styleUrls: ['./roles.component.css'], 
   providers: [ResponsibilitiesComponent]
 })
 export class RolesComponent implements OnInit {
@@ -88,7 +89,6 @@ export class RolesComponent implements OnInit {
       }
   })
 }
-
   openFirstResponsibility() {
     this.openDialog(this.firstJob, ResponsibilitiesComponent)
   }
@@ -112,5 +112,21 @@ export class RolesComponent implements OnInit {
   openThirdSpec() {
     this.openDialog(this.thirdJob, SpecificationComponent)
   }
+
+private subscribeAndOpenOtherJobs(job) {
+  //this.switchBoard.getJob(job);
+  //this.other-jobs.openOtherJobs();
+}
+openFirstOtherJobs() {
+  this.subscribeAndOpenOtherJobs(this.firstJob)
+}
+
+openSecondOpenOtherJobs() {
+  this.subscribeAndOpenOtherJobs(this.secondJob)
+}
+
+openThirdOpenOtherJobs() {
+  this.subscribeAndOpenOtherJobs(this.thirdJob)
+}
 
 }
