@@ -19,20 +19,22 @@ const routes: Routes = [
     path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'admin', component: AdminComponent, children: [
-      { path: '', redirectTo: '/admin', pathMatch: 'full' }
-    ]
-  },
-  {
-    path: 'admin', component: AdminComponent, children: [
-      { path: '', redirectTo: '/admin', pathMatch: 'full' }
-    ]
-  },
-  {
-    path: 'admin', component: AdminComponent, children: [
-      { path: '', redirectTo: '/admin', pathMatch: 'full' }
-    ]
     path: 'search', component: SearchComponent
+  },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: '', redirectTo: '/admin', pathMatch: 'full' }
+    ]
+  },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: '', redirectTo: '/admin', pathMatch: 'full' }
+    ]
+  },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: '', redirectTo: '/admin', pathMatch: 'full' }
+    ]
   },
   { path: '',
     redirectTo: '/login',

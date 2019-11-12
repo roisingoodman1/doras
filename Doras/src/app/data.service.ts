@@ -7,6 +7,9 @@ import { Band } from './models/Band'
 import { Observable } from 'rxjs'
 import { Job } from './models/job'
 import { CapabilityLeads} from './models/capabilityLeads'
+import { User } from './models/user'
+import { Competency } from './models/Competency'
+import { Training } from './models/training'
 
 @Injectable({
   providedIn: 'root'
