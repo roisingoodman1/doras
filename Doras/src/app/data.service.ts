@@ -41,7 +41,7 @@ export class DataService {
     return this.http.get<JobFamily[]>('/api/getDistinct');
   }
 
-  public getJobRoleTitle(capId, bandId): Observable<Job[]> {
+  public getJobRole(capId, bandId): Observable<Job[]> {
     return this.http.get<Job[]>('/api/getJobRoleTitle/' + capId + '/' + bandId);
   }
 
