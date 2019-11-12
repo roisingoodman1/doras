@@ -9,22 +9,7 @@ import { SwitchBoardService } from '../switch-board.service';
   templateUrl: './carousel.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./carousel.component.css'],
-  styles: [`
-    .carousel-item.active {
-      border: solid 0.3em;
-      border-color: grey;
-      text-align: center;
-    }
-    .carousel-control-prev{
-      background-color: green;
-    }
-    .carousel-control-next{
-      background-color: green;
-    }
-    .carousel-indicators{
-      height: 0px;
-    }
-  `]
+  
 })
 export class CarouselComponent implements OnInit {
   public jobFamily: JobFamily[];

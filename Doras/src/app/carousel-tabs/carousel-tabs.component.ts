@@ -3,18 +3,21 @@ import { DataService } from './../data.service';
 import { Capability } from '../models/capability';
 import { SwitchBoardService } from '../switch-board.service';
 import { Subscription } from 'rxjs';
-import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap'
-import { DataTransferService } from '../data-transfer.service'
+import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { DataTransferService } from '../data-transfer.service';
+import { MatTabChangeEvent } from '@angular/material';
+import { RolesComponent} from '../roles/roles.component'
 
 @Component({
   selector: 'doras-carousel-tabs',
   templateUrl: './carousel-tabs.component.html',
   styleUrls: ['./carousel-tabs.component.css'],
+  providers: [RolesComponent]
 })
 export class CarouselTabsComponent implements OnInit, OnDestroy {
   public capabilities: Capability[];
 
-  constructor(private switchBoard: SwitchBoardService, private dataTransferService : DataTransferService) {
+  constructor(private switchBoard: SwitchBoardService, private dataTransferService : DataTransferService, private rolesComponent: RolesComponent) {
   }
 
   subCapabilities: Subscription;
@@ -29,8 +32,10 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
     this.subCapabilities.unsubscribe();
  }
 
-  onTabChange(tabChange: NgbTabChangeEvent) {
-    this.dataTransferService.capability = this.capabilities[tabChange.nextId];
+  onTabChange(event: MatTabChangeEvent) {
+    // this.rolesComponent.refresh()
+    this.dataTransferService.capability = this.capabilities[event.index];
+    this.rolesComponent.ngOnInit()
  }
 
 }

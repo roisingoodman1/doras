@@ -10,11 +10,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { SpecificationComponent } from '../specification/specification.component';
 import { TrainingPopupComponent } from '../training-popup/training-popup.component';
 import { Training } from '../models/training';
-
-
 import { SwitchBoardService } from '../switch-board.service';
 import { Competency } from '../models/Competency';
 import { BandCompetenciesComponent } from '../band-competencies/band-competencies.component';
+import { Subscription } from 'rxjs';
+import { OtherJobsComponent } from '../other-jobs/other-jobs.component';
 
 @Component({
   selector: 'app-roles',
@@ -50,19 +50,7 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.getBand().subscribe(c => {
-      this.bands = c.reverse();
-
-      const tempArray: any[] = [];
-      const step = 3;
-      let nextSplitValue: number;
-      const length: number = this.bands.length;
-      for (let i = 0; i < length; i += step) {
-        nextSplitValue = i + 3;
-        tempArray.push(this.bands.slice(i, nextSplitValue));
-      }
-      this.jobBandArray = tempArray;
-    });
+    this.initialise(true)
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
@@ -81,52 +69,79 @@ export class RolesComponent implements OnInit {
       }
     }
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
-      this.firstJob = c;
-      if (!this.firstJob[0]) {
-        this.firstJob.push(null);
-      }
-      try {
-        this.data.getTrainingByJid(this.firstJob[0].jid).subscribe(c => {
-          this.firstTraining = c;
-        })
-      } catch {}
-    })
+    this.initialise(false)
+}
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
-      this.secondJob = c;
-      if (!this.secondJob[0]) {
-        this.secondJob.push(null);
+initialise(first: Boolean) {
+  if(first){
+    console.log(this.firstJob)
+    this.data.getBand().subscribe(c => {
+      this.bands = c.reverse();
+      const tempArray: any[] = [];
+      const step = 3;
+      let nextSplitValue: number;
+      const length: number = this.bands.length;
+      for (let i = 0; i < length; i += step) {
+        nextSplitValue = i + 3;
+        tempArray.push(this.bands.slice(i, nextSplitValue));
       }
-      try {
-      this.data.getTrainingByJid(this.secondJob[0].jid).subscribe(c => {
-        this.secondTraining = c;
+      this.jobBandArray = tempArray;
+      this.loadPage()
+    });
+  } else {
+    this.loadPage()
+  }
+}
+
+refresh(){
+  if (this.firstJob){
+    this.firstJob.pop()
+  }
+}
+
+loadPage() {
+  this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+    this.firstJob = c;
+    if (!this.firstJob[0]) {
+      this.firstJob.push(null);
+    } else {
+      this.data.getTrainingByJid(this.firstJob[0].jid).subscribe(c => {
+        this.firstTraining = c;
       })
-    } catch {}
+    } 
   })
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
-      this.thirdJob = c;
-      if (!this.thirdJob[0]) {
-        this.thirdJob.push(null);
-      }
-      try {
-      this.data.getTrainingByJid(this.thirdJob[0].jid).subscribe(c => {
-        this.thirdTraining = c;
-      })
-    } catch {}
+
+  this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+    this.secondJob = c;
+    if (!this.secondJob[0]) {
+      this.secondJob.push(null);
+    } else {
+    this.data.getTrainingByJid(this.secondJob[0].jid).subscribe(c => {
+      this.secondTraining = c;
+    })
+  }
+})
+  this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+    this.thirdJob = c;
+    if (!this.thirdJob[0]) {
+      this.thirdJob.push(null);
+    } else {
+    this.data.getTrainingByJid(this.thirdJob[0].jid).subscribe(c => {
+      this.thirdTraining = c;
+    })
+  }
+})
+  this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+    this.firstCompetency = c;
   })
-    this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
-      this.firstCompetency = c;
-    })
 
-    this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
-      this.secondCompetency = c;
-    })
+  this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+    this.secondCompetency = c;
+  })
 
-    this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
-      this.thirdCompetency = c;
-    })
-
+  this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+    this.thirdCompetency = c;
+  })
 }
 
   openDialog(component: string, type: string) {

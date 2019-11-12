@@ -49,6 +49,7 @@ export class DataService {
     return this.http.get<Competency[]>('/api/competencies/?bandId=' + bandId);
   }
 
+
   public getTrainingByJid(jId): Observable<Training[]> {
     return this.http.get<Training[]>('/api/trainingByJobId/?jobId=' + jId);
   }
