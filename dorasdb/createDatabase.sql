@@ -15,7 +15,6 @@ SOURCE createCapability.sql
 SOURCE createJob.sql
 SOURCE createCompetenciesJob.sql
 SOURCE createTrainingJob.sql
-
 SOURCE createUsers.sql
 
 SOURCE insertCompetencies.sql
@@ -28,6 +27,7 @@ SOURCE insertCapability.sql
 SOURCE insertJob.sql
 SOURCE insertCompetenciesJob.sql
 SOURCE insertTrainingJob.sql 
+SOURCE insertUsers.sql
 
 
 

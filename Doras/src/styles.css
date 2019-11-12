@@ -3,6 +3,7 @@
   vertical-align: bottom;
 }
 @import '~bootstrap/dist/css/bootstrap.css';
+
 .page-header {
     margin-top: 0;
   }
@@ -12,8 +13,6 @@
   }
 
   button:focus {outline:0;}
-  
-  
 
   .bodyMain
   {
@@ -27,20 +26,19 @@
 
   .hr-page-top {
     background: linear-gradient(to right, #61a83f , #283583);
-    height: 8px;
-    margin-bottom: 3%;
+    height: 8%;
   }
 
   .hr-page-bottom {
-    height: 8px;
-    padding-bottom: 10cm;
+    height: 8%;
+    padding-bottom: 10%;
   }
 
   ngb-tabset ul.nav-tabs li a.nav-link.active {
     background-color: #009fe3;
     color: white;
   }
-  
+
   ngb-tabset ul.nav-tabs li a.nav-link {
     background-color: #eeeeee;
     border-left: 1px solid rgb(158, 158, 158);
@@ -57,7 +55,7 @@
   h4{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
-  
+
   .row:after {
     content: "";
     display: table;
@@ -69,8 +67,25 @@
     font-family: 'Roboto Slab', serif;
     position: absolute;
     margin-top: 4%;
-    margin-left: 30%;
+    margin-left: 20%;
+    margin-right: 10%;
     font-size: 360%;
+  }
+
+  .topLeftIcon{
+    width: 20%;
+  }
+
+  .topRightIcon{
+    width: 20%;
+  }
+
+  .bottomLeftIcon{
+    width: 20%;
+  }
+
+  .bottomRight{
+    width: 20%;
   }
 
   .tableBand {
@@ -81,26 +96,33 @@
     table-layout: fixed
   }
 
-  
+
     .footer {
-      position: fixed;
       left: 0;
       bottom: 0;
       width: 100%;
       background-color: #009fe3;
       color: white;
       text-align: center;
-      height: 10%;
+      height: 5%;
     }
-  
+
 
   .th1{
     text-align: center;
+
   }
 
   .tableBand td, #customers th {
     border: 1px solid #ddd;
     padding: 8px;
+  }
+
+  .jobName{
+    color: white;
+  }
+  .jobName:hover{
+    color: rgb(0, 225, 255);
   }
 
   .tableBand tr:nth-child(even){background-color: white;}
@@ -110,8 +132,9 @@
   .tableBand th {
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: #4CAF50;
+    background-color: #61a83f;
     color: white;
+    height: 340px;
   }
 
   .carousel-indicators li{
@@ -142,9 +165,44 @@
       box-shadow: none !important;
   }
 
+  .buttonCapLead{
+    margin:auto;
+    display:block;
+    background-color: #cfd60000;
+    height: 40px;
+    width: 200px;
+    color: black;
+    border-radius: 25px;
+    border: 3px solid #ec6608; /* Kainos Orange */
+    text-align: center;
+    transition-duration: 0.4s;
+}
+
+.buttonCapLead:hover{
+  background-color: #ec6608;
+  color: white
+}
+
+.adminButton {
+  float: right;
+  color: #61a83f;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 2px;
+  margin-left: 5px;
+}
+
+.logoutButton {
+  color: #61a83f;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 2px;
+}
+
   .buttonTable:focus {outline:0 !important;}
   .carouselTop:focus {outline:0 !important;}
 
-  
 
-  
+

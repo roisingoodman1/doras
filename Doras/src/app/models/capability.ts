@@ -1,6 +1,6 @@
 export class Capability {
     id: number;
-    name: string;
+    capName: string;
     leadId?: number;
-    capId?: number;
+    jfId?: number;
 }

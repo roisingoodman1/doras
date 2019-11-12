@@ -1,0 +1,10 @@
+<body class="bodyMain">
+  Logged in as: {{ user.username }}
+  <div class="row" id="adminRow">
+    <a routerLink="/login" (click)="logOut()" class="logoutButton">Log out</a>
+    <a *ngIf="user.isAdmin" routerLink="/admin" class="adminButton">Admin</a>
+  </div>
+  <hr>
+  <app-carousel></app-carousel>
+  <doras-carousel-tabs></doras-carousel-tabs>
+</body>

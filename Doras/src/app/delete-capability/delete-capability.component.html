@@ -1,0 +1,21 @@
+<hr>
+<h3>Delete capability</h3>
+<hr>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<div class="row">
+		<div class="col-sm">
+			<label for="cap">Capability</label>
+			<br>
+			<select ngModel name="cap" required (change)='onChange($event.target.value)'>
+				<option disabled selected="selected">Please select...</option>
+				<option *ngFor="let cap of capabilities" value="{{cap.capId}}">{{ cap.capName }}</option>
+			</select>
+			<br><br>
+			<div *ngIf="invalid">
+				Capability has job roles. Please delete them before removing the capability.
+			</div>
+		</div>
+	</div>
+	<br>
+	<button type="submit">Submit</button>
+</form>
