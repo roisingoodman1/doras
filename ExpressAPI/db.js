@@ -40,14 +40,14 @@ exports.getCapabilities = function(callback) {
     )
 }
 
-exports.getCapLeads = function(callback){  //also returns name of capability from capability table for simplicities sake 
+exports.getCapLeads = function(callback){  //also returns name of capability from capability table for simplicities sake
   db.query(
       "SELECT CapabilityLead.leadId, CapabilityLead.capLeadName, CapabilityLead.capLeadPath, CapabilityLead.capLeadQuote, Capability.capName FROM CapabilityLead INNER JOIN Capability ON CapabilityLead.leadId = Capability.leadId",
       function(err, rows){
           if(err) throw err
           callback (rows)
       })
-} 
+}
 
 exports.getJobFamily = function(callback) {
     db.query(
@@ -97,4 +97,25 @@ exports.getJobTitles = function(callback){
       callback(rows)
     }
   )
+}
+
+exports.newCapability = function(capName, leadId, jfid, callback) {
+    db.query(
+        "INSERT INTO Capability (capName, leadId, jfid) VALUES (?, ?, ?)",
+        [capName, leadId, jfid],
+        function (err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.getDistinctCapLeads = function(callback) {
+    db.query(
+        "SELECT leadId, capLeadName FROM CapabilityLead",
+        function (err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
 }

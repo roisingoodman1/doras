@@ -56,4 +56,13 @@ export class DataService {
     return this.http.get<User>('/api/getUser/' + username);
   }
 
+  public newCapability(newCapability) {
+    console.log('post')
+    return this.http.post('/api/newCapability', newCapability);
+  }
+
+  public getDistinctCapLeads(): Observable<CapabilityLeads[]> {
+    return this.http.get<CapabilityLeads[]>('/api/getDistinctCapLeads');
+  }
+
 }

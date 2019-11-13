@@ -72,20 +72,20 @@ export class RolesComponent implements OnInit {
       }
     }
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
       this.firstJob = c;
       if (!this.firstJob[0]) {
         this.firstJob.push(null);
       }
     })
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
       this.secondJob = c;
       if (!this.secondJob[0]) {
         this.secondJob.push(null);
       }
   })
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
       this.thirdJob = c;
       if (!this.thirdJob[0]) {
         this.thirdJob.push(null);

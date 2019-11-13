@@ -19,6 +19,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './admin/admin.component';
+import { AddCapabilityComponent } from './add-capability/add-capability.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AdminComponent } from './admin/admin.component';
     PageNotFoundComponent,
     ForgotPasswordComponent,
     AdminComponent,
+    AddCapabilityComponent,
   ],
   imports: [
     BrowserModule,
