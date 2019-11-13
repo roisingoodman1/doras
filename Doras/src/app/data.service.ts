@@ -61,8 +61,8 @@ export class DataService {
     return this.http.post('/api/newCapability', newCapability);
   }
 
-  public getDistinctCapLeads(): Observable<CapabilityLeads[]> {
-    return this.http.get<CapabilityLeads[]>('/api/getDistinctCapLeads');
+  public getDistinctCapLeads(): Observable<CapabilityLead[]> {
+    return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
   }
 
 }
