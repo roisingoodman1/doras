@@ -37,6 +37,22 @@ export class DataService {
     return this.http.get<Capability[]>('/api/getCapNameByJfId/' + id);
   }
 
+  public getBandById(id): Observable<Band> {
+    return this.http.get<Band>('/api/getBandById/' + id);
+  }
+
+  public getJobFamilyNameByCapID(id): Observable<object> {
+    return this.http.get<object>('api/getJobFamilyNameByCapID/' + id);
+  }
+
+  public getCompetencyDetailsByjId(id): Observable<string[]> {
+    return this.http.get<string[]>('api/getCompetencyDetailsByjId/' + id);
+  }
+
+  public getTrainingDetailsByjId(id): Observable<string[]> {
+    return this.http.get<string[]>('api/getTrainingDetailsByjId/' + id);
+  }
+
   public getDistinctJfids(): Observable<JobFamily[]> {
     return this.http.get<JobFamily[]>('/api/getDistinct');
   }
