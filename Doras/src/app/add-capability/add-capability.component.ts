@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { NgForm } from '@angular/forms';
 import { JobFamily } from '../models/jobFamily';
-import { CapabilityLeads } from '../models/capabilityLeads';
+import { CapabilityLead } from '../models/capabilityLead';
 import { Capability } from '../models/capability';
 
 @Component({
@@ -12,7 +12,7 @@ import { Capability } from '../models/capability';
 })
 export class AddCapabilityComponent implements OnInit {
   public jobFams: JobFamily[];
-  public capLeads: CapabilityLeads[];
+  public capLeads: CapabilityLead[];
 
   constructor(private data: DataService) { }
 

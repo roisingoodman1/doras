@@ -28,6 +28,7 @@ import { CapabilityLeadsComponent } from './capability-leads/capability-leads.co
 import { SearchComponent } from './search/search.component';
 import { ComparePageComponent } from './compare-page/compare-page.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
+import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AddCapabilityComponent } from './add-capability/add-capability.componen
     CapabilityLeadsComponent,
     SearchComponent,
     ComparePageComponent,
-    AddCapabilityComponent
+    AddCapabilityComponent,
+    AddJobRoleComponent,
   ],
   imports: [
     BrowserModule,

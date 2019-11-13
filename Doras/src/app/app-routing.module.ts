@@ -8,6 +8,7 @@ import { AuthGuard } from './_helpers/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { SearchComponent } from './search/search.component'
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
+import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full' },
-      { path: 'addCapability', component: AddCapabilityComponent }
+      { path: 'addCapability', component: AddCapabilityComponent },
+      { path: 'addJobRoles', component: AddJobRoleComponent}
     ]
   },
   {
