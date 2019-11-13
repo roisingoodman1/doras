@@ -19,6 +19,7 @@ export class AddJobFamilyComponent implements OnInit {
     if (form.valid) {
       this.data.newJobFamily(form.form.value).subscribe((c) => {
       });
+      form.form.reset();
     }
 
   }
