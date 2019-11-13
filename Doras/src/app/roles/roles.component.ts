@@ -8,6 +8,7 @@ import { Job } from '../models/job';
 import { ResponsibilitiesComponent } from '../responsibilities/responsibilities.component'
 import { SwitchBoardService } from '../switch-board.service';
 import { MatDialog } from '@angular/material/dialog';
+import { CapabilityLeadsComponent } from '../capability-leads/capability-leads.component';
 
 
 @Component({
@@ -34,6 +35,10 @@ export class RolesComponent implements OnInit {
     this.dialog.open(ResponsibilitiesComponent, {
       data: { responsibility: job[0].responsibilities != " " ? job[0].responsibilities : "No responsibilities" }
     });
+  }
+
+  openCapLeadDialog(): void {
+    this.dialog.open(CapabilityLeadsComponent)
   }
 
   ngOnInit() {
@@ -98,6 +103,10 @@ export class RolesComponent implements OnInit {
 
   openThirdResponsibility() {
     this.openDialog(this.thirdJob)
+  }
+
+  openCapLead() {
+    this.openCapLeadDialog()
   }
 
 }

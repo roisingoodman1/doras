@@ -56,6 +56,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ResponsibilitiesComponent]
+  entryComponents: [ResponsibilitiesComponent, CapabilityLeadsComponent]
 })
 export class AppModule { }

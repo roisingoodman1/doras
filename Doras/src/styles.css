@@ -142,6 +142,24 @@
       box-shadow: none !important;
   }
 
+  .buttonCapLead{
+    margin:auto;
+    display:block;
+    background-color: #cfd60000;
+    height: 40px;
+    width: 200px;
+    color: black;
+    border-radius: 25px;
+    border: 3px solid #ec6608; /* Kainos Orange */
+    text-align: center;
+    transition-duration: 0.4s;
+}
+
+.buttonCapLead:hover{
+  background-color: #ec6608;
+  color: white
+}
+
   .buttonTable:focus {outline:0 !important;}
   .carouselTop:focus {outline:0 !important;}
 
