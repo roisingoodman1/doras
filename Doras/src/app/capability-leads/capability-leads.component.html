@@ -1,12 +1,22 @@
-<h2>Capability Lead</h2>
-<div *ngFor="let capLead of capabilityLeads">
-        <div *ngIf = "capLead.capName == capability.capName">
-        <h3>{{capLead.capName}}</h3>
-    <hr>
-        <h6>{{capLead.capLeadName}}</h6>
-        <img src = "../assets/img/defaultPhoto.jpg" width="250" height="264">
-    <hr>
-        <h6>{{capLead.capLeadQuote}}</h6>
-        <h6>Lead ID: {{capLead.leadId}}</h6>
-            </div>
-    </div>
+   <div class="modal-header">
+            <h1 class="modal-title" id="modal-basic-title" mat-dialog-title>Capability Lead</h1>
+            <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" mat-dialog-content>
+                <div *ngFor="let capLead of capabilityLeads">
+                        <div *ngIf = "capLead.capName == capability.capName">
+                        <h3>{{capLead.capName}}</h3>
+                    <hr>
+                        <h6>{{capLead.capLeadName}}</h6>
+                        <img src = "{{capLead.capLeadPath}}" width="250" height="264">
+                    <hr>
+                        <h6>{{capLead.capLeadQuote}}</h6>
+                        <h6>Lead ID: {{capLead.leadId}}</h6>
+                            </div>
+                    </div>
+          </div>
+          <div class="modal-footer" mat-dialog-actions>
+            <button type="button" class="btn btn-outline-dark" (click)="onNoClick()">Close</button>
+          </div>

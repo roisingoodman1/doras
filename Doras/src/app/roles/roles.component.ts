@@ -12,6 +12,8 @@ import { BandCompetenciesComponent } from '../band-competencies/band-competencie
 import { OtherJobsComponent } from '../other-jobs/other-jobs.component'
 import { SwitchBoardService } from '../switch-board.service';
 import { Subscription } from 'rxjs';
+import { CapabilityLeadsComponent } from '../capability-leads/capability-leads.component';
+
 
 @Component({
   selector: 'app-roles',
@@ -42,6 +44,11 @@ export class RolesComponent implements OnInit {
   subBand: Subscription
   subOtherBand: Subscription
   subFirstComp: Subscription
+
+  openCapLeadDialog(): void {
+    this.dialog.open(CapabilityLeadsComponent)
+  }
+
   ngOnInit() {
     this.subJobRole = this.switchBoard.job$.subscribe((c) => {
       this.jobRole = c;
@@ -191,4 +198,9 @@ export class RolesComponent implements OnInit {
       break;
     }
   }
+
+  openCapLead() {
+    this.openCapLeadDialog()
+  }
+
 }
