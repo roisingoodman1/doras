@@ -106,6 +106,19 @@ app.get('/getUser/:username', function(req, res) {
     })
 })
 
+function getJobTitles(jobsReadyFn) { /* get jobs methods here returns only title for sake of ryan and thomas*/
+    db.getJobTitles(function(rows) {
+        jobTitles = rows
+        jobsReadyFn()
+    })
+}
+
+app.get('/getJobTitles', function(req, res) {
+    getJobTitles( function() {
+        res.send(jobTitles)
+    })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })

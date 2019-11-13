@@ -88,3 +88,13 @@ exports.getJobRoleTitle = function(capId, bandId, callback) {
         }
     )
 }
+
+exports.getJobTitles = function(callback){
+  db.query(
+    "SELECT title FROM job",
+    function(err, rows){
+      if (err){throw err}
+      callback(rows)
+    }
+  )
+}
