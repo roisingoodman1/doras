@@ -132,3 +132,25 @@ exports.deleteCapability = function(capId, callback) {
         }
     )
 }
+
+exports.editCapability = function(newCapDetails, callback) {
+    db.query(
+        "UPDATE Capability SET capName = ?, leadId = ?, jfid = ? WHERE capId = ?",
+        [newCapDetails.capName, newCapDetails.leadId, newCapDetails.jfid, newCapDetails.capId],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.getCapabilityById = function(capId, callback) {
+    db.query(
+        "SELECT capId, capName, leadId, jfid FROM Capability WHERE capId = ?",
+        [capId],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}

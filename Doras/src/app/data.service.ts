@@ -68,4 +68,12 @@ export class DataService {
     return this.http.delete('/api/deleteCapability/' + capId);
   }
 
+  public editCapability(updatedCap) {
+    return this.http.put('/api/editCapability', updatedCap);
+  }
+
+  public getCapabilityById(capId) {
+    return this.http.get<Capability[]>('/api/getCapability/' + capId);
+  }
+
 }

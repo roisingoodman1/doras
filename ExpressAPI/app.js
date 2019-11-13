@@ -162,6 +162,32 @@ app.delete('/deleteCapability/:capId', function(req, res) {
     })
 })
 
+function editCapability(updatedCap, editCapabilityReadyFn) {
+    db.editCapability(updatedCap, function(rows) {
+        result = rows
+        editCapabilityReadyFn()
+    })
+}
+
+app.put('/editCapability', function(req, res) {
+    editCapability(req.body, function() {
+        res.send(result)
+    })
+})
+
+function getCapabilityById(capId, getCapabilityReadyFn) {
+    db.getCapabilityById(capId, function(rows) {
+        cap = rows
+        getCapabilityReadyFn()
+    })
+}
+
+app.get('/getCapability/:id', function(req, res) {
+    getCapabilityById(req.params.id, function() {
+        res.send(cap)
+    })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })
