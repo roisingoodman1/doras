@@ -1,23 +1,23 @@
 <div>
     <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-outline-primary" id="jobDropdown1" ngbDropdownToggle>First Job to Compare</button>
+        <button class="btn btn-outline-primary" id="jobDropdown1" (click)="onDropdownsClick()" ngbDropdownToggle>First Job to Compare</button>
         <div ngbDropdownMenu aria-labelledby="jobDropdown1">
             <li *ngFor="let job of jobList; let i = index">
-                <button ngbDropdownItem (click)="onJob1Click(i)">{{job.title}} - {{job.bandId}}</button>
+                <button ngbDropdownItem (click)="onJob1Click(i)">{{job.title}} - {{bandList[job.bandId]}}</button>
             </li>
         </div>
     </div>
     <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="jobDropdown2" ngbDropdownToggle>Second Job to Compare</button>
+            <button class="btn btn-outline-primary" id="jobDropdown2" (click)="onDropdownsClick()" ngbDropdownToggle>Second Job to Compare</button>
             <div ngbDropdownMenu aria-labelledby="jobDropdown2">
                 <li *ngFor="let job of jobList; let i = index">
-                    <button ngbDropdownItem (click)="onJob2Click(i)">{{job.title}} - {{job.bandId}}</button>
+                    <button ngbDropdownItem (click)="onJob2Click(i)">{{job.title}} - {{bandList[job.bandId]}}</button>
                 </li>
             </div>
         </div>
 </div>
 
-<div>
+<div *ngIf="job1.selected && job2.selected;else table_hidden">
     <table class="table table-striped">
         <thead>
             <th>{{job1.family}}</th>
@@ -33,8 +33,18 @@
                 <td>{{job2.summary}}</td>
             </tr>
             <tr>
-                <td>{{job1.competencies}}</td>
-                <td>{{job2.competencies}}</td>
+                <td>
+                    <li *ngFor="let competency of job1.competencies">
+                        <h5>{{competency.compName}}</h5>
+                        <p>{{competency.compDesc}}</p>
+                    </li>
+                </td>
+                <td>
+                    <li *ngFor="let competency of job2.competencies">
+                            <h5>{{competency.compName}}</h5>
+                            <p>{{competency.compDesc}}</p>
+                    </li>
+                </td>
             </tr>
             <tr>
                 <td>{{job1.responsibilities}}</td>
@@ -45,9 +55,24 @@
                 <td>{{job2.band}}</td>
             </tr>
             <tr>
-                <td>{{job1.training}}</td>
-                <td>{{job2.training}}</td>
+                <td>
+                    <li *ngFor="let train of job1.training">
+                        <h5>{{train.title}}</h5>
+                        <p>{{train.trainingDesc}}</p>
+                    </li>
+                </td>
+                <td>
+                    <li *ngFor="let train of job2.training">
+                        <h5>{{train.title}}</h5>
+                        <p>{{train.trainingDesc}}</p>
+                    </li>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
+<ng-template #table_hidden>
+    <div>
+        <p>Select two job roles to compare.</p>
+    </div>
+</ng-template>

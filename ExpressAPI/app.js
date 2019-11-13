@@ -122,6 +122,58 @@ app.get('/capabilities', function(req, res) {
 });
 
 
+function getBandById(id, bandIdReadyFn) {
+	db.getBandById(id, function(rows){
+		band = rows
+		bandIdReadyFn()
+	})
+}
+
+app.get('/getBandById/:id', function (req, res){
+	getBandById(req.params.id, function(){
+		res.send(band)
+	})
+})
+
+function getJobFamilyNameByCapID(id, jobFamilyNameReadyFn) {
+	db.getJobFamilyNameByCapID(id, function(rows){
+		title = rows
+		jobFamilyNameReadyFn()
+	})
+}
+
+app.get('/getJobFamilyNameByCapID/:id', function (req, res){
+	getJobFamilyNameByCapID(req.params.id, function(){
+		res.send(title)
+	})
+})
+
+function getCompetencyDetailsByjId(id, competencyDetailsReadyFn){
+  db.getCompetencyDetailsByjId(id, function(rows){
+    competencies = rows
+    competencyDetailsReadyFn()
+  })
+}
+
+app.get('/getCompetencyDetailsByjId/:id', function(req, res){
+  getCompetencyDetailsByjId(req.params.id, function(){
+    res.send(competencies)
+  })
+})
+
+function getTrainingDetailsByjId(id, trainingDetailsReadyFn){
+  db.getTrainingDetailsByjId(id, function(rows){
+    train = rows
+    trainingDetailsReadyFn()
+  })
+}
+
+app.get('/getTrainingDetailsByjId/:id', function(req, res){
+  getTrainingDetailsByjId(req.params.id, function(){
+    res.send(train)
+  })
+})
+
 function getDistinct(distinctReadyFn) {
     db.getDistinct(function(rows) {
         distinct = rows

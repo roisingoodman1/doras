@@ -40,6 +40,46 @@ exports.getBand = function(callback) {
     )
 }
 
+exports.getBandById = function(id, callback){
+	db.query(
+		"select * from band where bandid = ?", [id],
+		function (err, rows){
+			if (err) {throw err}
+			callback(rows)
+		}
+	)
+}
+
+exports.getJobFamilyNameByCapID = function(id, callback){
+  db.query(
+    "select (select title from jobfamily where jfid = capability.jfid) as jobfamilytitle from capability where capid = ?", [id],
+    function (err, rows){
+      if (err) {throw err}
+      callback(rows)
+    }
+  )
+}
+
+exports.getCompetencyDetailsByjId = function(id, callback){
+  db.query(
+    "select (select compName from competencies where compId = competenciesjob.compId) as compName, (select compDesc from competencies where compId = competenciesjob.compId) as compDesc from competenciesjob where jId = ?", [id],
+    function(err, rows){
+      if (err) {throw err}
+      callback(rows)
+    }
+  )
+}
+
+exports.getTrainingDetailsByjId = function(id, callback){
+  db.query(
+    "select (select title from training where tId = trainingjob.tId) as title, (select trainingDescription from training where tId = trainingjob.tId) as trainingDesc from trainingjob where jId = ?", [id],
+    function(err, rows){
+      if (err) {throw err}
+      callback(rows)
+    }
+  )
+}
+
 exports.getJobRoles = function(callback) {
 	db.query(
 		"SELECT * FROM Job",
