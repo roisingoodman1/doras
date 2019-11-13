@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Capability } from './models/capability';
-import { JobFamily } from './models/jobFamily';
-import { JobRole } from './models/jobRole';
-import { Band } from './models/Band';
-import { Observable } from 'rxjs';
-import { Job } from './models/job';
+
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Capability } from './models/capability'
+import { JobFamily } from './models/jobFamily'
+import { JobRole } from './models/jobRole'
+import { Band } from './models/Band'
+import { Observable } from 'rxjs'
+import { Job } from './models/job'
+import { CapabilityLeads} from './models/capabilityLeads'
 import { User } from './models/user';
 
 @Injectable({
@@ -16,6 +18,10 @@ export class DataService {
 
   public getCapabilities(): Observable<Capability[]> {
     return this.http.get<Capability[]>('/api/getCapabilities');
+  }
+
+  public getCapabilityLeads(): Observable<CapabilityLeads[]>{
+    return this.http.get<CapabilityLeads[]>('/api/getCapLeads');
   }
 
   public getJobFamily(): Observable<JobFamily[]> {

@@ -40,6 +40,15 @@ exports.getCapabilities = function(callback) {
     )
 }
 
+exports.getCapLeads = function(callback){  //also returns name of capability from capability table for simplicities sake 
+  db.query(
+      "SELECT CapabilityLead.leadId, CapabilityLead.capLeadName, CapabilityLead.capLeadPath, CapabilityLead.capLeadQuote, Capability.capName FROM CapabilityLead INNER JOIN Capability ON CapabilityLead.leadId = Capability.leadId",
+      function(err, rows){
+          if(err) throw err
+          callback (rows)
+      })
+} 
+
 exports.getJobFamily = function(callback) {
     db.query(
         "SELECT jfid, title FROM JobFamily",
@@ -78,4 +87,14 @@ exports.getJobRoleTitle = function(capId, bandId, callback) {
             callback(rows)
         }
     )
+}
+
+exports.getJobTitles = function(callback){
+  db.query(
+    "SELECT title FROM job",
+    function(err, rows){
+      if (err){throw err}
+      callback(rows)
+    }
+  )
 }

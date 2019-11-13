@@ -28,6 +28,19 @@ app.get('/getCapabilities', function(req, res) {
     })
 })
 
+function getCapLeads(capLeadsReadyFn) {
+      db.getCapLeads(function(rows) {
+          capLeads = rows
+          capLeadsReadyFn()
+      })
+  }
+  
+  app.get('/getCapLeads', function(req, res){
+      getCapLeads(function(){
+          res.send(capLeads)
+      })
+  })
+
 function getJobFamily(jobReadyFn) {
     db.getJobFamily(function(rows) {
         job = rows
@@ -90,6 +103,19 @@ function getUser(username, getUserReadyFn) {
 app.get('/getUser/:username', function(req, res) {
     getUser(req.params.username, function() {
         res.send(user)
+    })
+})
+
+function getJobTitles(jobsReadyFn) { /* get jobs methods here returns only title for sake of ryan and thomas*/
+    db.getJobTitles(function(rows) {
+        jobTitles = rows
+        jobsReadyFn()
+    })
+}
+
+app.get('/getJobTitles', function(req, res) {
+    getJobTitles( function() {
+        res.send(jobTitles)
     })
 })
 

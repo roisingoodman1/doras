@@ -11,6 +11,7 @@ import { RolesComponent } from './roles/roles.component';
 import { PopupsComponent } from './popups/popups.component';
 import { TrainingPopupComponent } from './training-popup/training-popup.component';
 import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
+import { CapabilityLeadsComponent } from './capability-leads/capability-leads.component'
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -30,6 +31,7 @@ import { AdminComponent } from './admin/admin.component';
     PopupsComponent,
     TrainingPopupComponent,
     ResponsibilitiesComponent,
+    CapabilityLeadsComponent,
     LoginComponent,
     MainComponent,
     PageNotFoundComponent,
@@ -42,9 +44,19 @@ import { AdminComponent } from './admin/admin.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {},
+  }, {
+  provide: MAT_DIALOG_DATA,
+  useValue: {},
+},
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ResponsibilitiesComponent, CapabilityLeadsComponent]
 })
 export class AppModule { }
