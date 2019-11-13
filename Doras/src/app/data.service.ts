@@ -6,10 +6,10 @@ import { JobRole } from './models/jobRole'
 import { Band } from './models/Band'
 import { Observable } from 'rxjs'
 import { Job } from './models/job'
-import { CapabilityLeads} from './models/capabilityLeads'
-import { User } from './models/user'
 import { Competency } from './models/Competency'
 import { Training } from './models/training'
+import { CapabilityLead} from './models/capabilityLead'
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,8 @@ export class DataService {
     return this.http.get<Capability[]>('/api/capabilities');
   }
 
-  public getCapabilityLeads(): Observable<CapabilityLeads[]>{
-    return this.http.get<CapabilityLeads[]>('/api/getCapLeads');
+  public getCapabilityLeads(): Observable<CapabilityLead[]>{
+    return this.http.get<CapabilityLead[]>('/api/getCapLeads');
   }
 
   public getJobFamily(): Observable<JobFamily[]> {
