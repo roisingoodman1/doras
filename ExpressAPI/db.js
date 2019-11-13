@@ -149,3 +149,12 @@ exports.getJobs = function(callback){
       }
     )
    }
+exports.getJobTitles = function(callback){
+  db.query(
+    "SELECT title FROM job",
+    function(err, rows){
+      if (err){throw err}
+      callback(rows)
+    }
+  )
+}
