@@ -36,7 +36,8 @@ exports.getBand = function(callback) {
         function(err, rows) {
             if (err) { throw err }
             callback(rows)
-        })
+        }
+    )
 }
 
 exports.getJobRoles = function(callback) {
@@ -59,13 +60,14 @@ exports.getCapabilities = function(callback) {
     )
 }
 
-exports.getCapLeads = function(callback){  //also returns name of capability from capability table for simplicities sake
+exports.getCapLeads = function(callback){  //also returns name of capability from capability table to enable checking of current cap
   db.query(
       "SELECT CapabilityLead.leadId, CapabilityLead.capLeadName, CapabilityLead.capLeadPath, CapabilityLead.capLeadQuote, Capability.capName FROM CapabilityLead INNER JOIN Capability ON CapabilityLead.leadId = Capability.leadId",
-      function(err, rows){
-          if(err) throw err
+      function(err, rows) {
+          if(err) { throw err }
           callback (rows)
-      })
+      }
+   )
 }
 
 exports.getJobFamily = function(callback) {
@@ -152,8 +154,8 @@ exports.getJobs = function(callback){
 exports.getJobTitles = function(callback){
   db.query(
     "SELECT title FROM job",
-    function(err, rows){
-      if (err){throw err}
+    function(err, rows) {
+      if (err){ throw err }
       callback(rows)
     }
   )
