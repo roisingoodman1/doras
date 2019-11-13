@@ -1,0 +1,15 @@
+<h3>Delete capability</h3>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<div class="row">
+		<div class="col-sm">
+			<label for="cap">Capability</label>
+			<br>
+			<select ngModel name="cap" required>
+				<option disabled>Please select...</option>
+				<option *ngFor="let cap of capabilities" value="{{cap.capId}}">{{ cap.capName }}</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<button type="submit">Submit</button>
+</form>

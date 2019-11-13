@@ -149,6 +149,19 @@ app.get('/getDistinctCapLeads', function(req, res) {
     })
 })
 
+function deleteCapability(capId, deleteCapabilityReadyFn) {
+    db.deleteCapability(capId, function(rows) {
+        result = rows
+        deleteCapabilityReadyFn()
+    })
+}
+
+app.delete('/deleteCapability/:capId', function(req, res) {
+    deleteCapability(req.params.capId, function() {
+        res.send(result)
+    })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })

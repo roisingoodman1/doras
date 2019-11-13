@@ -33,7 +33,7 @@ exports.getBand = function(callback) {
 
 exports.getCapabilities = function(callback) {
     db.query(
-        "SELECT capName FROM Capability",
+        "SELECT capId, capName FROM Capability",
         function(err, rows) {
             if (err) { throw err }
             callback(rows)
@@ -105,7 +105,7 @@ exports.newCapability = function(capName, leadId, jfid, callback) {
     db.query(
         "INSERT INTO Capability (capName, leadId, jfid) VALUES (?, ?, ?)",
         [capName, leadId, jfid],
-        function (err, rows) {
+        function(err, rows) {
             if (err) { throw err }
             callback(rows)
         }
@@ -115,7 +115,18 @@ exports.newCapability = function(capName, leadId, jfid, callback) {
 exports.getDistinctCapLeads = function(callback) {
     db.query(
         "SELECT leadId, capLeadName FROM CapabilityLead",
-        function (err, rows) {
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.deleteCapability = function(capId, callback) {
+    db.query(
+        "DELETE FROM Capability WHERE capId = ?",
+        [capId],
+        function(err, rows) {
             if (err) { throw err }
             callback(rows)
         }

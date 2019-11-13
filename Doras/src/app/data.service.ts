@@ -7,7 +7,7 @@ import { JobRole } from './models/jobRole'
 import { Band } from './models/Band'
 import { Observable } from 'rxjs'
 import { Job } from './models/job'
-import { CapabilityLead} from './models/capabilityLead'
+import { CapabilityLead } from './models/capabilityLead'
 import { User } from './models/user';
 
 @Injectable({
@@ -57,12 +57,15 @@ export class DataService {
   }
 
   public newCapability(newCapability) {
-    console.log('post')
     return this.http.post('/api/newCapability', newCapability);
   }
 
-  public getDistinctCapLeads(): Observable<CapabilityLeads[]> {
-    return this.http.get<CapabilityLeads[]>('/api/getDistinctCapLeads');
+  public getDistinctCapLeads(): Observable<CapabilityLead[]> {
+    return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
+  }
+
+  public deleteCapability(capId) {
+    return this.http.delete('/api/deleteCapability/' + capId);
   }
 
 }
