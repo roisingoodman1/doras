@@ -112,6 +112,17 @@ exports.newCapability = function(capName, leadId, jfid, callback) {
     )
 }
 
+exports.newJobFamily = function(title, callback) {
+  db.query(
+      "INSERT INTO JobFamily (title) VALUES (?)",
+      [title],
+      function(err, rows) {
+          if (err) { throw err }
+          callback(rows)
+      }
+  )
+}
+
 exports.getDistinctCapLeads = function(callback) {
     db.query(
         "SELECT leadId, capLeadName FROM CapabilityLead",

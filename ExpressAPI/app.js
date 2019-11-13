@@ -136,6 +136,19 @@ app.post('/newCapability', function(req, res) {
     })
 })
 
+function newJobFamily(title, newJobFamilyReadyFn) {
+  db.newJobFamily(title, function(rows) {
+      x = rows
+      newJobFamilyReadyFn()
+  })
+}
+
+app.post('/newJobFamily', function(req, res) {
+  newJobFamily(req.body.title, function() {
+      res.send(x)
+  })
+})
+
 function getDistinctCapLeads(distinctCapLeadsReadyFn) {
     db.getDistinctCapLeads(function(rows) {
         distinctCapLeads = rows

@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AdminComponent } from './admin/admin.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { DeleteCapabilityComponent } from './delete-capability/delete-capability.component';
+import { AddJobFamilyComponent } from './add-job-family/add-job-family.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent, children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full' },
       { path: 'addCapability', component: AddCapabilityComponent },
-      { path: 'deleteCapability', component: DeleteCapabilityComponent }
+      { path: 'deleteCapability', component: DeleteCapabilityComponent },
+      { path: 'addJobFamily', component: AddJobFamilyComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }

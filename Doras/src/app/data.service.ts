@@ -60,6 +60,11 @@ export class DataService {
     return this.http.post('/api/newCapability', newCapability);
   }
 
+  public newJobFamily(title) {
+    return this.http.post('/api/newJobFamily', title);
+  }
+
+
   public getDistinctCapLeads(): Observable<CapabilityLead[]> {
     return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
   }

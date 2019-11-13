@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './admin/admin.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { DeleteCapabilityComponent } from './delete-capability/delete-capability.component';
+import { AddJobFamilyComponent } from './add-job-family/add-job-family.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { DeleteCapabilityComponent } from './delete-capability/delete-capability
     AdminComponent,
     AddCapabilityComponent,
     DeleteCapabilityComponent,
+    AddJobFamilyComponent,
   ],
   imports: [
     BrowserModule,
