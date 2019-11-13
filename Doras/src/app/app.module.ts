@@ -20,6 +20,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './admin/admin.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
+import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { AddCapabilityComponent } from './add-capability/add-capability.componen
     ForgotPasswordComponent,
     AdminComponent,
     AddCapabilityComponent,
+    AddJobRoleComponent,
   ],
   imports: [
     BrowserModule,
