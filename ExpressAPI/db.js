@@ -182,12 +182,12 @@ exports.getSameJobByBand = function(bandId, callback) {
       }
     )
   }
+  
 exports.getJobs = function(callback){
     db.query(
-      "SELECT title, bandId FROM Job",
+      "SELECT title FROM job",
       function(err, rows){
         if (err){throw err}
-        console.log(rows)
         callback(rows)
       }
     )

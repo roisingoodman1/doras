@@ -365,3 +365,8 @@ app.get('/getBandById/:id', function (req, res){
 app.listen(8003, function() {
     console.log('Express started')
 })
+ app.get('/getJobs', function(req, res) {
+    getJobs( function() {
+        res.send(jobs)
+    })
+ })
