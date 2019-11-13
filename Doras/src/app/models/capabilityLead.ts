@@ -1,4 +1,4 @@
-export class CapabilityLeads {
+export class CapabilityLead {
     leadId: number;
     capLeadName: string;
     capLeadPath: string;

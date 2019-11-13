@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { DataTransferService } from '../data-transfer.service'
 import { Capability } from '../models/capability';
-import { CapabilityLeads } from '../models/capabilityLeads';
+import { CapabilityLead } from '../models/capabilityLead';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { inject } from '@angular/core/testing';
 
@@ -14,7 +14,7 @@ import { inject } from '@angular/core/testing';
   providers: [MatDialogModule]
 })
 export class CapabilityLeadsComponent implements OnInit {
-  public capabilityLeads: CapabilityLeads[];
+  public capabilityLead: CapabilityLead[];
 
   get capability(): Capability | null {
     return this.dataTransferService.capability;
@@ -25,7 +25,7 @@ export class CapabilityLeadsComponent implements OnInit {
 
   ngOnInit() {
     this.data.getCapabilityLeads().subscribe(c => {
-      this.capabilityLeads = c
+      this.capabilityLead = c
     });
   }
 
