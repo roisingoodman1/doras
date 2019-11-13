@@ -59,14 +59,14 @@ exports.getCapabilities = function(callback) {
     )
 }
 
-exports.getCapLeads = function(callback){  //also returns name of capability from capability table for simplicities sake 
+exports.getCapLeads = function(callback){  //also returns name of capability from capability table for simplicities sake
   db.query(
       "SELECT CapabilityLead.leadId, CapabilityLead.capLeadName, CapabilityLead.capLeadPath, CapabilityLead.capLeadQuote, Capability.capName FROM CapabilityLead INNER JOIN Capability ON CapabilityLead.leadId = Capability.leadId",
       function(err, rows){
           if(err) throw err
           callback (rows)
       })
-} 
+}
 
 exports.getJobFamily = function(callback) {
     db.query(
@@ -140,3 +140,12 @@ exports.getSameJobByBand = function(bandId, callback) {
       }
     )
   }
+exports.getJobs = function(callback){
+    db.query(
+      "SELECT title FROM job",
+      function(err, rows){
+        if (err){throw err}
+        callback(rows)
+      }
+    )
+   }

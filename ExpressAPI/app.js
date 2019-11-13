@@ -239,3 +239,15 @@ app.get('/getJobRoles', function(req, res){
 app.listen(8003, function() {
     console.log('Express started')
 })
+
+function getJobs(jobsReadyFn) {
+    db.getJobs(function(rows) {
+        jobs = rows
+        jobsReadyFn()
+    })
+ }
+ app.get('/getJobs', function(req, res) {
+    getJobs( function() {
+        res.send(jobs)
+    })
+ })
