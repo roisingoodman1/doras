@@ -1,19 +1,21 @@
 <div class="container-fluid">
 	<div class="row" id="dropdownDiv">
-		<select id="dropdown">
-			<option disabled>Please select...</option>
-			<option value="jobRoles">Job roles</option>
-			<option value="capability">Capability</option>
-			<option value="jobFamily">Job family</option>
-			<option value="band">Band</option>
+		<select id="dropdown" [(ngModel)]="dropdownValue">
+			<option selected="selected" disabled>Please select...</option>
+			<option value="JobRoles">Job roles</option>
+			<option value="Capability">Capability</option>
+			<option value="JobFamily">Job family</option>
+			<option value="Band">Band</option>
 		</select>
 	</div>
 	<div class="row" id="crudRow">
-		<button class="adminButton" id="add">Add</button>
+		<button class="adminButton" id="add" [routerLink]="'add' + dropdownValue">Add</button>
 		<button class="adminButton" id="edit">Edit</button>
 		<button class="adminButton" id="delete">Delete</button>
 	</div>
 	<div class="row" id="routerOutlet">
-		<router-outlet></router-outlet>
+		<div class="col-sm-12">
+			<router-outlet></router-outlet>
+		</div>
 	</div>
 </div>
