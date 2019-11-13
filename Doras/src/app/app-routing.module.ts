@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthGuard } from './_helpers/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { SearchComponent } from './search/search.component'
+import { AddCapabilityComponent } from './add-capability/add-capability.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
   },
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: '', redirectTo: '/admin', pathMatch: 'full' }
+      { path: '', redirectTo: '/admin', pathMatch: 'full' },
+      { path: 'addCapability', component: AddCapabilityComponent }
     ]
   },
   {

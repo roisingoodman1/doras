@@ -85,5 +85,14 @@ export class DataService {
     return this.http.get<Job[]>('/api/jobByBandId/?bandId=' + bandId)
   }
 
+  public newCapability(newCapability) {
+    console.log('post')
+    return this.http.post('/api/newCapability', newCapability);
+  }
+
+  public getDistinctCapLeads(): Observable<CapabilityLead[]> {
+    return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
+  }
+
 }
 

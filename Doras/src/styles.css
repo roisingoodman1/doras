@@ -3,6 +3,7 @@
   vertical-align: bottom;
 }
 @import '~bootstrap/dist/css/bootstrap.css';
+
 .page-header {
     margin-top: 0;
   }
@@ -45,6 +46,7 @@
     background-color: #009fe3;
     color: white;
   }
+
   ngb-tabset ul.nav-tabs li a.nav-link {
     background-color: #eeeeee;
     border-left: 1px solid rgb(158, 158, 158);

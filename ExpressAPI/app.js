@@ -68,6 +68,10 @@ class HandlerGenerator {
 
 let handlers = new HandlerGenerator();
 const url = require('url')
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 function getBand(bandsReadyFn) {
     db.getBand(function(rows) {
@@ -298,6 +302,32 @@ function getJobTitles(jobsReadyFn) { /* get jobs methods here returns only title
 app.get('/getJobTitles', function(req, res) {
     getJobTitles( function() {
         res.send(jobTitles)
+    })
+})
+
+function newCapability(capName, leadId, jfid, newCapabilityReadyFn) {
+    db.newCapability(capName, leadId, jfid, function(rows) {
+        x = rows
+        newCapabilityReadyFn()
+    })
+}
+
+app.post('/newCapability', function(req, res) {
+    newCapability(req.body.capName, req.body.leadId, req.body.jfid, function() {
+        res.send(x)
+    })
+})
+
+function getDistinctCapLeads(distinctCapLeadsReadyFn) {
+    db.getDistinctCapLeads(function(rows) {
+        distinctCapLeads = rows
+        distinctCapLeadsReadyFn()
+    })
+}
+
+app.get('/getDistinctCapLeads', function(req, res) {
+    getDistinctCapLeads(function() {
+        res.send(distinctCapLeads)
     })
 })
 

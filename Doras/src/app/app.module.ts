@@ -27,6 +27,8 @@ import { OtherJobsComponent } from './other-jobs/other-jobs.component';
 import { CapabilityLeadsComponent } from './capability-leads/capability-leads.component';
 import { SearchComponent } from './search/search.component';
 import { ComparePageComponent } from './compare-page/compare-page.component';
+import { AddCapabilityComponent } from './add-capability/add-capability.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { ComparePageComponent } from './compare-page/compare-page.component';
     OtherJobsComponent,
     CapabilityLeadsComponent,
     SearchComponent,
-    ComparePageComponent
+    ComparePageComponent,
+    AddCapabilityComponent
   ],
   imports: [
     BrowserModule,

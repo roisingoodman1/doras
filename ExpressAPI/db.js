@@ -200,3 +200,24 @@ exports.getJobTitles = function(callback){
     }
   )
 }
+
+exports.newCapability = function(capName, leadId, jfid, callback) {
+    db.query(
+        "INSERT INTO Capability (capName, leadId, jfid) VALUES (?, ?, ?)",
+        [capName, leadId, jfid],
+        function (err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.getDistinctCapLeads = function(callback) {
+    db.query(
+        "SELECT leadId, capLeadName FROM CapabilityLead",
+        function (err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
