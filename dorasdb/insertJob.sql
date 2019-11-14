@@ -7,6 +7,27 @@ INSERT INTO Job(title,speclink,summary,responsibilities,bandId,capId) VALUES
 ;5. Contribute to presales activities – completion of bids, presenting, tender qualification, bid management etc….
 ;6. Provide constructive feedback and record it on Workday
 ;", 5, 1),
+("Technical Architect1", "wwww.google.co.uk", "Expert in their field, is consulted by others, supervises others, works well even if under pressure, effectively coaches people.", "1. Be an active career coach and to escalate to their line manager if stretch goals are not set for your coachees
+;2. Ensure that your coachee has received an appraisal and regular feedback and to escalate to HR if this is not the case
+;3. Visibly and regularly share knowledge
+;4. Actively identify and develop talent and highlight to your BU talent manager
+;5. Contribute to presales activities – completion of bids, presenting, tender qualification, bid management etc….
+;6. Provide constructive feedback and record it on Workday
+;", 9, 1),
+("Technical Architect2", "wwww.google.co.uk", "Expert in their field, is consulted by others, supervises others, works well even if under pressure, effectively coaches people.", "1. Be an active career coach and to escalate to their line manager if stretch goals are not set for your coachees
+;2. Ensure that your coachee has received an appraisal and regular feedback and to escalate to HR if this is not the case
+;3. Visibly and regularly share knowledge
+;4. Actively identify and develop talent and highlight to your BU talent manager
+;5. Contribute to presales activities – completion of bids, presenting, tender qualification, bid management etc….
+;6. Provide constructive feedback and record it on Workday
+;", 8, 1),
+("Technical Architect3", "wwww.google.co.uk", "Expert in their field, is consulted by others, supervises others, works well even if under pressure, effectively coaches people.", "1. Be an active career coach and to escalate to their line manager if stretch goals are not set for your coachees
+;2. Ensure that your coachee has received an appraisal and regular feedback and to escalate to HR if this is not the case
+;3. Visibly and regularly share knowledge
+;4. Actively identify and develop talent and highlight to your BU talent manager
+;5. Contribute to presales activities – completion of bids, presenting, tender qualification, bid management etc….
+;6. Provide constructive feedback and record it on Workday
+;", 7, 1),
 ("Solution Architect", "wwww.google.co.uk ", "Designs and delivers large-scale solutions from scratch.", "1. Develop talent within your team, ensuring SMARTER stretch and project goals are clearly defined
 ;2. Provide anytime performance feedback on Workday to each of your team members at least once a quarter
 ;3. Identify training needs for team members and report to the BU talent manager

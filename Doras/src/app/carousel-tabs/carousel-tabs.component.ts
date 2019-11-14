@@ -33,9 +33,11 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
  }
 
   onTabChange(event: MatTabChangeEvent) {
-    // this.rolesComponent.refresh()
-    this.dataTransferService.capability = this.capabilities[event.index];
-    this.rolesComponent.ngOnInit()
+    this.rolesComponent.refresh()
+    console.log(this.capabilities[event.index])
+    console.log(this.capabilities[event.index].capId)
+    // this.dataTransferService.capability = this.capabilities[event.index];
+    this.dataTransferService.setCapability(this.capabilities[event.index]);
  }
 
 }

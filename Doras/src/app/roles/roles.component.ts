@@ -37,12 +37,9 @@ export class RolesComponent implements OnInit {
   public secondSameJob: Job[];
   public thirdSameJob: Job[];
 
-
-  get capability(): Capability | null {
-    return this.dataTransferService.capability;
+  constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog) { 
+    this.initialise(true)
   }
-
-  constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog) { }
 
   open(data: any[], component: any): void {
     this.dialog.open(component, {
@@ -51,7 +48,7 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initialise(true)
+    // this.initialise(true)
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
@@ -70,7 +67,7 @@ export class RolesComponent implements OnInit {
       }
     }
 
-    this.initialise(false)
+    // this.initialise(false)
 }
 
 initialise(first: Boolean) {
@@ -81,12 +78,15 @@ initialise(first: Boolean) {
       const step = 3;
       let nextSplitValue: number;
       const length: number = this.bands.length;
+      
       for (let i = 0; i < length; i += step) {
         nextSplitValue = i + 3;
         tempArray.push(this.bands.slice(i, nextSplitValue));
       }
+      
       this.jobBandArray = tempArray;
-      this.loadPage()
+      // console.log(this.jobBandArray)
+      this.loadPage();
     });
   } else {
     this.loadPage()
@@ -97,11 +97,25 @@ refresh(){
   if (this.firstJob){
     this.firstJob.pop()
   }
+  if (this.secondJob){
+    this.secondJob.pop()
+  }
+  if (this.thirdJob){
+    this.thirdJob.pop()
+  }
 }
 
 loadPage() {
-  this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+  let cap: Capability = this.dataTransferService.getCapability();
+  if (!cap) {
+    console.log('here')
+    cap.capId = 1
+  }
+  this.data.getJobRole(cap.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+    console.log(c)
+
     this.firstJob = c;
+    // console.log(this.firstJob)
     if (!this.firstJob[0]) {
       this.firstJob.push(null);
     } else {
@@ -111,7 +125,7 @@ loadPage() {
     } 
   })
 
-  this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+  this.data.getJobRole(cap.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
     this.secondJob = c;
     if (!this.secondJob[0]) {
       this.secondJob.push(null);
@@ -121,7 +135,7 @@ loadPage() {
     })
   }
 })
-  this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+  this.data.getJobRole(cap.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
     this.thirdJob = c;
     if (!this.thirdJob[0]) {
       this.thirdJob.push(null);
