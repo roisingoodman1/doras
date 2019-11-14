@@ -28,7 +28,8 @@ const routes: Routes = [
       { path: '', redirectTo: '/admin', pathMatch: 'full' },
       { path: 'addCapability', component: AddCapabilityComponent },
       { path: 'deleteCapability', component: DeleteCapabilityComponent },
-      { path: 'editCapability', component: EditCapabilityComponent }
+      { path: 'editCapability', component: EditCapabilityComponent },
+      { path: '**', component: PageNotFoundComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }

@@ -76,4 +76,8 @@ export class DataService {
     return this.http.get<Capability[]>('/api/getCapability/' + capId);
   }
 
+  public getJobRolesByCapId(capId) {
+    return this.http.get<Job[]>('/api/getJobRolesByCapId?capId=' + capId);
+  }
+
 }

@@ -154,3 +154,14 @@ exports.getCapabilityById = function(capId, callback) {
         }
     )
 }
+
+exports.getJobRolesByCapId = function(capId, callback) {
+    db.query(
+        "SELECT jid FROM Job WHERE capId = ?",
+        [capId],
+        function(err, rows) {
+            if (err) { throw err }
+                callback(rows)
+        }
+    )
+}

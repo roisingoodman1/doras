@@ -188,6 +188,19 @@ app.get('/getCapability/:id', function(req, res) {
     })
 })
 
+function getJobRolesByCapId(id, getJobRolesByCapIdReadyFn) {
+    db.getJobRolesByCapId(id, function(rows) {
+        jobs = rows
+        getJobRolesByCapIdReadyFn()
+    })
+}
+
+app.get('/getJobRolesByCapId', function(req, res) {
+    getJobRolesByCapId(req.query.capId, function() {
+        res.send(jobs)
+    })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })
