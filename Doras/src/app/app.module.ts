@@ -17,7 +17,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpecificationComponent } from './specification/specification.component'
-
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { AdminComponent } from './admin/admin.component';
 
