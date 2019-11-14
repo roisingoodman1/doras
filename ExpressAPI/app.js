@@ -162,6 +162,19 @@ app.delete('/deleteCapability/:capId', function(req, res) {
     })
 })
 
+function deleteJobFamily(jfid, deleteJobFamilyReadyFn) {
+  db.deleteJobFamily(jfid, function(rows) {
+      result = rows
+      deleteJobFamilyReadyFn()
+  })
+}
+
+app.delete('/deleteJobFamily/:jfid', function(req, res) {
+  deleteJobFamily(req.params.jfid, function() {
+      res.send(result)
+  })
+})
+
 function editCapability(updatedCap, editCapabilityReadyFn) {
     db.editCapability(updatedCap, function(rows) {
         result = rows

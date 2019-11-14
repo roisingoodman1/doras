@@ -133,6 +133,17 @@ exports.deleteCapability = function(capId, callback) {
     )
 }
 
+exports.deleteJobFamily = function(jfid, callback) {
+  db.query(
+      "DELETE FROM JobFamily WHERE jfid = ?",
+      [jfid],
+      function(err, rows) {
+          if (err) { throw err }
+          callback(rows)
+      }
+  )
+}
+
 exports.editCapability = function(newCapDetails, callback) {
     db.query(
         "UPDATE Capability SET capName = ?, leadId = ?, jfid = ? WHERE capId = ?",

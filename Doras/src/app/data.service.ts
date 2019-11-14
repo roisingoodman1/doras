@@ -68,6 +68,10 @@ export class DataService {
     return this.http.delete('/api/deleteCapability/' + capId);
   }
 
+  public deleteJobFamily(jfid) {
+    return this.http.delete('/api/deleteJobFamily/' + jfid);
+  }
+
   public editCapability(updatedCap) {
     return this.http.put('/api/editCapability', updatedCap);
   }

@@ -22,6 +22,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { DeleteCapabilityComponent } from './delete-capability/delete-capability.component';
 import { EditCapabilityComponent } from './edit-capability/edit-capability.component';
+import { DeleteJobFamilyComponent } from './delete-job-family/delete-job-family.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { EditCapabilityComponent } from './edit-capability/edit-capability.compo
     AddCapabilityComponent,
     DeleteCapabilityComponent,
     EditCapabilityComponent,
+    DeleteJobFamilyComponent,
   ],
   imports: [
     BrowserModule,
