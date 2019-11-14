@@ -335,8 +335,8 @@ app.listen(8003, function() {
     console.log('Express started')
 })
 
-function getJobs(jobsReadyFn) {
-    db.getJobs(function(rows) {
+function getJobTitle(jobsReadyFn) {
+    db.getJobTitles(function(rows) {
         jobs = rows
         jobsReadyFn()
     })

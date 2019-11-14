@@ -1,21 +1,18 @@
         a {
             border: 1px solid black;
         }
-
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
             text-align: center;
         }
-
         td,
         th {
             border: 1px solid #dddddd;
             text-align: center;
             padding: 8px;
         }
-
         th {
             padding-top: 12px;
             padding-bottom: 12px;
@@ -39,7 +36,6 @@
             vertical-align: left;
             border-color: inherit;
         }
-
         li:hover {
             background-color:#283583;
             color: white;

@@ -19,7 +19,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   public getCapabilities(): Observable<Capability[]> {
-    return this.http.get<Capability[]>('/api/capabilities');
+    return this.http.get<Capability[]>('/api/getCapabilities/');
   }
 
   public getCapabilityLeads(): Observable<CapabilityLead[]>{
@@ -27,11 +27,19 @@ export class DataService {
   }
 
   public getJobFamily(): Observable<JobFamily[]> {
-    return this.http.get<JobFamily[]>('/api/jobFamily');
+    return this.http.get<JobFamily[]>('/api/getJobFamily/');
+  }
+
+  public getJobFamilyByCap(id): Observable<JobFamily> {
+    return this.http.get<JobFamily>('/api/getJobFamilyByCap/' + id);
+  }
+
+  public getJobRoles(): Observable<JobRole[]> {
+    return this.http.get<JobRole[]>('/api/getJobRoles/');
   }
 
   public getBand(): Observable<Band[]> {
-    return this.http.get<Band[]>('/api/band');
+    return this.http.get<Band[]>('/api/getBand/');
   }
 
   public getCapNameByJfId(id): Observable<Capability[]> {
@@ -55,7 +63,7 @@ export class DataService {
   }
 
   public getDistinctJfids(): Observable<JobFamily[]> {
-    return this.http.get<JobFamily[]>('api/distinctJobFamilies');
+    return this.http.get<JobFamily[]>('/api/getDistinct/');
   }
 
   public getJobRole(): Observable<Job[]> {

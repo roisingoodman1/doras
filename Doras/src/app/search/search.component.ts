@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { JobRole } from '../models/jobRole';
 import { DataService } from '../data.service';
 import { Band } from '../models/Band'
 =======
 
 >>>>>>> inital set yp
+=======
+import { JobRole } from '../models/jobRole';
+import { DataService } from '../data.service';
+import { Band } from '../models/Band'
+>>>>>>> search page list
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -13,6 +19,9 @@ import { Band } from '../models/Band'
 })
 export class SearchComponent implements OnInit {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> search page list
   titles: JobRole[];
   bandList: Band[] = [];
   div: HTMLElement;
@@ -38,6 +47,7 @@ export class SearchComponent implements OnInit {
     
   }
   
+<<<<<<< HEAD
 
   
 
@@ -49,11 +59,20 @@ export class SearchComponent implements OnInit {
   
 
 =======
+=======
+>>>>>>> search page list
 
-  constructor() { }
+  
 
   ngOnInit() {
+    
+    
   }
 
+<<<<<<< HEAD
 >>>>>>> inital set yp
+=======
+  
+
+>>>>>>> search page list
 }
