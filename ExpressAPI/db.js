@@ -13,10 +13,19 @@ db.connect(function(err) {
 
 exports.getUser = function(username, callback) {
     db.query(
-        "SELECT userId, username, userPassword, isAdmin FROM users WHERE username =?", [username],
+        "SELECT userId, username, userPassword, isAdmin, token FROM users WHERE username =?", [username],
         function(err, rows) {
             if (err) { throw err }
             callback(rows[0])
+        }
+    )
+}
+
+exports.updateUserToken = function(token, username) {
+    db.query(
+        'UPDATE users SET token =? WHERE username =?', [token, username],
+        function(err) {
+            if (err) { throw err }
         }
     )
 }

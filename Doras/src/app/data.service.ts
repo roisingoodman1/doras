@@ -53,4 +53,13 @@ export class DataService {
     return this.http.get<Training[]>('/api/trainingByJobId/?jobId=' + jId);
   }
 
+  public login(username, password) {
+    return this.http.post('/api/login/', {username, password});
+  }
+
+  public authenticate(token) {
+    return this.http.post('/api/authenticate/', {token});
+  }
+
 }
+
