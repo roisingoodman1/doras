@@ -2,8 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { Job } from '../models/job';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-
-
 @Component({
   selector: 'app-responsibilities',
   templateUrl: './responsibilities.component.html',
@@ -11,13 +9,13 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
   providers: [MatDialogModule]
 })
 export class ResponsibilitiesComponent {
-
+  public responsibilities: string[]
   constructor(public dialogRef: MatDialogRef<ResponsibilitiesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Job) {
-      console.log(data)
+    @Inject(MAT_DIALOG_DATA) public data) {
+      this.responsibilities = this.data.data[0].responsibilities.split(';');
   }
 
-  onNoClick(): void {
+  onExit(): void {
     this.dialogRef.close();
   }
 
