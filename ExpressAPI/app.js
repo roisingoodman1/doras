@@ -59,11 +59,9 @@ class HandlerGenerator {
         });
     }
     checkToken(req, res) {
-        console.log('Here');
         const token = req.body.token;
         jwt.verify(token, config.secret,
             function(err, decoded) {
-                console.log(decoded.username) // bar
             });
     }
 }
@@ -173,7 +171,7 @@ app.get('/competencies', function(req, res) {
         res.send(comp)
     })
 })
-    
+
 function getTraining(jId, getTrainingReadyFn) {
   db.getTraining(jId, function(rows) {
       training = rows

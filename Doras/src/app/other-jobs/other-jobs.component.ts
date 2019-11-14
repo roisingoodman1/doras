@@ -10,7 +10,6 @@ export class OtherJobsComponent {
 
   constructor(public dialogRef: MatDialogRef<OtherJobsComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
-      console.log(data)
   }
 
   onExit(): void {

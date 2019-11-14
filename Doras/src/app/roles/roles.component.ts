@@ -37,8 +37,7 @@ export class RolesComponent implements OnInit {
   public secondSameJob: Job[];
   public thirdSameJob: Job[];
 
-  constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog) { 
-    this.initialise(true)
+  constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog) {
   }
 
   open(data: any[], component: any): void {
@@ -48,7 +47,7 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.initialise(true)
+    this.initialise()
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
@@ -67,30 +66,27 @@ export class RolesComponent implements OnInit {
       }
     }
 
-    // this.initialise(false)
+    this.initialise()
 }
 
-initialise(first: Boolean) {
-  if(first){
+initialise() {
+  if(!this.jobBandArray){
     this.data.getBand().subscribe(c => {
       this.bands = c.reverse();
       const tempArray: any[] = [];
       const step = 3;
       let nextSplitValue: number;
       const length: number = this.bands.length;
-      
+
       for (let i = 0; i < length; i += step) {
         nextSplitValue = i + 3;
         tempArray.push(this.bands.slice(i, nextSplitValue));
       }
-      
+
       this.jobBandArray = tempArray;
-      // console.log(this.jobBandArray)
-      this.loadPage();
     });
-  } else {
-    this.loadPage()
   }
+  this.loadPage();
 }
 
 refresh(){
@@ -107,13 +103,11 @@ refresh(){
 
 loadPage() {
   let cap: Capability = this.dataTransferService.getCapability();
-  if (!cap) {
-    console.log('here')
-    cap.capId = 1
-  }
+  // if (!cap) {
+  //   console.log(cap)
+  //   cap.capId = 1
+  // }
   this.data.getJobRole(cap.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
-    console.log(c)
-
     this.firstJob = c;
     // console.log(this.firstJob)
     if (!this.firstJob[0]) {
@@ -122,7 +116,7 @@ loadPage() {
       this.data.getTrainingByJid(this.firstJob[0].jid).subscribe(c => {
         this.firstTraining = c;
       })
-    } 
+    }
   })
 
   this.data.getJobRole(cap.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
