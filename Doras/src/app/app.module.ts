@@ -23,6 +23,7 @@ import {MatCardModule} from '@angular/material/card';
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { AdminComponent } from './admin/admin.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { OtherJobsComponent } from './other-jobs/other-jobs.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     ForgotPasswordComponent,
     SpecificationComponent,
     BandCompetenciesComponent,
-    AdminComponent
+    AdminComponent,
+    OtherJobsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,6 @@ import {MatTabsModule} from '@angular/material/tabs';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent]
+  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent, OtherJobsComponent]
 })
 export class AppModule { }

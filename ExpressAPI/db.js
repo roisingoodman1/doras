@@ -110,3 +110,14 @@ exports.getCompetenciesForBand = function(bandId, callback) {
     }
   )
 }
+
+exports.getSameJobByBand = function(bandId, callback) {
+    db.query(
+      "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ?",
+      [bandId],
+      function(err, rows) {
+        if (err) { throw err }
+        callback(rows)
+      }
+    )
+  }

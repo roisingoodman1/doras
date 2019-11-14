@@ -10,11 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { SpecificationComponent } from '../specification/specification.component';
 import { TrainingPopupComponent } from '../training-popup/training-popup.component';
 import { Training } from '../models/training';
-import { SwitchBoardService } from '../switch-board.service';
 import { Competency } from '../models/Competency';
 import { BandCompetenciesComponent } from '../band-competencies/band-competencies.component';
-import { Subscription } from 'rxjs';
-import { OtherJobsComponent } from '../other-jobs/other-jobs.component';
+import { OtherJobsComponent } from '../other-jobs/other-jobs.component'
 
 @Component({
   selector: 'app-roles',
@@ -35,6 +33,9 @@ export class RolesComponent implements OnInit {
   public firstCompetency: Competency[];
   public secondCompetency: Competency[];
   public thirdCompetency: Competency[];
+  public firstSameJob: Job[];
+  public secondSameJob: Job[];
+  public thirdSameJob: Job[];
 
 
   get capability(): Capability | null {
@@ -74,7 +75,6 @@ export class RolesComponent implements OnInit {
 
 initialise(first: Boolean) {
   if(first){
-    console.log(this.firstJob)
     this.data.getBand().subscribe(c => {
       this.bands = c.reverse();
       const tempArray: any[] = [];
@@ -142,6 +142,18 @@ loadPage() {
   this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
     this.thirdCompetency = c;
   })
+  this.data.getJobOnBand(this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+    this.firstSameJob = c;
+
+  })
+
+  this.data.getJobOnBand(this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+    this.secondSameJob = c;
+  })
+
+  this.data.getJobOnBand(this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+    this.thirdSameJob = c;
+  })
 }
 
   openDialog(component: string, type: string) {
@@ -198,6 +210,19 @@ loadPage() {
               break;
           }
         break;
+      case "sameBand":
+        switch (type) {
+          case "band1":
+            this.open(this.firstSameJob, OtherJobsComponent);
+            break;
+          case "band2":
+            this.open(this.secondSameJob, OtherJobsComponent);
+            break;
+          case "band3":
+            this.open(this.thirdSameJob, OtherJobsComponent);
+            break;
+        }
+      break;
     }
   }
 }

@@ -160,18 +160,6 @@ app.post('/authenticate', function(req, res) {
 
 app.get('/', middleware.checkToken, handlers.index);
 
-function getTraining(jId, getTrainingReadyFn) {
-    db.getTraining(jId, function(rows) {
-        training = rows
-        getTrainingReadyFn()
-    })
-}
-
-app.get('/trainingByJobId', function(req, res) {
-    getTraining(req.query.jobId, function() {
-        res.send(training)
-    })
-})
 
 function getCompetenciesForBand(bandId, getCompReadyfn) {
     db.getCompetenciesForBand(bandId, function(rows) {
@@ -211,6 +199,19 @@ app.get('/competencies', function(req, res){
     res.send(comp)
   })
 })
+
+function getSameJobByBand(bandId, getSameJobReadyfn) {
+    db.getSameJobByBand(bandId, function(rows) {
+      sameJob = rows
+      getSameJobReadyfn()
+    })
+  }
+
+  app.get('/jobByBandId', function(req, res){
+    getSameJobByBand(req.query.bandId, function(){
+      res.send(sameJob)
+    })
+  })
 
 app.listen(8003, function() {
     console.log('Express started')

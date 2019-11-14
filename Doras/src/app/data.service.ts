@@ -62,5 +62,9 @@ export class DataService {
     return this.http.post('/api/authenticate/', {token});
   }
 
+  public getJobOnBand(bandId): Observable<Job[]> {
+    return this.http.get<Job[]>('/api/jobByBandId/?bandId=' + bandId)
+  }
+
 }
 
