@@ -5,37 +5,22 @@
 
     <div class="row">
         <div class="column" style="width:60%">
-            <input class="filter" [(ngModel)]="filterText" placeholder="Filter" />
+            <input class="filter" [(ngModel)]="filterText" placeholder="Search Jobs" style="text-align: center;" />
             <table id="table1">
                 <thead>
                     <tr>
                         <th>Job Roles</th>
                     </tr>
                 </thead>
-                <tbody align="center" (click)="onClick()">
-                    <li style="list-style-type:none" *ngFor="let title of titles|jobRoleTitle:filterText"
-                        (click)="onSelect(title)">
-                        <tr>{{title.title}} - {{bandList[title.bandId]}} </tr>
+                <tbody align="center">
+                    <li style="list-style-type:none" *ngFor="let title of titles|jobRoleTitle:filterText" (click)="onSelect(title)">
+                        <tr> {{title.title}} - {{bandList[title.bandId]}} </tr>
                     </li>
                 </tbody>
             </table>
         </div>
-        <div class="column" style="width:40%; float:right;">
-            <div class="divBox">
-                <h2 class="center">Details</h2>
-                <h4 class="left">Responsibilties:</h4> 
-                <p>
-                        no harm but thomas is fat
-                </p>
-                <h4 class="left">Responsibilties:</h4> 
-                <p>
-                        no harm but thomas is fat
-                </p>
-                <h4 class="left">Responsibilties:</h4> 
-                <p>
-                        no harm but thomas is fat
-                </p>
-            </div>
+        <div class="column2" style="width:40%">
+        <app-search-detail></app-search-detail>
         </div>
     </div>
 </body>

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { JobRole } from '../models/jobRole';
 import { DataService } from '../data.service';
-import { Band } from '../models/Band'
+import { Band } from '../models/Band';
+import { Job } from '../models/job';
+import { Title } from '@angular/platform-browser';
+import { SwitchBoardService } from '../switch-board.service';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -11,12 +15,18 @@ export class SearchComponent implements OnInit {
   titles: JobRole[];
   bandList: Band[] = [];
   div: HTMLElement;
-  constructor(data: DataService) { 
-   /* let clickable = document.getElementById("hidden");
-    clickable.addEventListener("click", (e:Event) => this.onClick());*/
-    data.getJobTitles().subscribe(c=>{
+  data: DataService;
+  thisTitle:Title;
+  switchboard: SwitchBoardService;
+  thisJob:Job;
+
+  constructor(data: DataService, switchboardService: SwitchBoardService) { 
+  this.data = data;
+  this.switchboard = switchboardService;
+    
+  
+  data.getJobTitles().subscribe(c=>{
       this.titles = c;
-      console.log(this.titles);
       c.forEach(job => {
         if (!this.bandList[job.bandId]){
           data.getBandById(job.bandId).subscribe(c1 => {
@@ -25,21 +35,18 @@ export class SearchComponent implements OnInit {
         }
       });
     });
-    
+  }
+  onSelect (newJob: Job): void {
+     this.thisJob =newJob;
+     this.switchboard.switchJob(newJob);
   }
   
-  
-  onClick() {
-    
-  }
-  
-
-  
-
   ngOnInit() {
-    
-    
+  
   }
+
+
+
 
   
 

@@ -53,6 +53,7 @@ export class DataService {
     return this.http.get<JobRole[]>('/api/getJobTitle');
   }
 
+
   public getUser(username): Observable<User> {
     return this.http.get<User>('/api/User/' + username);
   }

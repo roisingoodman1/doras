@@ -22,6 +22,7 @@ import { AdminComponent } from './admin/admin.component';
 
 import { SearchComponent } from './search/search.component';
 import { JobRoleTitlePipe } from './search/job-role-title.pipe';
+import { SearchDetailComponent } from './search-detail/search-detail.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { JobRoleTitlePipe } from './search/job-role-title.pipe';
     BandCompetenciesComponent,
     AdminComponent,
     SearchComponent,
-    JobRoleTitlePipe
+    JobRoleTitlePipe,
+    SearchDetailComponent
   ],
   imports: [
     BrowserModule,

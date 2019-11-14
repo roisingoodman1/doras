@@ -103,7 +103,7 @@ exports.getCompetenciesForBand = function(bandId, callback) {
 }
 exports.getJobTitles = function(callback){
     db.query(
-      "SELECT title, bandId FROM Job",
+      "SELECT title, bandId, summary, speclink, responsibilities FROM Job",
       function(err, rows){
         if (err){throw err}
         console.log(rows) 

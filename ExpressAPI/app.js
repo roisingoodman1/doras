@@ -139,7 +139,6 @@ app.get('/getBandById/:id', function (req, res){
 })
 
 
-
-app.listen(8003, function() {
+app.listen(8002, function() {
     console.log('Express started')
 })
