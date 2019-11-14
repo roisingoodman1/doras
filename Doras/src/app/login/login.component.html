@@ -1,13 +1,31 @@
 <div class="login-page">
   <div class="form">
-
-<form (ngSubmit) ="login(loginForm)" #loginForm ="ngForm">
-  <div class="login">
-  <div><label for="username"><b>Username</b></label><input [(ngModel)]="newUser.username" name="username" placeholder="Username" required></div>
-  <div><label for="userPassword"><b>Password</b></label><input type="password" [(ngModel)]="newUser.userPassword" name="userPassword" placeholder="password" required></div>
-  <input type="submit" name="saltPassword" value="Login" [disabled]="!loginForm.valid">
+  <div class="tooltip">Hover over me
+    <span class="tooltiptext">Tooltip text</span>
   </div>
-</form>
-<a href="/forgot-password">Forgotten your password?</a>
+  <form (ngSubmit) ="onSubmit(loginForm)" #loginForm ="ngForm">
+  <div class="login">
+    <div>
+      <label for="username">
+        <b>Username</b>
+      </label>
+      <input [(ngModel)]="newUser.username" name="username" placeholder="Username" required>
+    </div>
+
+    <div *ngIf="loginForm.hasError('required', 'username')">Username is required</div>
+
+    <div>
+      <label for="userPassword">
+        <b>Password</b>
+      </label>
+      <input type="password" [(ngModel)]="newUser.userPassword" name="userPassword" placeholder="password" required>
+    </div>
+
+    <div *ngIf="loginForm.hasError('required', 'userPassword')"></div>
+
+      <input type="submit" name="saltPassword" value="Login" [disabled]="!loginForm.valid">
+  </div>
+  </form>
+  <a href="/forgot-password">Forgotten your password?</a>
 </div>
 </div>

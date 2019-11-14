@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Inject } from '@angular/core';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Training } from '../models/training';
 
 @Component({
   selector: 'app-training-popup',
   templateUrl: './training-popup.component.html',
   styleUrls: ['./training-popup.component.css']
 })
-export class TrainingPopupComponent implements OnInit {
+export class TrainingPopupComponent {
 
-  constructor(private modalService: NgbModal) { }
-
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  constructor(public dialogRef: MatDialogRef<TrainingPopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Training) {
   }
 
-  ngOnInit() {
+  onExit(): void {
+    this.dialogRef.close();
   }
 
 }
