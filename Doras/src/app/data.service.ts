@@ -66,8 +66,18 @@ export class DataService {
     return this.http.get<Training[]>('/api/trainingByJobId/?jobId=' + jId);
   }
 
+
   public getBandById(id): Observable<Band> {
     return this.http.get<Band>('/api/getBandById/' + id);
+
+  public login(username, password) {
+    return this.http.post('/api/login/', {username, password});
+  }
+
+  public authenticate(token) {
+    return this.http.post('/api/authenticate/', {token});
+
   }
 
 }
+
