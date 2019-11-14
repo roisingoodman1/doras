@@ -21,6 +21,8 @@ import { BandCompetenciesComponent } from './band-competencies/band-competencies
 import { AdminComponent } from './admin/admin.component';
 
 import { SearchComponent } from './search/search.component';
+import { JobRoleTitlePipe } from './search/job-role-title.pipe';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { SearchComponent } from './search/search.component';
     SpecificationComponent,
     BandCompetenciesComponent,
     AdminComponent,
-    SearchComponent
+    SearchComponent,
+    JobRoleTitlePipe
   ],
   imports: [
     BrowserModule,

@@ -113,14 +113,33 @@ app.listen(8003, function() {
     console.log('Express started')
 })
 
-function getJobs(jobsReadyFn) {
-    db.getJobs(function(rows) {
+function getJobTitle(jobsReadyFn) {
+    db.getJobTitles(function(rows) {
         jobs = rows
         jobsReadyFn()
     })
  }
- app.get('/getJobs', function(req, res) {
-    getJobs( function() {
+ app.get('/getJobTitle', function(req, res) {
+    getJobTitle( function() {
         res.send(jobs)
     })
  })
+
+ function getBandById(id, bandIdReadyFn) {
+	db.getBandById(id, function(rows){
+		band = rows
+		bandIdReadyFn()
+	})
+}
+
+app.get('/getBandById/:id', function (req, res){
+	getBandById(req.params.id, function(){
+		res.send(band)
+	})
+})
+
+
+
+app.listen(8003, function() {
+    console.log('Express started')
+})
