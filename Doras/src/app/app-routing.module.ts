@@ -27,6 +27,11 @@ const routes: Routes = [
       { path: '', redirectTo: '/admin', pathMatch: 'full' }
     ]
   },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: '', redirectTo: '/admin', pathMatch: 'full' }
+    ]
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 

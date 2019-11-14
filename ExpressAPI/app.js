@@ -185,6 +185,32 @@ app.get('/competencies', function(req, res) {
         res.send(comp)
     })
 })
+    
+function getTraining(jId, getTrainingReadyFn) {
+  db.getTraining(jId, function(rows) {
+      training = rows
+      getTrainingReadyFn()
+  })
+}
+
+app.get('/trainingByJobId', function(req, res) {
+  getTraining(req.query.jobId, function() {
+      res.send(training)
+  })
+})
+
+function getCompetenciesForBand(bandId, getCompReadyfn) {
+  db.getCompetenciesForBand(bandId, function(rows) {
+    comp = rows
+    getCompReadyfn()
+  })
+}
+
+app.get('/competencies', function(req, res){
+  getCompetenciesForBand(req.query.bandId, function(){
+    res.send(comp)
+  })
+})
 
 app.listen(8003, function() {
     console.log('Express started')
