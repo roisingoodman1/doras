@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { DeleteCapabilityComponent } from './delete-capability/delete-capability.component';
 import { EditCapabilityComponent } from './edit-capability/edit-capability.component';
+import { EditJobFamilyComponent } from './edit-job-family/edit-job-family.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'addCapability', component: AddCapabilityComponent },
       { path: 'deleteCapability', component: DeleteCapabilityComponent },
       { path: 'editCapability', component: EditCapabilityComponent },
+      { path: 'editJobFamily', component: EditJobFamilyComponent },
       { path: '**', component: PageNotFoundComponent }
     ]
   },

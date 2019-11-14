@@ -175,6 +175,21 @@ app.put('/editCapability', function(req, res) {
     })
 })
 
+function editJobFamily(updatedJf, editJobFamilyReadyFn) {
+  console.log("1")
+  db.editJobFamily(updatedJf, function(rows) {
+      result = rows
+      editJobFamilyReadyFn()
+  })
+}
+
+app.put('/editJobFamily', function(req, res) {
+  console.log("2")
+  editJobFamily(req.body, function() {
+      res.send(result)
+  })
+})
+
 function getCapabilityById(capId, getCapabilityReadyFn) {
     db.getCapabilityById(capId, function(rows) {
         cap = rows
@@ -186,6 +201,19 @@ app.get('/getCapability/:id', function(req, res) {
     getCapabilityById(req.params.id, function() {
         res.send(cap)
     })
+})
+
+function getJobFamilyById(capId, getJobFamilyReadyFn) {
+  db.getJobFamilyById(capId, function(rows) {
+      jf = rows
+      getJobFamilyReadyFn()
+  })
+}
+
+app.get('/getJobFamilyByID/:id', function(req, res) {
+  getJobFamilyById(req.params.id, function() {
+      res.send(jf)
+  })
 })
 
 function getJobRolesByCapId(id, getJobRolesByCapIdReadyFn) {
