@@ -80,12 +80,23 @@ exports.getJobRoleTitle = function(capId, bandId, callback) {
     )
 }
 
-exports.getJobs = function(callback){
+exports.getJobTitles = function(callback){
     db.query(
-      "SELECT title FROM job",
+      "SELECT title, bandId FROM Job",
       function(err, rows){
         if (err){throw err}
+        console.log(rows) 
         callback(rows)
       }
     )
    }
+
+exports.getBandById = function(id, callback){
+    db.query(
+        "select * from band where bandid = ?", [id],
+        function (err, rows){
+            if (err) {throw err}
+            callback(rows)
+        }
+    )
+}

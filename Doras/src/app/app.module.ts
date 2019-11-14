@@ -16,6 +16,8 @@ import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SearchComponent } from './search/search.component';
+import { JobRoleTitlePipe } from './search/job-role-title.pipe';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { SearchComponent } from './search/search.component';
     MainComponent,
     PageNotFoundComponent,
     ForgotPasswordComponent,
-    SearchComponent
+    SearchComponent,
+    JobRoleTitlePipe
   ],
   imports: [
     BrowserModule,
