@@ -341,8 +341,27 @@ function getJobs(jobsReadyFn) {
         jobsReadyFn()
     })
  }
- app.get('/getJobs', function(req, res) {
-    getJobs( function() {
+ app.get('/getJobTitle', function(req, res) {
+    getJobTitle( function() {
         res.send(jobs)
     })
  })
+
+ function getBandById(id, bandIdReadyFn) {
+	db.getBandById(id, function(rows){
+		band = rows
+		bandIdReadyFn()
+	})
+}
+
+app.get('/getBandById/:id', function (req, res){
+	getBandById(req.params.id, function(){
+		res.send(band)
+	})
+})
+
+
+
+app.listen(8003, function() {
+    console.log('Express started')
+})

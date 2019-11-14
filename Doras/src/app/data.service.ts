@@ -10,6 +10,7 @@ import { Competency } from './models/Competency'
 import { Training } from './models/training'
 import { CapabilityLead} from './models/capabilityLead'
 import { User } from './models/user';
+import { SplitInterpolation } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,10 @@ export class DataService {
 
   public getJobRole(): Observable<Job[]> {
     return this.http.get<Job[]>('api/jobs');
+  }
+
+  public getJobTitles(): Observable<JobRole[]> {
+    return this.http.get<JobRole[]>('/api/getJobTitle');
   }
 
   public getUser(username): Observable<User> {

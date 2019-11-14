@@ -29,6 +29,7 @@ import { SearchComponent } from './search/search.component';
 import { ComparePageComponent } from './compare-page/compare-page.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
+import { JobRoleTitlePipe } from './search/job-role-title.pipe';
 
 
 @NgModule({
@@ -53,6 +54,8 @@ import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
     ComparePageComponent,
     AddCapabilityComponent,
     AddJobRoleComponent,
+    SearchComponent,
+    JobRoleTitlePipe
   ],
   imports: [
     BrowserModule,
