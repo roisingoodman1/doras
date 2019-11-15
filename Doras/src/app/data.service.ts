@@ -103,6 +103,15 @@ export class DataService {
     return this.http.post('/api/newCapability', newCapability);
   }
 
+  public newJob(newJob){
+    console.log('post')
+    return this.http.post('/api/newJob', newJob);
+  }
+
+  public getDuplicateJobs(bandId, capId): Observable<Job[]> {
+    return this.http.get<Job[]>('/api/getDuplicateJobs?bandId=' + bandId + '&capId=' + capId);
+  }
+
   public getDistinctCapLeads(): Observable<CapabilityLead[]> {
     return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
   }

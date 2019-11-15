@@ -1,5 +1,5 @@
 export class JobRole {
-    id: number;
+    jId: number;
     title: string;
     specLink: string;
     summary: string;

@@ -1,1 +1,49 @@
-<p>add-job-role works! </p>
+
+<h3>Add new job role</h3>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<div class="row">
+		<div class="col-sm">
+			<label for="title">Job Title</label>
+			<br>
+            <input ngModel name="title" required minlength = 5 maxlength = 50 style="width:75%" >
+		</div>
+		<div class="col-sm" id="capability">
+			<label for="capId">Capability</label>
+			<br>
+			<select ngModel name="capId" required>
+				<option disabled>Please select...</option>
+				<option *ngFor="let cap of capabilities" value="{{ cap.capId }}">{{ cap.capName }}</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm">
+                <label for="specLink">Link to Specification</label>
+                <br>
+                <input ngModel name="specLink" required minlength = 5 maxlength = 500 style="width:75%">
+            </div>
+            <div class="col-sm">
+                    <label for="bandId">Band</label>
+                    <br>
+                    <select ngModel name="bandId" required>
+                        <option disabled>Please select...</option>
+                        <option *ngFor="let band of bands" value="{{ band.bandId }}">{{band.bandNo}} - {{ band.bandName }}</option>
+                    </select>
+                </div>
+	</div>
+    <br>
+    <div class="row">
+            <div class="col-sm">
+                    <label for="responsibilities">Job Responsibilities</label>
+                    <br>
+                    <textarea ngModel name="responsibilities" minlength = 10 maxlength = 760 required style="width:75%" ></textarea>
+                </div>
+                <div class="col-sm">
+                        <label for="summary">Job Summary</label>
+                        <br>
+                        <textarea ngModel name="summary" minlength = 10 maxlength = 500 required style="width:75%"></textarea>
+                    </div>
+        </div>
+	<button type="submit">Submit</button>
+</form>
