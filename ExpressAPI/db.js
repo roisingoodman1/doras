@@ -100,7 +100,7 @@ exports.getTraining = function(jId, callback) {
   )
 }
 
-exports.getCompetenciesForBand = function(callback) {
+exports.getCompetenciesForBand = function(bandId, callback) {
   db.query(
     "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",
     [bandId],

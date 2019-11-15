@@ -105,6 +105,7 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
       (this.roles[event.index].sort((a, b) => (a.bandId > b.bandId) ? 1 : -1)).reverse();
       this.otherBandArray = this.splitInto3(this.otherBandArray.reverse())
       this.roles[event.index] = this.splitInto3(this.roles[event.index])
+      
     }
     this.switchBoard.getJob(this.roles[event.index])
     this.switchBoard.getBand(this.jobBandArray)

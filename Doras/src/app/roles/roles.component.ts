@@ -23,6 +23,9 @@ export class RolesComponent implements OnInit {
   public jobBandArray: any[];
   public jobRole: any[];
   public otherBands: any[];
+  public firstCompetency: Competency[];
+  public secondCompetency: Competency[];
+  public thirdCompetency: Competency[];
 
   constructor(private data: DataService, private switchBoard: SwitchBoardService, public dialog: MatDialog, private config: NgbCarouselConfig) {
   }
@@ -35,6 +38,7 @@ export class RolesComponent implements OnInit {
   subJobRole: Subscription
   subBand: Subscription
   subOtherBand: Subscription
+  subFirstComp: Subscription
   ngOnInit() {
     this.subJobRole = this.switchBoard.job$.subscribe((c) => {
       this.jobRole = c;
@@ -47,6 +51,8 @@ export class RolesComponent implements OnInit {
     this.subOtherBand = this.switchBoard.otherBand$.subscribe((c) => {
       this.otherBands = c;
     });
+
+
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
@@ -63,6 +69,17 @@ export class RolesComponent implements OnInit {
         this.pageCount++;
       }
     }
+    this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+      this.firstCompetency = c;
+    })
+
+    this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+      this.secondCompetency = c;
+    })
+
+    this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+      this.thirdCompetency = c;
+    })
 }
 
 

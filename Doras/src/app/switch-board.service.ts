@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { Capability } from './models/capability';
 import { JobFamily } from './models/jobFamily';
 import { Job } from './models/job';
+import { Competency } from './models/Competency';
 
 @Injectable({
   providedIn: 'root'
