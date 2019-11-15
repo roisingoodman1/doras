@@ -13,6 +13,8 @@ import { Training } from '../models/training';
 
 
 import { SwitchBoardService } from '../switch-board.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CapabilityLeadsComponent } from '../capability-leads/capability-leads.component';
 import { Competency } from '../models/Competency';
 import { BandCompetenciesComponent } from '../band-competencies/band-competencies.component';
 
@@ -43,10 +45,18 @@ export class RolesComponent implements OnInit {
 
   constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog) { }
 
+  openCapLeadDialog(): void {
+    this.dialog.open(CapabilityLeadsComponent)
+  }
+  
   open(data: any[], component: any): void {
     this.dialog.open(component, {
       data: { data: data }
     });
+  }
+  
+  openCapLead() {
+    this.openCapLeadDialog()
   }
 
   ngOnInit() {
@@ -81,8 +91,9 @@ export class RolesComponent implements OnInit {
       }
     }
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
       this.firstJob = c;
+      console.log(this.firstJob)
       if (!this.firstJob[0]) {
         this.firstJob.push(null);
       }
@@ -93,7 +104,7 @@ export class RolesComponent implements OnInit {
       } catch {}
     })
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
       this.secondJob = c;
       if (!this.secondJob[0]) {
         this.secondJob.push(null);
@@ -104,7 +115,7 @@ export class RolesComponent implements OnInit {
       })
     } catch {}
   })
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
       this.thirdJob = c;
       if (!this.thirdJob[0]) {
         this.thirdJob.push(null);
@@ -128,6 +139,7 @@ export class RolesComponent implements OnInit {
     })
 
 }
+
 
   openDialog(component: string, type: string) {
     switch (component) {

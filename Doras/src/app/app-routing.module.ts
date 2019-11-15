@@ -8,8 +8,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { AdminComponent } from './admin/admin.component';
+import { AddCapabilityComponent } from './add-capability/add-capability.component';
+import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 import { SearchComponent } from './search/search.component'
-
 
 const routes: Routes = [
   {
@@ -34,7 +35,9 @@ const routes: Routes = [
   },
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: '', redirectTo: '/admin', pathMatch: 'full' }
+      { path: '', redirectTo: '/admin', pathMatch: 'full' },
+      { path: 'addCapability', component: AddCapabilityComponent },
+      { path: 'addJobRoles', component: AddJobRoleComponent}
     ]
   },
   { path: '**', component: PageNotFoundComponent }
@@ -42,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, {enableTracing: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

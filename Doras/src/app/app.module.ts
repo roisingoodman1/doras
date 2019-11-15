@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
 import { RolesComponent } from './roles/roles.component';
 import { TrainingPopupComponent } from './training-popup/training-popup.component';
+import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
+import { CapabilityLeadsComponent } from './capability-leads/capability-leads.component'
 import { ComparePageComponent } from './compare-page/compare-page.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
@@ -21,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpecificationComponent } from './specification/specification.component'
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { AdminComponent } from './admin/admin.component';
+import { AddCapabilityComponent } from './add-capability/add-capability.component';
+import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 import { SearchComponent } from './search/search.component';
 import { JobRoleTitlePipe } from './search/job-role-title.pipe';
 import { SearchDetailComponent } from './search-detail/search-detail.component';
@@ -35,6 +39,7 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     RolesComponent,
     TrainingPopupComponent,
     ResponsibilitiesComponent,
+    CapabilityLeadsComponent,
     ComparePageComponent
     LoginComponent,
     MainComponent,
@@ -43,10 +48,11 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     SpecificationComponent,
     BandCompetenciesComponent,
     AdminComponent,
+    AddCapabilityComponent,
+    AddJobRoleComponent,
     SearchComponent,
     JobRoleTitlePipe,
     SearchDetailComponent
-
   ],
   imports: [
     BrowserModule,
@@ -69,6 +75,6 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent]
+  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent, ResponsibilitiesComponent, CapabilityLeadsComponent]
 })
 export class AppModule { }

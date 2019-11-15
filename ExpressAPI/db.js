@@ -36,7 +36,8 @@ exports.getBand = function(callback) {
         function(err, rows) {
             if (err) { throw err }
             callback(rows)
-        })
+        }
+    )
 }
 
 exports.getBandById = function(id, callback){
@@ -91,12 +92,22 @@ exports.getJobRoles = function(callback) {
 
 exports.getCapabilities = function(callback) {
     db.query(
-        "SELECT capName FROM Capability",
+        "SELECT capId, capName FROM Capability",
         function(err, rows) {
             if (err) { throw err }
             callback(rows)
         }
     )
+}
+
+exports.getCapLeads = function(callback){  //also returns name of capability from capability table for simplicities sake
+  db.query(
+      "SELECT CapabilityLead.leadId, CapabilityLead.capLeadName, CapabilityLead.capLeadPath, CapabilityLead.capLeadQuote, Capability.capName FROM CapabilityLead INNER JOIN Capability ON CapabilityLead.leadId = Capability.leadId",
+      function(err, rows) {
+          if(err) { throw err }
+          callback (rows)
+      }
+  )
 }
 
 exports.getJobFamily = function(callback) {
@@ -131,13 +142,53 @@ exports.getDistinct = function(callback) {
 
 exports.getJobRoleTitle = function(capId, bandId, callback) {
     db.query(
-        "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?", [bandId, capId],
+        "SELECT jId, specLink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?", [bandId, capId],
         function(err, rows) {
             if (err) { throw err }
             callback(rows)
         }
     )
 }
+
+exports.getJobTitles = function(callback){
+  db.query(
+    "SELECT title FROM Job",
+    function(err, rows) {
+      if (err){ throw err }
+      callback(rows)
+    }
+  )
+}
+
+exports.newCapability = function(capName, leadId, jfid, callback) {
+    db.query(
+        "INSERT INTO Capability (capName, leadId, jfid) VALUES (?, ?, ?)",
+        [capName, leadId, jfid],
+        function (err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.newJob = function(title, specLink, summary, responsibilites, bandId, capId, callback) {
+  db.query(
+    "INSERT INTO Job (title, specLink, summary, responsibilities, bandId, capId) VALUES (?, ?, ?, ?, ?, ?)",
+    [title, specLink, summary, responsibilites, bandId, capId],
+    function (err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
+}
+
+exports.getDuplicateJobs = function(bandId, capId, callback) {
+  db.query(
+    "SELECT jid, title FROM Job WHERE bandId = ? AND capId = ?",
+    [bandId, capId],  
+    function(err, rows) {
+      if (err) { throw err }
+      console.log(rows);
 
 exports.getTraining = function(jId, callback) {
   db.query(
@@ -156,10 +207,18 @@ exports.getCompetenciesForBand = function(bandId, callback) {
     [bandId],
     function(err, rows) {
       if (err) { throw err }
+
       callback(rows)
     }
   )
 }
+
+exports.getDistinctCapLeads = function(callback) {
+    db.query(
+        "SELECT leadId, capLeadName FROM CapabilityLead",
+        function (err, rows) {
+            if (err) { throw err }
+
 exports.getJobTitles = function(callback){
     db.query(
       "SELECT title, bandId, summary, speclink, responsibilities FROM Job",
@@ -176,6 +235,7 @@ exports.getBandById = function(id, callback){
         "select * from band where bandid = ?", [id],
         function (err, rows){
             if (err) {throw err}
+
             callback(rows)
         }
     )

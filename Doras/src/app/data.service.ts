@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Capability } from './models/capability';
-import { JobFamily } from './models/jobFamily';
-import { JobRole } from './models/jobRole';
-import { Band } from './models/Band';
-import { Observable } from 'rxjs';
-import { Job } from './models/job';
+
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Capability } from './models/capability'
+import { JobFamily } from './models/jobFamily'
+import { JobRole } from './models/jobRole'
+import { Band } from './models/Band'
+import { Observable } from 'rxjs'
+import { Job } from './models/job'
+import { CapabilityLead} from './models/capabilityLead'
 import { User } from './models/user';
 import { Training } from './models/training';
 import { Competency } from './models/Competency'
@@ -19,6 +21,10 @@ export class DataService {
 
   public getCapabilities(): Observable<Capability[]> {
     return this.http.get<Capability[]>('/api/getCapabilities/');
+  }
+
+  public getCapabilityLeads(): Observable<CapabilityLead[]>{
+    return this.http.get<CapabilityLead[]>('/api/getCapLeads');
   }
 
   public getJobFamily(): Observable<JobFamily[]> {
@@ -93,6 +99,24 @@ export class DataService {
   public authenticate(token) {
     return this.http.post('/api/authenticate/', {token});
 
+  }
+
+  public newCapability(newCapability) {
+    console.log('post')
+    return this.http.post('/api/newCapability', newCapability);
+  }
+
+  public newJob(newJob){
+    console.log('post')
+    return this.http.post('/api/newJob', newJob);
+  }
+
+  public getDuplicateJobs(bandId, capId): Observable<Job[]> {
+    return this.http.get<Job[]>('/api/getDuplicateJobs?bandId=' + bandId + '&capId=' + capId);
+  }
+
+  public getDistinctCapLeads(): Observable<CapabilityLead[]> {
+    return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
   }
 
 }
