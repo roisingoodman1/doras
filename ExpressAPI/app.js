@@ -149,6 +149,34 @@ app.get('/getDistinctCapLeads', function(req, res) {
     })
 })
 
+function getDuplicateJobs(bandId, capId, duplicateJobsReadyFn) {
+    db.getDuplicateJobs(bandId, capId, function(rows) {
+        duplicateJobs = rows
+        duplicateJobsReadyFn()
+        console.log(rows);
+    })
+    
+}
+
+app.get('/getDuplicateJobs', function(req, res) {
+    getDuplicateJobs(req.query.bandId, req.query.capId, function() {
+        res.send(duplicateJobs)
+    })
+})
+
+function newJob(title, specLink, summary, responsibilities, bandId, capId, newJobReadyFn) {
+    db.newJob(title, specLink, summary, responsibilities, bandId, capId, function(rows) {
+        x = rows
+        newJobReadyFn()
+    })
+}
+
+app.post('/newJob', function(req, res) {
+    newJob(req.body.title, req.body.specLink, req.body.summary, req.body.responsibilities, req.body.bandId, req.body.capId, function() {
+        res.send(x)
+    })
+})
+
 app.listen(8003, function() {
     console.log('Express started')
 })

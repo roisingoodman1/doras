@@ -74,6 +74,7 @@ export class RolesComponent implements OnInit {
 
     this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
       this.firstJob = c;
+      console.log(this.firstJob)
       if (!this.firstJob[0]) {
         this.firstJob.push(null);
       }
