@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
 import { RolesComponent } from './roles/roles.component';
 import { TrainingPopupComponent } from './training-popup/training-popup.component';
-import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
+import { ComparePageComponent } from './compare-page/compare-page.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -21,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpecificationComponent } from './specification/specification.component'
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { AdminComponent } from './admin/admin.component';
-
 import { SearchComponent } from './search/search.component';
 import { JobRoleTitlePipe } from './search/job-role-title.pipe';
 import { SearchDetailComponent } from './search-detail/search-detail.component';
@@ -36,6 +35,7 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     RolesComponent,
     TrainingPopupComponent,
     ResponsibilitiesComponent,
+    ComparePageComponent
     LoginComponent,
     MainComponent,
     PageNotFoundComponent,
@@ -46,6 +46,7 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     SearchComponent,
     JobRoleTitlePipe,
     SearchDetailComponent
+
   ],
   imports: [
     BrowserModule,
