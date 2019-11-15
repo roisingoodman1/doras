@@ -215,3 +215,33 @@ app.get('/competencies', function(req, res){
 app.listen(8003, function() {
     console.log('Express started')
 })
+
+function getJobTitle(jobsReadyFn) {
+    db.getJobTitles(function(rows) {
+        jobs = rows
+        jobsReadyFn()
+    })
+ }
+ app.get('/getJobTitle', function(req, res) {
+    getJobTitle( function() {
+        res.send(jobs)
+    })
+ })
+
+ function getBandById(id, bandIdReadyFn) {
+	db.getBandById(id, function(rows){
+		band = rows
+		bandIdReadyFn()
+	})
+}
+
+app.get('/getBandById/:id', function (req, res){
+	getBandById(req.params.id, function(){
+		res.send(band)
+	})
+})
+
+
+app.listen(8002, function() {
+    console.log('Express started')
+})

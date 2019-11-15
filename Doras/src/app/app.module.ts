@@ -22,6 +22,10 @@ import { SpecificationComponent } from './specification/specification.component'
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { AdminComponent } from './admin/admin.component';
 
+import { SearchComponent } from './search/search.component';
+import { JobRoleTitlePipe } from './search/job-role-title.pipe';
+import { SearchDetailComponent } from './search-detail/search-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +42,10 @@ import { AdminComponent } from './admin/admin.component';
     ForgotPasswordComponent,
     SpecificationComponent,
     BandCompetenciesComponent,
-    AdminComponent
+    AdminComponent,
+    SearchComponent,
+    JobRoleTitlePipe,
+    SearchDetailComponent
   ],
   imports: [
     BrowserModule,
