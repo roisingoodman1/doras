@@ -12,7 +12,6 @@ export class ResponsibilitiesComponent {
 
   constructor(public dialogRef: MatDialogRef<ResponsibilitiesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Job) {
-      console.log(data)
   }
 
   onNoClick(): void {
