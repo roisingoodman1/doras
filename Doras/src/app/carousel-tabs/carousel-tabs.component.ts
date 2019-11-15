@@ -57,20 +57,20 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
       sameValue = initialArray[i][id] === initialArray[i+1][id];
     }
   }
-  return tempArray;
+  return tempArray
  }
 
  getBand() {
   this.data.getBand().subscribe(c => {
     this.bands = c.reverse();
-    this.jobBandArray = this.splitIntoSubArrays(this.bands, "3");
+    this.jobBandArray = this.splitIntoSubArrays(this.bands, "3")
   });
  }
  getJobRoleBandId() {
   this.data.getJobRole().subscribe((c) => {
-    this.otherBandArray = c;
-    this.otherBandArray.sort((prev, next) => (prev.bandId > next.bandId) ? 1 : -1);
-    this.otherBandArray = this.split("bandId", this.otherBandArray);
+    this.otherBandArray = c
+    this.otherBandArray.sort((a, b) => (a.bandId > b.bandId) ? 1 : -1)
+    this.otherBandArray = this.split("bandId", this.otherBandArray)
   })
  }
 
@@ -96,8 +96,8 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
         }
       }
       (this.roles[event.index].sort((prev, next) => (prev.bandId > next.bandId) ? 1 : -1)).reverse();
-      this.otherBandArray = this.splitIntoSubArrays(this.otherBandArray.reverse(), "3");
-      this.roles[event.index] = this.splitIntoSubArrays(this.roles[event.index], "3");
+      this.otherBandArray = this.splitIntoSubArrays(this.otherBandArray.reverse(), "3")
+      this.roles[event.index] = this.splitIntoSubArrays(this.roles[event.index], "3")
 
     }
     this.switchBoard.getJob(this.roles[event.index]);
