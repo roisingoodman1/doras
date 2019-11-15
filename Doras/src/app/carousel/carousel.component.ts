@@ -9,7 +9,7 @@ import { SwitchBoardService } from '../switch-board.service';
   templateUrl: './carousel.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./carousel.component.css'],
-  
+
 })
 export class CarouselComponent implements OnInit {
   public jobFamily: JobFamily[];

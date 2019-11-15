@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbSlideEvent, NgbSlideEventSource, NgbSlideEventDirection } from '@ng-bootstrap/ng-bootstrap';
+import { NgbSlideEvent, NgbSlideEventSource, NgbSlideEventDirection, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../data.service';
 import { Band } from '../models/Band';
 import { DataTransferService } from '../data-transfer.service';
@@ -24,7 +24,7 @@ export class RolesComponent implements OnInit {
   public bands: Band[];
   public jobBandArray: any[];
   public pageCount = 0;
-  public firstJob: Job[];
+  public firstJob: Job[] = [];
   public secondJob: Job[];
   public thirdJob: Job[];
   public firstTraining: Training[];
@@ -36,8 +36,9 @@ export class RolesComponent implements OnInit {
   public firstSameJob: Job[];
   public secondSameJob: Job[];
   public thirdSameJob: Job[];
+  public cap: Capability;
 
-  constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog) {
+  constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog, private config: NgbCarouselConfig) {
   }
 
   open(data: any[], component: any): void {
@@ -47,7 +48,8 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initialise()
+    this.cap = this.dataTransferService.getCapability();
+    this.initialise(true)
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
@@ -65,12 +67,11 @@ export class RolesComponent implements OnInit {
         this.pageCount++;
       }
     }
-
-    this.initialise()
+    this.initialise(false)
 }
 
-initialise() {
-  if(!this.jobBandArray){
+initialise(first: boolean) {
+  if(first){
     this.data.getBand().subscribe(c => {
       this.bands = c.reverse();
       const tempArray: any[] = [];
@@ -84,32 +85,18 @@ initialise() {
       }
 
       this.jobBandArray = tempArray;
-    });
-  }
-  this.loadPage();
-}
+      this.loadPage();
 
-refresh(){
-  if (this.firstJob){
-    this.firstJob.pop()
-  }
-  if (this.secondJob){
-    this.secondJob.pop()
-  }
-  if (this.thirdJob){
-    this.thirdJob.pop()
+    });
+  } else {
+  this.loadPage();
   }
 }
 
 loadPage() {
-  let cap: Capability = this.dataTransferService.getCapability();
-  // if (!cap) {
-  //   console.log(cap)
-  //   cap.capId = 1
-  // }
-  this.data.getJobRole(cap.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+  console.log(this.cap)
+  this.data.getJobRole(this.cap.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
     this.firstJob = c;
-    // console.log(this.firstJob)
     if (!this.firstJob[0]) {
       this.firstJob.push(null);
     } else {
@@ -119,7 +106,7 @@ loadPage() {
     }
   })
 
-  this.data.getJobRole(cap.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+  this.data.getJobRole(this.cap.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
     this.secondJob = c;
     if (!this.secondJob[0]) {
       this.secondJob.push(null);
@@ -129,7 +116,7 @@ loadPage() {
     })
   }
 })
-  this.data.getJobRole(cap.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+  this.data.getJobRole(this.cap.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
     this.thirdJob = c;
     if (!this.thirdJob[0]) {
       this.thirdJob.push(null);

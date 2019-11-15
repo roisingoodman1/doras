@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataService } from './../data.service';
 import { Capability } from '../models/capability';
 import { SwitchBoardService } from '../switch-board.service';
 import { Subscription } from 'rxjs';
-import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { DataTransferService } from '../data-transfer.service';
 import { MatTabChangeEvent } from '@angular/material';
 import { RolesComponent} from '../roles/roles.component'
@@ -24,8 +22,8 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subCapabilities = this.switchBoard.capability$.subscribe((c) => {
       this.capabilities = c;
+      this.dataTransferService.setCapability(this.capabilities[0])
     });
-
  }
 
   ngOnDestroy(): void {
@@ -33,8 +31,8 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
  }
 
   onTabChange(event: MatTabChangeEvent) {
-    this.dataTransferService.setCapability(this.capabilities[event.index]);
-    this.rolesComponent.initialise()
+    this.dataTransferService.setCapability(this.capabilities[event.index])
+    this.rolesComponent.initialise(false)
  }
 
 }
