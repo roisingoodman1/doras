@@ -23,7 +23,7 @@ export class DeleteCapabilityComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid && this.invalid !== true) {
       this.data.deleteCapability(form.value.cap).subscribe((c) => {
-        window.location.reload();
+        this.ngOnInit();
       });
     }
   }

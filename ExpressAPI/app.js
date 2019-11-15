@@ -182,7 +182,7 @@ function newCapability(capName, leadId, jfid, newCapabilityReadyFn) {
     })
 }
 
-app.post('/newCapability', function(req, res) {
+app.post('/capabilities', function(req, res) {
     newCapability(req.body.capName, req.body.leadId, req.body.jfid, function() {
         res.send(x)
     })
@@ -247,7 +247,7 @@ function getCapabilities(getCapabilitiesReadyFn) {
     })
 }
 
-app.get('/getCapabilities', function(req, res) {
+app.get('/capabilities', function(req, res) {
     getCapabilities(function(rows) {
         res.send(caps)
     })
