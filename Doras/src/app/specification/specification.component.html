@@ -4,12 +4,12 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" mat-dialog-content *ngFor="let job of data.data">
-    Title: {{ job.title }}
+  <div class="modal-body" mat-dialog-content>
+    Title: {{ data.data.title }}
 	<hr>
-	Summary: {{ job.summary }}
+	Summary: {{ data.data.summary }}
 	<hr>
-	Spec link: <a href="{{ job.speclink }}">Click here</a>
+	Spec link: <a href="{{ data.data.speclink }}">Click here</a>
   </div>
   <div class="modal-footer" mat-dialog-actions>
     <button type="button" class="btn btn-outline-dark" (click)="onExit()">Close</button>

@@ -8,9 +8,9 @@
               <th class="th1" scope="col">
               <mat-card>
                 <h5 class="clickableHeader" (click)="openDialog('bandComp', 'band1')"><u>{{jobBandArray[i][0].bandName}}</u></h5>
-                <a *ngFor="let job1 of firstJob">
-                  <mat-card-title *ngIf="job1; else notShowBlock">{{job1.title}}</mat-card-title>
-                  <div *ngIf="job1;">
+                <a>
+                  <mat-card-title>{{jobRole[i][0].title}}</mat-card-title>
+                  <div>
                   <mat-card-content>
                     <img title="Responsibilities" src='assets/responsibilities.png' onmouseover="this.src='assets/responsibilities_hover.png';" onmouseout="this.src='assets/responsibilities.png';"class="topLeftIcon" (click)="openDialog('responsibility', 'job1')"/>
                     <img title="Training" src='assets/training.png' onmouseover="this.src='assets/training_hover.png';" onmouseout="this.src='assets/training.png';" class="topRightIcon" (click)="openDialog('training', 'training1')"/>
@@ -25,9 +25,9 @@
               <th class="th1" scope="col">
               <mat-card>
                 <h5 class="clickableHeader" (click)="openDialog('bandComp', 'band2')"><u>{{jobBandArray[i][1].bandName}}</u></h5>
-                <a *ngFor="let job2 of secondJob">
-                  <mat-card-title *ngIf="job2; else notShowBlock">{{job2.title}}</mat-card-title>
-                  <div *ngIf="job2;">
+                <a>
+                  <mat-card-title>{{jobRole[i][1].title}}</mat-card-title>
+                  <div>
                   <mat-card-content>
                     <img title="Responsibilities" src='assets/responsibilities.png' onmouseover="this.src='assets/responsibilities_hover.png';" onmouseout="this.src='assets/responsibilities.png';"class="topLeftIcon" (click)="openDialog('responsibility', 'job2')"/>
                     <img title="Training" src='assets/training.png' onmouseover="this.src='assets/training_hover.png';" onmouseout="this.src='assets/training.png';" class="topRightIcon" (click)="openDialog('training', 'training2')"/>
@@ -42,9 +42,9 @@
               <th class="th1" scope="col">
               <mat-card>
                 <h5 class="clickableHeader" (click)="openDialog('bandComp', 'band3')"><u>{{jobBandArray[i][2].bandName}}</u></h5>
-                <a *ngFor="let job3 of thirdJob">
-                  <mat-card-title *ngIf="job3; else notShowBlock">{{job3.title}}</mat-card-title>
-                  <div *ngIf="job3;">
+                <a>
+                  <mat-card-title>{{jobRole[i][2].title}}</mat-card-title>
+                  <div>
                   <mat-card-content>
                     <img title="Responsibilities" src='assets/responsibilities.png' onmouseover="this.src='assets/responsibilities_hover.png';" onmouseout="this.src='assets/responsibilities.png';"class="topLeftIcon" (click)="openDialog('responsibility', 'job3')"/>
                     <img title="Training" src='assets/training.png' onmouseover="this.src='assets/training_hover.png';" onmouseout="this.src='assets/training.png';" class="topRightIcon" (click)="openDialog('training', 'training3')"/>

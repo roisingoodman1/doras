@@ -122,15 +122,15 @@ app.get('/distinctJobFamilies', function(req, res) {
     })
 })
 
-function getJobRoleTitle(capId, bandId, getRoleReadyfn) {
-    db.getJobRoleTitle(capId, bandId, function(rows) {
+function getJobRoleTitle(getRoleReadyfn) {
+    db.getJobRoleTitle(function(rows) {
         title = rows
         getRoleReadyfn()
     })
 }
 
 app.get('/jobs', function(req, res) {
-    getJobRoleTitle(req.query.capabilityId, req.query.bandId, function() {
+    getJobRoleTitle(function() {
         res.send(title)
     })
 })

@@ -20,7 +20,22 @@ export class SwitchBoardService {
 
   public getJob(job: Job[]) {
     this.jobWatcher.next(job);
-}
+  }
+
+  public bandWatcher = new Subject<any[]>();
+  public band$ = this.bandWatcher.asObservable();
+
+  public getBand(band: any[]) {
+    this.bandWatcher.next(band);
+  }
+
+  public otherBandWatcher = new Subject<any[]>();
+  public otherBand$ = this.otherBandWatcher.asObservable();
+
+  public getOtherBand(otherBand: any[]) {
+    this.otherBandWatcher.next(otherBand);
+  }
+
 
   constructor() { }
 }

@@ -37,8 +37,8 @@ export class DataService {
     return this.http.get<JobFamily[]>('api/distinctJobFamilies');
   }
 
-  public getJobRole(capId, bandId): Observable<Job[]> {
-    return this.http.get<Job[]>('api/jobs/?capabilityId='+capId+'&'+'bandId='+bandId);
+  public getJobRole(): Observable<Job[]> {
+    return this.http.get<Job[]>('api/jobs');
   }
 
   public getUser(username): Observable<User> {
@@ -48,7 +48,6 @@ export class DataService {
   public getCompetenciesBand(bandId): Observable<Competency[]> {
     return this.http.get<Competency[]>('/api/competencies/?bandId=' + bandId);
   }
-
 
   public getTrainingByJid(jId): Observable<Training[]> {
     return this.http.get<Training[]>('/api/trainingByJobId/?jobId=' + jId);

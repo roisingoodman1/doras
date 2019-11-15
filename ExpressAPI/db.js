@@ -79,9 +79,9 @@ exports.getDistinct = function(callback) {
     )
 }
 
-exports.getJobRoleTitle = function(capId, bandId, callback) {
+exports.getJobRoleTitle = function(callback) {
     db.query(
-        "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?", [bandId, capId],
+        "SELECT jid, speclink, bandId, summary, title, responsibilities, title, capId FROM Job",
         function(err, rows) {
             if (err) { throw err }
             callback(rows)
@@ -100,7 +100,7 @@ exports.getTraining = function(jId, callback) {
   )
 }
 
-exports.getCompetenciesForBand = function(bandId, callback) {
+exports.getCompetenciesForBand = function(callback) {
   db.query(
     "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",
     [bandId],
