@@ -26,6 +26,7 @@ import { AddCapabilityComponent } from './add-capability/add-capability.componen
 import { DeleteCapabilityComponent } from './delete-capability/delete-capability.component';
 import { AddJobFamilyComponent } from './add-job-family/add-job-family.component';
 import { EditCapabilityComponent } from './edit-capability/edit-capability.component';
+import { EditJobFamilyComponent } from './edit-job-family/edit-job-family.component';
 import { DeleteJobFamilyComponent } from './delete-job-family/delete-job-family.component';
 
 
@@ -50,6 +51,7 @@ import { DeleteJobFamilyComponent } from './delete-job-family/delete-job-family.
     SpecificationComponent,
     BandCompetenciesComponent,
     EditCapabilityComponent,
+    EditJobFamilyComponent,
     DeleteJobFamilyComponent,
     SpecificationComponent,
     BandCompetenciesComponent

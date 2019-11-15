@@ -91,8 +91,20 @@ export class DataService {
     return this.http.put('/api/editCapability', updatedCap);
   }
 
+  public editJobFamily(updatedJf) {
+    return this.http.put('/api/editJobFamily', updatedJf);
+  }
+
   public getCapabilityById(capId) {
     return this.http.get<Capability[]>('/api/getCapability/' + capId);
+  }
+
+  public getJobFamilyById(jfid) {
+    return this.http.get<JobFamily>('/api/getJobFamilyByID/' + jfid);
+  }
+
+  public getJobRolesByCapId(capId) {
+    return this.http.get<Job[]>('/api/getJobRolesByCapId?capId=' + capId);
   }
 
 }

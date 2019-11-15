@@ -10,6 +10,7 @@ import { AddCapabilityComponent } from './add-capability/add-capability.componen
 import { DeleteCapabilityComponent } from './delete-capability/delete-capability.component';
 import { AddJobFamilyComponent } from './add-job-family/add-job-family.component';
 import { EditCapabilityComponent } from './edit-capability/edit-capability.component';
+import { EditJobFamilyComponent } from './edit-job-family/edit-job-family.component';
 import { DeleteJobFamilyComponent } from './delete-job-family/delete-job-family.component';
 
 const routes: Routes = [
@@ -39,7 +40,9 @@ const routes: Routes = [
       { path: 'deleteCapability', component: DeleteCapabilityComponent },
       { path: 'addJobFamily', component: AddJobFamilyComponent }
       { path: 'editCapability', component: EditCapabilityComponent },
-      { path: 'deleteJobFamily', component: DeleteJobFamilyComponent }
+      { path: 'editJobFamily', component: EditJobFamilyComponent },
+      { path: 'deleteJobFamily', component: DeleteJobFamilyComponent },
+      { path: '**', component: PageNotFoundComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }
