@@ -6,5 +6,5 @@ export class JobRole {
     responsibilities: string;
     bandId: string;
     jobFamilyId: string;
-    capId?: string;
+    capId: number;
 }
