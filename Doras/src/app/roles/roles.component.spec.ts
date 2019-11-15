@@ -7,6 +7,8 @@ import { ResponsibilitiesComponent } from '../responsibilities/responsibilities.
 import { SpecificationComponent } from '../specification/specification.component';
 import { Competency } from '../models/Competency';
 
+
+
 describe('RolesComponent', () => {
   let component: RolesComponent;
   let fixture: ComponentFixture<RolesComponent>;
@@ -61,5 +63,38 @@ describe('RolesComponent', () => {
     component.openDialog('spec2', 'spec');
     component.openDialog('spec3', 'spec');
     verify(component.open(anything(), SpecificationComponent)).thrice();
+  });
+    component.onSlide(slideLeft);
+    expect(component.firstJob[0]).toEqual(job);
+  });
+
+  it('should update training info on slide', () => {
+    const slideLeft: NgbSlideEvent = {
+      prev: 'ngb-slide-10',
+      current: 'ngb-slide-9',
+      paused: false,
+      direction: NgbSlideEventDirection.LEFT
+    };
+
+    const competency: Competency = {
+      name: '',
+      description: ''
+    };
+    component.onSlide(slideLeft);
+    expect(component.firstCompetency[0]).toEqual(competency);
+  });
+
+  it('should open responsibilities modal', () => {
+    component.openFirstResponsibility();
+    component.openSecondResponsibility();
+    component.openThirdResponsibility();
+    verify(component.openJobDialog(anything(), ResponsibilitiesComponent)).thrice();
+  });
+
+  it('should open specification modal', () => {
+    component.openFirstSpec();
+    component.openSecondSpec();
+    component.openThirdSpec();
+    verify(component.openJobDialog(anything(), SpecificationComponent)).thrice();
   });
 });

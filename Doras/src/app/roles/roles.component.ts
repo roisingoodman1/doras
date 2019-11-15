@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbSlideEvent, NgbSlideEventSource, NgbSlideEventDirection } from '@ng-bootstrap/ng-bootstrap';
+import { NgbSlideEvent, NgbSlideEventSource, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../data.service';
-import { Band } from '../models/Band';
-import { DataTransferService } from '../data-transfer.service';
-import { Capability } from '../models/capability';
 import { Job } from '../models/job';
 import { ResponsibilitiesComponent } from '../responsibilities/responsibilities.component'
 import { MatDialog } from '@angular/material/dialog';
@@ -15,6 +12,9 @@ import { CapabilityLeadsComponent } from '../capability-leads/capability-leads.c
 
 import { Competency } from '../models/Competency';
 import { BandCompetenciesComponent } from '../band-competencies/band-competencies.component';
+import { OtherJobsComponent } from '../other-jobs/other-jobs.component'
+import { SwitchBoardService } from '../switch-board.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-roles',
@@ -22,51 +22,68 @@ import { BandCompetenciesComponent } from '../band-competencies/band-competencie
   styleUrls: ['./roles.component.css']
 })
 export class RolesComponent implements OnInit {
-  div: HTMLElement;
-  public bands: Band[];
-  public jobBandArray: any[];
   public pageCount = 0;
-  public firstJob: Job[];
-  public secondJob: Job[];
-  public thirdJob: Job[];
-  public firstTraining: Training[];
-  public secondTraining: Training[];
-  public thirdTraining: Training[];
+  public jobBandArray: any[];
+  public jobRole: any[];
+  public otherBands: any[];
   public firstCompetency: Competency[];
   public secondCompetency: Competency[];
   public thirdCompetency: Competency[];
+  public firstTraining: Training[];
+  public secondTraining: Training[];
+  public thirdTraining: Training[];
 
-
-  get capability(): Capability | null {
-    return this.dataTransferService.capability;
+  constructor(private data: DataService, private switchBoard: SwitchBoardService, public dialog: MatDialog, private config: NgbCarouselConfig) {
   }
-
-  constructor(private data: DataService, private dataTransferService: DataTransferService, public dialog: MatDialog) { }
 
   open(data: any[], component: any): void {
     this.dialog.open(component, {
-      data: { data: data }
+      data: { body: data }
     });
   }
-
+  subJobRole: Subscription
+  subBand: Subscription
+  subOtherBand: Subscription
+  subFirstComp: Subscription
   ngOnInit() {
-    this.data.getBand().subscribe(c => {
-      this.bands = c.reverse();
-
-      const tempArray: any[] = [];
-      const step = 3;
-      let nextSplitValue: number;
-      const length: number = this.bands.length;
-      for (let i = 0; i < length; i += step) {
-        nextSplitValue = i + 3;
-        tempArray.push(this.bands.slice(i, nextSplitValue));
-      }
-      this.jobBandArray = tempArray;
+    this.subJobRole = this.switchBoard.job$.subscribe((c) => {
+      this.jobRole = c;
     });
+
+    this.subBand = this.switchBoard.band$.subscribe((c) => {
+      this.jobBandArray = c;
+    });
+
+    this.subOtherBand = this.switchBoard.otherBand$.subscribe((c) => {
+      this.otherBands = c;
+    });
+
+    this.data.getCompetenciesBand(9).subscribe(c => {
+      this.firstCompetency = c;
+    })
+
+    this.data.getCompetenciesBand(8).subscribe(c => {
+      this.secondCompetency = c;
+    })
+
+    this.data.getCompetenciesBand(7).subscribe(c => {
+      this.thirdCompetency = c;
+    })
+
+    this.data.getTrainingByJid(9).subscribe(c => {
+      this.firstTraining = c;
+    })
+
+    this.data.getTrainingByJid(8).subscribe(c => {
+      this.secondTraining = c;
+    })
+
+    this.data.getTrainingByJid(7).subscribe(c => {
+      this.thirdTraining = c;
+    })
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
-
     if (slideEvent.source === NgbSlideEventSource.ARROW_LEFT) {
       if (this.pageCount === 0) {
         this.pageCount = 2;
@@ -81,40 +98,6 @@ export class RolesComponent implements OnInit {
       }
     }
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
-      this.firstJob = c;
-      if (!this.firstJob[0]) {
-        this.firstJob.push(null);
-      }
-      try {
-        this.data.getTrainingByJid(this.firstJob[0].jid).subscribe(c => {
-          this.firstTraining = c;
-        })
-      } catch {}
-    })
-
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
-      this.secondJob = c;
-      if (!this.secondJob[0]) {
-        this.secondJob.push(null);
-      }
-      try {
-      this.data.getTrainingByJid(this.secondJob[0].jid).subscribe(c => {
-        this.secondTraining = c;
-      })
-    } catch {}
-  })
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
-      this.thirdJob = c;
-      if (!this.thirdJob[0]) {
-        this.thirdJob.push(null);
-      }
-      try {
-      this.data.getTrainingByJid(this.thirdJob[0].jid).subscribe(c => {
-        this.thirdTraining = c;
-      })
-    } catch {}
-  })
     this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
       this.firstCompetency = c;
     })
@@ -127,20 +110,33 @@ export class RolesComponent implements OnInit {
       this.thirdCompetency = c;
     })
 
+    this.data.getTrainingByJid(this.jobRole[this.pageCount][0].jid).subscribe(c => {
+      this.firstTraining = c;
+    })
+
+    this.data.getTrainingByJid(this.jobRole[this.pageCount][1].jid).subscribe(c => {
+      this.secondTraining = c;
+    })
+
+    this.data.getTrainingByJid(this.jobRole[this.pageCount][2].jid).subscribe(c => {
+      this.thirdTraining = c;
+    })
 }
+
+
 
   openDialog(component: string, type: string) {
     switch (component) {
       case "responsibility":
         switch (type) {
           case "job1":
-            this.open(this.firstJob, ResponsibilitiesComponent);
+            this.open(this.jobRole[this.pageCount][0], ResponsibilitiesComponent);
             break;
           case "job2":
-            this.open(this.secondJob, ResponsibilitiesComponent);
+            this.open(this.jobRole[this.pageCount][1], ResponsibilitiesComponent);
             break;
           case "job3":
-            this.open(this.thirdJob, ResponsibilitiesComponent);
+            this.open(this.jobRole[this.pageCount][2], ResponsibilitiesComponent);
             break;
         }
         break;
@@ -160,13 +156,13 @@ export class RolesComponent implements OnInit {
       case "spec":
           switch (type) {
             case "spec1":
-              this.open(this.firstJob, SpecificationComponent);
+              this.open(this.jobRole[this.pageCount][0], SpecificationComponent);
               break;
             case "spec2":
-              this.open(this.secondJob, SpecificationComponent);
+              this.open(this.jobRole[this.pageCount][1], SpecificationComponent);
               break;
             case "spec3":
-              this.open(this.thirdJob, SpecificationComponent);
+              this.open(this.jobRole[this.pageCount][2], SpecificationComponent);
               break;
           }
         break;
@@ -183,6 +179,19 @@ export class RolesComponent implements OnInit {
               break;
           }
         break;
+      case "sameBand":
+        switch (type) {
+          case "band1":
+            this.open(this.otherBands[this.pageCount][0], OtherJobsComponent);
+            break;
+          case "band2":
+            this.open(this.otherBands[this.pageCount][1], OtherJobsComponent);
+            break;
+          case "band3":
+            this.open(this.otherBands[this.pageCount][2], OtherJobsComponent);
+            break;
+        }
+      break;
     }
   }
 }

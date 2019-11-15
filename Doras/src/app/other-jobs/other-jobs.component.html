@@ -1,15 +1,11 @@
-  <div class="modal-header">
-    <h3 class="modal-title" id="modal-basic-title" mat-dialog-title>Specification</h3>
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-basic-title" mat-dialog-title>Other jobs on this band</h3>
     <button type="button" class="close" aria-label="Close" (click)="onExit()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" mat-dialog-content>
-    Title: {{ data.body.title }}
-	<hr>
-	Summary: {{ data.body.summary }}
-	<hr>
-	Spec link: <a href="{{ data.body.speclink }}">Click here</a>
+  <div class="modal-body" mat-dialog-content *ngFor="let job of data.body">
+      <li> {{ job.title }}</li>
   </div>
   <div class="modal-footer" mat-dialog-actions>
     <button type="button" class="btn btn-outline-dark" (click)="onExit()">Close</button>

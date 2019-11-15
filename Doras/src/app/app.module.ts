@@ -25,7 +25,9 @@ import { SpecificationComponent } from './specification/specification.component'
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { ErrorInterceptor} from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { OtherJobsComponent } from './other-jobs/other-jobs.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
     EditCapabilityComponent,
     SpecificationComponent,
     BandCompetenciesComponent
+    OtherJobsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,9 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
     FormsModule,
     NgbModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [{
     provide: MatDialogRef,
@@ -69,6 +74,6 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent]
+  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent, OtherJobsComponent]
 })
 export class AppModule { }
