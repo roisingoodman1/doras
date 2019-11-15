@@ -18,7 +18,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   public getCapabilities(): Observable<Capability[]> {
-    return this.http.get<Capability[]>('/api/getCapabilities');
+    return this.http.get<Capability[]>('/api/capabilities');
   }
 
   public getCapabilityLeads(): Observable<CapabilityLead[]>{

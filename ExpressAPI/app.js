@@ -83,7 +83,6 @@ app.get('/band', function(req, res) {
     })
 })
 
-
 function getCapLeads(capLeadsReadyFn) {
       db.getCapLeads(function(rows) {
           capLeads = rows
