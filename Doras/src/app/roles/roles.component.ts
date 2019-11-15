@@ -26,6 +26,9 @@ export class RolesComponent implements OnInit {
   public firstCompetency: Competency[];
   public secondCompetency: Competency[];
   public thirdCompetency: Competency[];
+  public firstTraining: Training[];
+  public secondTraining: Training[];
+  public thirdTraining: Training[];
 
   constructor(private data: DataService, private switchBoard: SwitchBoardService, public dialog: MatDialog, private config: NgbCarouselConfig) {
   }
@@ -52,7 +55,29 @@ export class RolesComponent implements OnInit {
       this.otherBands = c;
     });
 
+    this.data.getCompetenciesBand(9).subscribe(c => {
+      this.firstCompetency = c;
+    })
 
+    this.data.getCompetenciesBand(8).subscribe(c => {
+      this.secondCompetency = c;
+    })
+
+    this.data.getCompetenciesBand(7).subscribe(c => {
+      this.thirdCompetency = c;
+    })
+
+    this.data.getTrainingByJid(9).subscribe(c => {
+      this.firstTraining = c;
+    })
+
+    this.data.getTrainingByJid(8).subscribe(c => {
+      this.secondTraining = c;
+    })
+
+    this.data.getTrainingByJid(7).subscribe(c => {
+      this.thirdTraining = c;
+    })
   }
 
   onSlide(slideEvent: NgbSlideEvent) {
@@ -79,6 +104,18 @@ export class RolesComponent implements OnInit {
 
     this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
       this.thirdCompetency = c;
+    })
+
+    this.data.getTrainingByJid(this.jobRole[this.pageCount][0].jid).subscribe(c => {
+      this.firstTraining = c;
+    })
+
+    this.data.getTrainingByJid(this.jobRole[this.pageCount][1].jid).subscribe(c => {
+      this.secondTraining = c;
+    })
+
+    this.data.getTrainingByJid(this.jobRole[this.pageCount][2].jid).subscribe(c => {
+      this.thirdTraining = c;
     })
 }
 

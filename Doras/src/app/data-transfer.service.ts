@@ -9,7 +9,6 @@ export class DataTransferService {
   constructor() { }
 
   setCapability(capability: Capability) {
-    // console.log(capability)
     this.capability = capability;
   }
 
