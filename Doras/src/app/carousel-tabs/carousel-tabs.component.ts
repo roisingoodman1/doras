@@ -25,60 +25,64 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
 
   subCapabilities: Subscription;
   ngOnInit(): void {
-    this.subCapabilities = this.switchBoard.capability$.subscribe((c) => {
-      this.capabilities = c;
-    });
-    this.data.getJobRole().subscribe((c) => {
-      this.roles = c
-      this.roles.sort((a, b) => (a.capId > b.capId) ? 1 : (a.capId === b.capId) ? ((a.bandId < b.bandId) ? 1 : -1) : -1 )
-      const tempArray: any[] = []
-      let previousSplitValue: number = 0
-      const length: number = this.roles.length
-      let sameCapId: boolean = true
+    this.getCapabilities()
+    this.getBand()
+    this.getJobRoleBandId()
+    this.getJobRoleCapId()
+ }
 
-      for (let i = 0; i < length; i++) {
-        if (!sameCapId){
-          tempArray.push(this.roles.slice(previousSplitValue, i))
-          previousSplitValue = i
-        } try {
-          if (this.roles[i].capId === this.roles[i+1].capId) {
-            sameCapId = true
-          } else {
-            sameCapId = false
-          }
-        } catch { }
+ getCapabilities() {
+  this.subCapabilities = this.switchBoard.capability$.subscribe((c) => {
+    this.capabilities = c;
+  });
+ }
+ getJobRoleCapId() {
+  this.data.getJobRole().subscribe((c) => {
+    this.roles = c
+    this.roles.sort((a, b) => (a.capId > b.capId) ? 1 : (a.capId === b.capId) ? ((a.bandId < b.bandId) ? 1 : -1) : -1 )
+    const tempArray: any[] = []
+    let previousSplitValue: number = 0
+    const length: number = this.roles.length
+    let sameCapId: boolean = true
+
+    for (let i = 0; i < length; i++) {
+      if (!sameCapId){
+        tempArray.push(this.roles.slice(previousSplitValue, i))
+        previousSplitValue = i
+      } if (i+1 < length) {
+          sameCapId = this.roles[i].capId === this.roles[i+1].capId
       }
-      this.roles = tempArray
-    })
+  }
+    this.roles = tempArray
+  })
+ }
 
-    this.data.getBand().subscribe(c => {
-      this.bands = c.reverse();
-      this.jobBandArray = this.splitInto3(this.bands)
-    });
+ getBand() {
+  this.data.getBand().subscribe(c => {
+    this.bands = c.reverse();
+    this.jobBandArray = this.splitInto3(this.bands)
+  });
+ }
+ getJobRoleBandId() {
+  this.data.getJobRole().subscribe((c) => {
+    this.otherBandArray = c
+    this.otherBandArray.sort((a, b) => (a.bandId > b.bandId) ? 1 : -1)
+    const tempArray: any[] = []
+    let previousSplitValue: number = 0
+    const length: number = this.otherBandArray.length
+    let sameBandId: boolean = true
 
-    this.data.getJobRole().subscribe((c) => {
-      this.otherBandArray = c
-      this.otherBandArray.sort((a, b) => (a.bandId > b.bandId) ? 1 : -1)
-      const tempArray: any[] = []
-      let previousSplitValue: number = 0
-      const length: number = this.otherBandArray.length
-      let sameBandId: boolean = true
-
-      for (let i = 0; i < length; i++) {
-        if (!sameBandId){
-          tempArray.push(this.otherBandArray.slice(previousSplitValue, i))
-          previousSplitValue = i
-        } try {
-          if (this.otherBandArray[i].bandId === this.otherBandArray[i+1].bandId) {
-            sameBandId = true
-          } else {
-            sameBandId = false
-          }
-        } catch { tempArray.push(this.otherBandArray.slice(previousSplitValue, length))
+    for (let i = 0; i < length; i++) {
+      if (!sameBandId){
+        tempArray.push(this.otherBandArray.slice(previousSplitValue, i))
+        previousSplitValue = i
+      }
+        if(i+1 < length) {
+          sameBandId = this.otherBandArray[i].bandId === this.otherBandArray[i+1].bandId
         }
       }
-      this.otherBandArray = tempArray
-    })
+    this.otherBandArray = tempArray
+  })
  }
 
   ngOnDestroy(): void {
@@ -105,11 +109,12 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
       (this.roles[event.index].sort((a, b) => (a.bandId > b.bandId) ? 1 : -1)).reverse();
       this.otherBandArray = this.splitInto3(this.otherBandArray.reverse())
       this.roles[event.index] = this.splitInto3(this.roles[event.index])
-      
+
     }
     this.switchBoard.getJob(this.roles[event.index])
     this.switchBoard.getBand(this.jobBandArray)
     this.switchBoard.getOtherBand(this.otherBandArray)
+
  }
 
  splitInto3(array: any[]): any[] {
