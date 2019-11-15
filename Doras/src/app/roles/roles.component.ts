@@ -35,7 +35,7 @@ export class RolesComponent implements OnInit {
 
   open(data: any[], component: any): void {
     this.dialog.open(component, {
-      data: { data: data }
+      data: { body: data }
     });
   }
   subJobRole: Subscription

@@ -39,49 +39,38 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
  getJobRoleCapId() {
   this.data.getJobRole().subscribe((c) => {
     this.roles = c
-    this.roles.sort((a, b) => (a.capId > b.capId) ? 1 : (a.capId === b.capId) ? ((a.bandId < b.bandId) ? 1 : -1) : -1 )
-    const tempArray: any[] = []
-    let previousSplitValue: number = 0
-    const length: number = this.roles.length
-    let sameCapId: boolean = true
-
-    for (let i = 0; i < length; i++) {
-      if (!sameCapId){
-        tempArray.push(this.roles.slice(previousSplitValue, i))
-        previousSplitValue = i
-      } if (i+1 < length) {
-          sameCapId = this.roles[i].capId === this.roles[i+1].capId
-      }
-  }
-    this.roles = tempArray
+    this.roles.sort((prev, next) => (prev.capId > next.capId) ? 1 : (prev.capId === next.capId) ? ((prev.bandId < next.bandId) ? 1 : -1) : -1 )
+    this.roles = this.split("capId", this.roles)
   })
+ }
+
+ split(id, initialArray) {
+   let length: number = initialArray.length
+   let sameValue: boolean = true
+   let previousSplitValue: number = 0
+   let tempArray = []
+  for (let i = 0; i < length; i++) {
+    if (!sameValue){
+      tempArray.push(initialArray.slice(previousSplitValue, i))
+      previousSplitValue = i
+    } if (i+1 < length) {
+      sameValue = initialArray[i][id] === initialArray[i+1][id]
+    }
+  }
+  return tempArray
  }
 
  getBand() {
   this.data.getBand().subscribe(c => {
     this.bands = c.reverse();
-    this.jobBandArray = this.splitInto3(this.bands)
+    this.jobBandArray = this.splitIntoSubArrays(this.bands, "3")
   });
  }
  getJobRoleBandId() {
   this.data.getJobRole().subscribe((c) => {
     this.otherBandArray = c
     this.otherBandArray.sort((a, b) => (a.bandId > b.bandId) ? 1 : -1)
-    const tempArray: any[] = []
-    let previousSplitValue: number = 0
-    const length: number = this.otherBandArray.length
-    let sameBandId: boolean = true
-
-    for (let i = 0; i < length; i++) {
-      if (!sameBandId){
-        tempArray.push(this.otherBandArray.slice(previousSplitValue, i))
-        previousSplitValue = i
-      }
-        if(i+1 < length) {
-          sameBandId = this.otherBandArray[i].bandId === this.otherBandArray[i+1].bandId
-        }
-      }
-    this.otherBandArray = tempArray
+    this.otherBandArray = this.split("bandId", this.otherBandArray)
   })
  }
 
@@ -95,20 +84,20 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
         try {
           if (this.bands[i].bandId != this.roles[event.index][i].bandId) {
             this.roles[event.index].splice(i, 0, {
-              bandId: 9-i,
+              bandId: this.jobBandArray.length-i,
               title: "No Role"
             })
           }
         } catch {
           this.roles[event.index].push({
-            bandId: 9-i,
+            bandId: this.jobBandArray.length-i,
             title: "No Role"
           })
         }
       }
-      (this.roles[event.index].sort((a, b) => (a.bandId > b.bandId) ? 1 : -1)).reverse();
-      this.otherBandArray = this.splitInto3(this.otherBandArray.reverse())
-      this.roles[event.index] = this.splitInto3(this.roles[event.index])
+      (this.roles[event.index].sort((prev, next) => (prev.bandId > next.bandId) ? 1 : -1)).reverse();
+      this.otherBandArray = this.splitIntoSubArrays(this.otherBandArray.reverse(), "3")
+      this.roles[event.index] = this.splitIntoSubArrays(this.roles[event.index], "3")
 
     }
     this.switchBoard.getJob(this.roles[event.index])
@@ -117,14 +106,13 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
 
  }
 
- splitInto3(array: any[]): any[] {
+ splitIntoSubArrays(array: any[], step): any[] {
   const tempArray: any[] = [];
-  const step = 3;
   let nextSplitValue: number;
   const length: number = array.length;
 
   for (let i = 0; i < length; i += step) {
-    nextSplitValue = i + 3;
+    nextSplitValue = i + step;
     tempArray.push(array.slice(i, nextSplitValue));
   }
   return tempArray
