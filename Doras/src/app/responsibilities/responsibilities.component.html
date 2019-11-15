@@ -1,20 +1,12 @@
-<ng-template #content let-modal>
   <div class="modal-header">
-    <h3 class="modal-title" id="modal-basic-title">Responsibilities</h3>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <h3 class="modal-title" id="modal-basic-title" mat-dialog-title>Responsibilities</h3>
+    <button type="button" class="close" aria-label="Close" (click)="onExit()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <!--TODO-->
+  <div class="modal-body" mat-dialog-content *ngFor="let responsibility of responsibilities">
+    {{ responsibility }}
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+  <div class="modal-footer" mat-dialog-actions>
+    <button type="button" class="btn btn-outline-dark" (click)="onExit()">Close</button>
   </div>
-</ng-template>
-
-<button class="buttonTable" (click)="open(content)">Responsibilities</button>
-
-<hr>
-
-<pre>{{closeResult}}</pre>

@@ -40,10 +40,12 @@ export class CarouselComponent implements OnInit {
   onSlide(slideEvent: NgbSlideEvent) {
     this.data.getCapNameByJfId(this.distinct[+(slideEvent.current.split('-')[2])].jfid).subscribe(c => {
       this.capabilities = c;
+      console.log(c)
       this.switchBoard.getCapability(this.capabilities);
     });
   }
-  async ngOnInit() {
+
+  ngOnInit() {
     this.data.getJobFamily().subscribe(c => {
       this.jobFamily = c;
     });

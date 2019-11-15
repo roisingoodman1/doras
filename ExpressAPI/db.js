@@ -7,9 +7,28 @@ const db = mysql.createConnection({
 })
 
 db.connect(function(err) {
-    if (err) {throw err}
+    if (err) { throw err }
     console.log('Connected to MySQL')
 })
+
+exports.getUser = function(username, callback) {
+    db.query(
+        "SELECT userId, username, userPassword, isAdmin, token FROM users WHERE username =?", [username],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows[0])
+        }
+    )
+}
+
+exports.updateUserToken = function(token, username) {
+    db.query(
+        'UPDATE users SET token =? WHERE username =?', [token, username],
+        function(err) {
+            if (err) { throw err }
+        }
+    )
+}
 
 exports.getBand = function(callback) {
     db.query(
@@ -91,9 +110,39 @@ exports.getJobFamily = function(callback) {
 }
 
 exports.getCapNameByJfid = function(id, callback) {
+    db.query(
+        "SELECT capName, capId FROM Capability WHERE jfid = ?", [id],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.getDistinct = function(callback) {
+    db.query(
+        "SELECT DISTINCT jfid FROM JobFamily ORDER BY jfid asc",
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.getJobRoleTitle = function(capId, bandId, callback) {
+    db.query(
+        "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?", [bandId, capId],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.getTraining = function(jId, callback) {
   db.query(
-      "SELECT capName, capId FROM Capability WHERE jfid = ?",
-      [id],
+      "SELECT Training.tId, Training.title, Training.trainingType, Training.link, Training.trainingDescription FROM Job INNER JOIN TrainingJob ON Job.jId = TrainingJob.jId INNER JOIN Training ON TrainingJob.tId = Training.tId WHERE Job.jId = ?",
+      [jId],
       function(err, rows) {
           if (err) { throw err }
           callback(rows)
@@ -101,23 +150,33 @@ exports.getCapNameByJfid = function(id, callback) {
   )
 }
 
-exports.getDistinct = function(callback)  {
+exports.getCompetenciesForBand = function(bandId, callback) {
   db.query(
-    "SELECT DISTINCT jfid FROM JobFamily ORDER BY jfid asc",
+    "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",
+    [bandId],
     function(err, rows) {
       if (err) { throw err }
       callback(rows)
     }
   )
 }
+exports.getJobTitles = function(callback){
+    db.query(
+      "SELECT title, bandId, summary, speclink, responsibilities FROM Job",
+      function(err, rows){
+        if (err){throw err}
+        console.log(rows) 
+        callback(rows)
+      }
+    )
+   }
 
-exports.getJobRoleTitle = function(capId, bandId, callback) {
-  db.query(
-    "SELECT jid, speclink, bandId, summary, title, responsibilities, title FROM Job WHERE bandId = ? AND capId = ?",
-    [bandId, capId],
-    function(err, rows) {
-      if (err) { throw err }
-      callback(rows)
-    }
-  )
+exports.getBandById = function(id, callback){
+    db.query(
+        "select * from band where bandid = ?", [id],
+        function (err, rows){
+            if (err) {throw err}
+            callback(rows)
+        }
+    )
 }
