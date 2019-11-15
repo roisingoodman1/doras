@@ -1,5 +1,5 @@
 export class Capability {
     name: string;
-    leadId?: number;
+    leadId: number;
     capId: number;
 }
