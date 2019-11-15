@@ -12,7 +12,7 @@ export class ResponsibilitiesComponent {
   public responsibilities: string[]
   constructor(public dialogRef: MatDialogRef<ResponsibilitiesComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
-      this.responsibilities = this.data.data[0].responsibilities.split(';');
+      this.responsibilities = this.data.body.responsibilities.split(';');
   }
 
   onExit(): void {

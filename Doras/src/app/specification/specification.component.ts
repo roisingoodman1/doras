@@ -11,7 +11,8 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 export class SpecificationComponent {
 
   constructor(public dialogRef: MatDialogRef<SpecificationComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Job) { }
+              @Inject(MAT_DIALOG_DATA) public data) {
+              }
 
   onExit(): void {
     this.dialogRef.close();

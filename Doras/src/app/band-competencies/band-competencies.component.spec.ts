@@ -1,10 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AdminComponent } from './admin.component';
 import { BandCompetenciesComponent } from './band-competencies.component';
 
-describe('BandCompetenciesComponent', () => {
-  let component: BandCompetenciesComponent;
-  let fixture: ComponentFixture<BandCompetenciesComponent>;
+
+describe('AdminComponent', () => {
+  let component: AdminComponent;
+  let fixture: ComponentFixture<AdminComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -14,7 +15,9 @@ describe('BandCompetenciesComponent', () => {
   }));
 
   beforeEach(() => {
+
     fixture = TestBed.createComponent(BandCompetenciesComponent);
+    fixture = TestBed.createComponent(AdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

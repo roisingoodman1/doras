@@ -1,13 +1,9 @@
 <div class='container-fluid'>
-<ngb-tabset justify="fill" style="padding-left: 10%; padding-right: 10%;" (tabChange)="onTabChange($event)">
-  <ul>
+  <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabChange($event)">
     <li *ngFor ="let capability of capabilities; let i = index">
-        <ngb-tab title="{{ capability.capName }}" [id]="i">
-            <ng-template ngbTabContent>
-                <app-roles></app-roles>
-            </ng-template>
-        </ngb-tab>
+      <mat-tab label="{{ capability.capName }}" [id]="i">
+        <app-roles></app-roles>
+      </mat-tab>
     </li>
-  </ul>
-</ngb-tabset>
+  </mat-tab-group>
 </div>

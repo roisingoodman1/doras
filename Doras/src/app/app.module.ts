@@ -19,9 +19,11 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpecificationComponent } from './specification/specification.component'
+import {MatCardModule} from '@angular/material/card';
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { AdminComponent } from './admin/admin.component';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import { OtherJobsComponent } from './other-jobs/other-jobs.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { AdminComponent } from './admin/admin.component';
     ForgotPasswordComponent,
     SpecificationComponent,
     BandCompetenciesComponent,
-    AdminComponent
+    AdminComponent,
+    OtherJobsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,9 @@ import { AdminComponent } from './admin/admin.component';
     FormsModule,
     NgbModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [{
     provide: MatDialogRef,
@@ -61,6 +66,6 @@ import { AdminComponent } from './admin/admin.component';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent]
+  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent, OtherJobsComponent]
 })
 export class AppModule { }

@@ -25,20 +25,26 @@
 
   .hr-page-top {
     background: linear-gradient(to right, #61a83f , #283583);
-    height: 8%;
-    margin-bottom: 3%;
+    height: 10px;
   }
 
   .hr-page-bottom {
-    height: 8%;
-    padding-bottom: 10%;
+    height: 3%;
+    padding-bottom: 0%;
+  }
+
+  .clickableHeader{
+    color: #283583;
+  }
+
+  .clickableHeader:hover{
+    color: #009fe3;
   }
 
   ngb-tabset ul.nav-tabs li a.nav-link.active {
     background-color: #009fe3;
     color: white;
   }
-
   ngb-tabset ul.nav-tabs li a.nav-link {
     background-color: #eeeeee;
     border-left: 1px solid rgb(158, 158, 158);
@@ -60,6 +66,15 @@
     content: "";
     display: table;
     clear: both;
+  }
+
+  .iconBlock{
+    display: block;
+  }
+
+  .noRole{
+    padding-top: 77.5px;
+    padding-bottom: 77.5px;
   }
 
   .header-careers {
@@ -96,6 +111,9 @@
     table-layout: fixed
   }
 
+  .footerImage{
+    height: 50px; bottom: 0px;
+  }
 
     .footer {
       left: 0;
@@ -104,13 +122,14 @@
       background-color: #009fe3;
       color: white;
       text-align: center;
-      height: 5%;
+      height: 4%;
+      position: absolute; bottom: 0px;
     }
 
 
   .th1{
     text-align: center;
-
+    
   }
 
   .tableBand td, #customers th {
@@ -119,10 +138,10 @@
   }
 
   .jobName{
-    color: white;
+    color: black;
   }
   .jobName:hover{
-    color: rgb(0, 225, 255);
+    color: #009fe3;
   }
 
   .tableBand tr:nth-child(even){background-color: white;}
@@ -132,8 +151,8 @@
   .tableBand th {
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: #61a83f;
-    color: white;
+    background-color: white;
+    color: black;
     height: 340px;
   }
 

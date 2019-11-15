@@ -5,6 +5,14 @@ import { Capability } from './models/capability';
   providedIn: 'root'
 })
 export class DataTransferService {
-  capability: Capability | null;
+  private capability: Capability | null;
   constructor() { }
+
+  setCapability(capability: Capability) {
+    this.capability = capability;
+  }
+
+  getCapability() {
+    return this.capability
+  }
 }

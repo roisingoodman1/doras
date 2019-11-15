@@ -59,11 +59,9 @@ class HandlerGenerator {
         });
     }
     checkToken(req, res) {
-        console.log('Here');
         const token = req.body.token;
         jwt.verify(token, config.secret,
             function(err, decoded) {
-                console.log(decoded.username) // bar
             });
     }
 }
@@ -124,15 +122,15 @@ app.get('/distinctJobFamilies', function(req, res) {
     })
 })
 
-function getJobRoleTitle(capId, bandId, getRoleReadyfn) {
-    db.getJobRoleTitle(capId, bandId, function(rows) {
+function getJobRoleTitle(getRoleReadyfn) {
+    db.getJobRoleTitle(function(rows) {
         title = rows
         getRoleReadyfn()
     })
 }
 
 app.get('/jobs', function(req, res) {
-    getJobRoleTitle(req.query.capabilityId, req.query.bandId, function() {
+    getJobRoleTitle(function() {
         res.send(title)
     })
 })
@@ -160,18 +158,6 @@ app.post('/authenticate', function(req, res) {
 
 app.get('/', middleware.checkToken, handlers.index);
 
-function getTraining(jId, getTrainingReadyFn) {
-    db.getTraining(jId, function(rows) {
-        training = rows
-        getTrainingReadyFn()
-    })
-}
-
-app.get('/trainingByJobId', function(req, res) {
-    getTraining(req.query.jobId, function() {
-        res.send(training)
-    })
-})
 
 function getCompetenciesForBand(bandId, getCompReadyfn) {
     db.getCompetenciesForBand(bandId, function(rows) {
@@ -185,7 +171,7 @@ app.get('/competencies', function(req, res) {
         res.send(comp)
     })
 })
-    
+
 function getTraining(jId, getTrainingReadyFn) {
   db.getTraining(jId, function(rows) {
       training = rows
@@ -211,6 +197,19 @@ app.get('/competencies', function(req, res){
     res.send(comp)
   })
 })
+
+function getSameJobByBand(bandId, getSameJobReadyfn) {
+    db.getSameJobByBand(bandId, function(rows) {
+      sameJob = rows
+      getSameJobReadyfn()
+    })
+  }
+
+  app.get('/jobByBandId', function(req, res){
+    getSameJobByBand(req.query.bandId, function(){
+      res.send(sameJob)
+    })
+  })
 
 app.listen(8003, function() {
     console.log('Express started')
