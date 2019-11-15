@@ -17,7 +17,7 @@ export class CapabilityLeadsComponent implements OnInit {
   public capabilityLead: CapabilityLead[];
 
   get capability(): Capability | null {
-    return this.dataTransferService.capability;
+    return this.dataTransferService.getCapability();
 }
 
   constructor(private data: DataService, private dataTransferService: DataTransferService, public dialogRef: MatDialogRef<CapabilityLeadsComponent>) {

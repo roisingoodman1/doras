@@ -48,7 +48,7 @@ import { OtherJobsComponent } from './other-jobs/other-jobs.component';
     DeleteCapabilityComponent,
     EditCapabilityComponent,
     SpecificationComponent,
-    BandCompetenciesComponent
+    BandCompetenciesComponent,
     OtherJobsComponent
   ],
   imports: [
@@ -74,6 +74,6 @@ import { OtherJobsComponent } from './other-jobs/other-jobs.component';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent, OtherJobsComponent]
+  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent, OtherJobsComponent, CapabilityLeadsComponent]
 })
 export class AppModule { }

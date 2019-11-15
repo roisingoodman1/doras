@@ -13,8 +13,8 @@ import { CapabilityLeadsComponent } from '../capability-leads/capability-leads.c
 import { Competency } from '../models/Competency';
 import { BandCompetenciesComponent } from '../band-competencies/band-competencies.component';
 import { OtherJobsComponent } from '../other-jobs/other-jobs.component'
-import { SwitchBoardService } from '../switch-board.service';
 import { Subscription } from 'rxjs';
+import { CapabilityLead } from '../models/capabilityLead';
 
 @Component({
   selector: 'app-roles',
@@ -32,6 +32,8 @@ export class RolesComponent implements OnInit {
   public firstTraining: Training[];
   public secondTraining: Training[];
   public thirdTraining: Training[];
+  public capLeads: CapabilityLead[];
+  public capLead: CapabilityLead[];
 
   constructor(private data: DataService, private switchBoard: SwitchBoardService, public dialog: MatDialog, private config: NgbCarouselConfig) {
   }
@@ -190,8 +192,10 @@ export class RolesComponent implements OnInit {
           case "band3":
             this.open(this.otherBands[this.pageCount][2], OtherJobsComponent);
             break;
-        }
-      break;
+          }
+        break;
+      case "capLead":
+        this.open(this.capLeads, CapabilityLeadsComponent)
     }
   }
 }

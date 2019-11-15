@@ -12,7 +12,7 @@ export class DataTransferService {
     this.capability = capability;
   }
 
-  getCapability() {
-    return this.capability
+  public getCapability() {
+    return this.capability;
   }
 }

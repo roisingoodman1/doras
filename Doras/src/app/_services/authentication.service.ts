@@ -25,7 +25,6 @@ export class AuthenticationService {
   login(theUser: User) {
     localStorage.setItem('currentUser', JSON.stringify(theUser));
     this.currentUserSubject.next(theUser);
-    this.checkTokenIsNotExpired();
     this.router.navigate(['/main']);
   }
 
