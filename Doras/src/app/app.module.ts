@@ -30,6 +30,8 @@ import { ComparePageComponent } from './compare-page/compare-page.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 import { JobRoleTitlePipe } from './search/job-role-title.pipe';
+import { SearchDetailComponent } from './search-detail/search-detail.component';
+import { EditJobComponent } from './edit-job/edit-job.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { JobRoleTitlePipe } from './search/job-role-title.pipe';
     RolesComponent,
     TrainingPopupComponent,
     ResponsibilitiesComponent,
+    CapabilityLeadsComponent,
+    ComparePageComponent,
     LoginComponent,
     MainComponent,
     PageNotFoundComponent,
@@ -57,7 +61,10 @@ import { JobRoleTitlePipe } from './search/job-role-title.pipe';
     SearchComponent,
     JobRoleTitlePipe,
     SearchComponent,
-    JobRoleTitlePipe
+    JobRoleTitlePipe,
+    SearchDetailComponent,
+    EditJobComponent
+
   ],
   imports: [
     BrowserModule,

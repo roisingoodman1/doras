@@ -242,8 +242,20 @@ exports.getDistinctCapLeads = function(callback) {
         "SELECT leadId, capLeadName FROM CapabilityLead",
         function (err, rows) {
             if (err) { throw err }
+<<<<<<< HEAD
             callback(rows)
         }
+=======
+
+exports.getJobTitles = function(callback){
+    db.query(
+      "SELECT title, bandId, summary, speclink, responsibilities FROM Job",
+      function(err, rows){
+        if (err){throw err}
+        console.log(rows)
+        callback(rows)
+      }
+>>>>>>> Edit job
     )
 }
 
@@ -256,3 +268,28 @@ exports.getBandById = function(id, callback){
         }
     )
 }
+<<<<<<< HEAD
+=======
+
+exports.getJobById = function(id, callback) {
+    db.query(
+        "SELECT jId, title, summary, speclink, responsibilities, bandId, capId FROM Job WHERE jId = ?",
+        [id],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows[0])
+        }
+    )
+}
+
+exports.editJob = function(newJobDetails, callback) {
+    db.query(
+        "UPDATE Job SET title = ?, speclink = ?, summary = ?, responsibilities = ?, bandId = ?, capId = ? WHERE jId = ?",
+        [newJobDetails.title, newJobDetails.speclink, newJobDetails.summary, newJobDetails.responsibilities, newJobDetails.bandId, newJobDetails.capId, newJobDetails.jId],
+        function(err, res) {
+            if (err) { throw err }
+            callback(res)
+        }
+    )
+}
+>>>>>>> Edit job
