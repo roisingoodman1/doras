@@ -35,12 +35,12 @@ export class DataService {
     return this.http.get<JobFamily>('/api/getJobFamilyByCap/' + id);
   }
 
-  public getJobRoles(): Observable<JobRole[]> {
-    return this.http.get<JobRole[]>('/api/getJobRoles/');
+  public getJobRoles(): Observable<Job[]> {
+    return this.http.get<Job[]>('/api/getJobRoles/');
   }
 
   public getBand(): Observable<Band[]> {
-    return this.http.get<Band[]>('/api/getBand/');
+    return this.http.get<Band[]>('/api/bands/');
   }
 
   public getCapNameByJfId(id): Observable<Capability[]> {
@@ -88,17 +88,20 @@ export class DataService {
     return this.http.get<Training[]>('/api/trainingByJobId/?jobId=' + jId);
   }
 
-
-  public getBandById(id): Observable<Band> {
-    return this.http.get<Band>('/api/getBandById/' + id);
-
   public login(username, password) {
     return this.http.post('/api/login/', {username, password});
   }
 
   public authenticate(token) {
     return this.http.post('/api/authenticate/', {token});
+  }
 
+  public getJobById(id): Observable<Job> {
+    return this.http.get<Job>('/api/getJobById/' + id)
+  }
+
+  public editJob(updatedJob) {
+    return this.http.put('/api/editJob', updatedJob);
   }
 
   public newCapability(newCapability) {

@@ -1,0 +1,62 @@
+<hr>
+<h3>Edit capability</h3>
+<hr>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<div class="row">
+		<div class="col-sm">
+			<label for="jId">Job to edit</label>
+			<br>
+			<select [(ngModel)]="job.jId" #jobDropdown name="jId" required (change)="onChange(jobDropdown.value)">
+				<option disabled>Please select...</option>
+				<option *ngFor="let job of jobs" value="{{ job.jId }}">{{ job.title }}</option>
+			</select>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-sm">
+			<label for="title">Job title</label>
+			<br>
+			<input [(ngModel)]="job.title" name="title" required>
+		</div>
+		<div class="col-sm" id="specLink">
+			<label for="speclink">Specification link</label>
+			<br>
+			<input [(ngModel)]="job.speclink" name="speclink" required>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm">
+			<label for="summary">Summary</label>
+			<br>
+			<input [(ngModel)]="job.summary" name="summary" required>
+		</div>
+		<div class="col-sm" id="specLink">
+			<label for="responsiblities">Responsibilities</label>
+			<br>
+			<input [(ngModel)]="job.responsibilities" name="responsibilities" required>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm">
+			<label for="bandId">Band</label>
+			<br>
+			<select [(ngModel)]="job.bandId" name="bandId" required>
+				<option disabled>Please select...</option>
+				<option *ngFor="let band of bands" value="{{ band.bandId }}">{{ band.bandName }}</option>
+			</select>
+		</div>
+		<div class="col-sm">
+			<label for="capability">Capability</label>
+			<br>
+			<select [(ngModel)]="job.capId" name="capId" required>
+				<option disabled>Please select...</option>
+				<option *ngFor="let cap of capabilities" value="{{ cap.capId }}">{{ cap.capName }}</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<button type="submit">Submit</button>
+</form>

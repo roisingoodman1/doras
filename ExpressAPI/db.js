@@ -224,7 +224,7 @@ exports.getJobTitles = function(callback){
       "SELECT title, bandId, summary, speclink, responsibilities FROM Job",
       function(err, rows){
         if (err){throw err}
-        console.log(rows) 
+        console.log(rows)
         callback(rows)
       }
     )
@@ -237,6 +237,28 @@ exports.getBandById = function(id, callback){
             if (err) {throw err}
 
             callback(rows)
+        }
+    )
+}
+
+exports.getJobById = function(id, callback) {
+    db.query(
+        "SELECT jId, title, summary, speclink, responsibilities, bandId, capId FROM Job WHERE jId = ?",
+        [id],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows[0])
+        }
+    )
+}
+
+exports.editJob = function(newJobDetails, callback) {
+    db.query(
+        "UPDATE Job SET title = ?, speclink = ?, summary = ?, responsibilities = ?, bandId = ?, capId = ? WHERE jId = ?",
+        [newJobDetails.title, newJobDetails.speclink, newJobDetails.summary, newJobDetails.responsibilities, newJobDetails.bandId, newJobDetails.capId, newJobDetails.jId],
+        function(err, res) {
+            if (err) { throw err }
+            callback(res)
         }
     )
 }

@@ -322,7 +322,7 @@ app.get('/competencies', function(req, res) {
         res.send(comp)
     })
 })
-    
+
 function getTraining(jId, getTrainingReadyFn) {
   db.getTraining(jId, function(rows) {
       training = rows
@@ -392,6 +392,56 @@ app.get('/getBandById/:id', function (req, res){
 	})
 })
 
+function getJobById(id, getJobByIdReadyFn) {
+    db.getJobById(id, function(row) {
+        job = row
+        getJobByIdReadyFn()
+    })
+}
+
+app.get('/getJobById/:id', function(req, res) {
+    getJobById(req.params.id, function() {
+        res.send(job)
+    })
+})
+
+function editJob(updatedJob, editJobReadyFn) {
+    db.editJob(updatedJob, function(rows) {
+        result = rows
+        editJobReadyFn()
+    })
+}
+
+app.put('/editJob', function(req, res) {
+    editJob(req.body, function() {
+        res.send(result)
+    })
+})
+
+function getCapabilities(getCapabilitiesReadyFn) {
+    db.getCapabilities(function(rows) {
+        caps = rows
+        getCapabilitiesReadyFn()
+    })
+}
+
+app.get('/getCapabilities', function(req, res) {
+    getCapabilities(function(rows) {
+        res.send(caps)
+    })
+})
+
+function getBand(bandsReadyFn) {
+    db.getBand(function(rows) {
+        bands = rows
+        bandsReadyFn()
+    })
+}
+app.get('/bands', function(req, res) {
+    getBand(function() {
+        res.send(bands)
+    })
+})
 
 app.listen(8002, function() {
     console.log('Express started')

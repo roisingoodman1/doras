@@ -11,6 +11,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 import { SearchComponent } from './search/search.component'
+import { EditJobComponent } from './edit-job/edit-job.component';
 
 const routes: Routes = [
   {
@@ -22,22 +23,18 @@ const routes: Routes = [
   {
     path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthGuard]
   },
-  {
-
-const routes: Routes = [
-  {path: 'compare', component: ComparePageComponent}
-    path: 'search', component: SearchComponent
-  },
+  { path: 'compare', component: ComparePageComponent },
+  { path: 'search', component: SearchComponent },
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-
   },
   {
     path: 'admin', component: AdminComponent, children: [
       { path: '', redirectTo: '/admin', pathMatch: 'full' },
       { path: 'addCapability', component: AddCapabilityComponent },
-      { path: 'addJobRoles', component: AddJobRoleComponent}
+      { path: 'addJobRoles', component: AddJobRoleComponent},
+      { path: 'editJobRoles', component: EditJobComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }
