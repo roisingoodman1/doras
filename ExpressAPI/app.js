@@ -69,7 +69,7 @@ class HandlerGenerator {
 }
 
 let handlers = new HandlerGenerator();
-const url = require('url')
+const url = require('url') 
 
 function getBand(bandsReadyFn) {
     db.getBand(function(rows) {

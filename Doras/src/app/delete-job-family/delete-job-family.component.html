@@ -1,14 +1,14 @@
 <hr>
-<h3>Delete capability</h3>
+<h3>Delete job family</h3>
 <hr>
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
 	<div class="row">
 		<div class="col-sm">
-			<label for="cap">Capability</label>
+			<label for="jf">Job family</label>
 			<br>
-			<select ngModel name="cap" required>
+			<select ngModel name="jf" required>
 				<option disabled>Please select...</option>
-				<option *ngFor="let cap of capabilities" value="{{cap.capId}}">{{ cap.capName }}</option>
+				<option *ngFor="let jobf of jobfamily" value="{{jobf.jfid}}">{{ jobf.title }}</option>
 			</select>
 		</div>
 	</div>

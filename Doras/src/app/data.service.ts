@@ -75,13 +75,24 @@ export class DataService {
     return this.http.post('/api/newJobFamily', title);
   }
 
-
   public getDistinctCapLeads(): Observable<CapabilityLead[]> {
     return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
   }
 
   public deleteCapability(capId) {
     return this.http.delete('/api/deleteCapability/' + capId);
+  }
+
+  public deleteJobFamily(jfid) {
+    return this.http.delete('/api/deleteJobFamily/' + jfid);
+  }
+
+  public editCapability(updatedCap) {
+    return this.http.put('/api/editCapability', updatedCap);
+  }
+
+  public getCapabilityById(capId) {
+    return this.http.get<Capability[]>('/api/getCapability/' + capId);
   }
 
 }

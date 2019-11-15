@@ -10,9 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { SpecificationComponent } from '../specification/specification.component';
 import { TrainingPopupComponent } from '../training-popup/training-popup.component';
 import { Training } from '../models/training';
-
-
 import { SwitchBoardService } from '../switch-board.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CapabilityLeadsComponent } from '../capability-leads/capability-leads.component';
 import { Competency } from '../models/Competency';
 import { BandCompetenciesComponent } from '../band-competencies/band-competencies.component';
 

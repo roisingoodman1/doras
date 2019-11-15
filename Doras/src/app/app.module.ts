@@ -25,6 +25,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { DeleteCapabilityComponent } from './delete-capability/delete-capability.component';
 import { AddJobFamilyComponent } from './add-job-family/add-job-family.component';
+import { EditCapabilityComponent } from './edit-capability/edit-capability.component';
+import { DeleteJobFamilyComponent } from './delete-job-family/delete-job-family.component';
 
 
 @NgModule({
@@ -47,6 +49,10 @@ import { AddJobFamilyComponent } from './add-job-family/add-job-family.component
     AddJobFamilyComponent,
     SpecificationComponent,
     BandCompetenciesComponent,
+    EditCapabilityComponent,
+    DeleteJobFamilyComponent,
+    SpecificationComponent,
+    BandCompetenciesComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +68,10 @@ import { AddJobFamilyComponent } from './add-job-family/add-job-family.component
     provide: MatDialogRef,
     useValue: {},
   }, {
-    provide: MAT_DIALOG_DATA,
-    useValue: {},
-  },
+  provide: MAT_DIALOG_DATA,
+  useValue: {},
+},
+  ],
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
