@@ -25,6 +25,7 @@ export class CapabilityLeadsComponent implements OnInit {
 
   ngOnInit() {
     this.data.getCapabilityLeads().subscribe(c => {
+      console.log(c)
       this.capabilityLead = c
     });
   }

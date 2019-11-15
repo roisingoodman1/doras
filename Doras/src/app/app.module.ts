@@ -30,7 +30,6 @@ import { ComparePageComponent } from './compare-page/compare-page.component';
 import { AddCapabilityComponent } from './add-capability/add-capability.component';
 import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 import { JobRoleTitlePipe } from './search/job-role-title.pipe';
-import { SearchDetailComponent } from './search-detail/search-detail.component';
 import { EditJobComponent } from './edit-job/edit-job.component';
 
 
@@ -53,7 +52,6 @@ import { EditJobComponent } from './edit-job/edit-job.component';
     BandCompetenciesComponent,
     AdminComponent,
     OtherJobsComponent,
-    CapabilityLeadsComponent,
     SearchComponent,
     ComparePageComponent,
     AddCapabilityComponent,
@@ -62,7 +60,6 @@ import { EditJobComponent } from './edit-job/edit-job.component';
     JobRoleTitlePipe,
     SearchComponent,
     JobRoleTitlePipe,
-    SearchDetailComponent,
     EditJobComponent
 
   ],
@@ -89,6 +86,6 @@ import { EditJobComponent } from './edit-job/edit-job.component';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent, OtherJobsComponent]
+  entryComponents: [ResponsibilitiesComponent, SpecificationComponent, TrainingPopupComponent, BandCompetenciesComponent, RolesComponent, OtherJobsComponent, CapabilityLeadsComponent]
 })
 export class AppModule { }

@@ -242,10 +242,10 @@ exports.getDistinctCapLeads = function(callback) {
         "SELECT leadId, capLeadName FROM CapabilityLead",
         function (err, rows) {
             if (err) { throw err }
-<<<<<<< HEAD
             callback(rows)
-        }
-=======
+        })
+      }
+
 
 exports.getJobTitles = function(callback){
     db.query(
@@ -255,7 +255,6 @@ exports.getJobTitles = function(callback){
         console.log(rows)
         callback(rows)
       }
->>>>>>> Edit job
     )
 }
 
@@ -268,8 +267,6 @@ exports.getBandById = function(id, callback){
         }
     )
 }
-<<<<<<< HEAD
-=======
 
 exports.getJobById = function(id, callback) {
     db.query(
@@ -292,4 +289,3 @@ exports.editJob = function(newJobDetails, callback) {
         }
     )
 }
->>>>>>> Edit job

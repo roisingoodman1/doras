@@ -5,7 +5,7 @@ import { Capability } from './models/capability';
   providedIn: 'root'
 })
 export class DataTransferService {
-  private capability: Capability | null;
+  public capability: Capability | null;
   constructor() { }
 
   setCapability(capability: Capability) {

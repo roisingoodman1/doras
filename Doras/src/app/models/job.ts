@@ -7,4 +7,5 @@ export class Job {
   responsibility?: string;
   capId?: number;
   responsibilities?: string;
+  id?: number;
 }

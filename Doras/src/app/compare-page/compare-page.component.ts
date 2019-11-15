@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { JobRole } from '../models/jobRole';
+import { Job } from '../models/job';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ComparePageComponent implements OnInit {
     })
    }
 
-  jobList : JobRole[];
+  jobList : Job[];
   bandList: string[] = [];
   bandsGenerated: boolean = false;
 

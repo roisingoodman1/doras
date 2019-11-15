@@ -27,7 +27,7 @@ export class DataService {
   }
 
   public getJobFamily(): Observable<JobFamily[]> {
-    return this.http.get<JobFamily[]>('/api/getJobFamily/');
+    return this.http.get<JobFamily[]>('/api/jobFamily/');
   }
 
   public getJobFamilyByCap(id): Observable<JobFamily> {

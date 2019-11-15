@@ -10,6 +10,7 @@ import { AddCapabilityComponent } from './add-capability/add-capability.componen
 import { AddJobRoleComponent } from './add-job-role/add-job-role.component';
 import { SearchComponent } from './search/search.component'
 import { EditJobComponent } from './edit-job/edit-job.component';
+import { ComparePageComponent } from './compare-page/compare-page.component';
 
 const routes: Routes = [
   {
