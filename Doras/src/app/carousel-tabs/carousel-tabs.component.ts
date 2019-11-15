@@ -20,6 +20,7 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
   public bands: Band[];
   public jobBandArray: any[];
   public otherBandArray: any[];
+  private step:number = 3
   constructor(private switchBoard: SwitchBoardService, private dataTransferService : DataTransferService, private rolesComponent: RolesComponent, private data: DataService) {
   }
 
@@ -63,7 +64,7 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
  getBand() {
   this.data.getBand().subscribe(c => {
     this.bands = c.reverse();
-    this.jobBandArray = this.splitIntoSubArrays(this.bands, "3")
+    this.jobBandArray = this.splitIntoSubArrays(this.bands, this.step)
   });
  }
  getJobRoleBandId() {
@@ -81,23 +82,25 @@ export class CarouselTabsComponent implements OnInit, OnDestroy {
   onTabChange(event: MatTabChangeEvent) {
     if (this.roles[event.index].length !== 3) {
       for (let i = 0; i < this.bands.length; i++){
-        try {
+          if(this.roles[event.index][i]) {
           if (this.bands[i].bandId != this.roles[event.index][i].bandId) {
             this.roles[event.index].splice(i, 0, {
               bandId: this.jobBandArray.length-i,
               title: "No Role"
             })
           }
-        } catch {
+        } else {
+          console.log(this.bands[i].bandId)
           this.roles[event.index].push({
             bandId: this.jobBandArray.length-i,
             title: "No Role"
           })
         }
+
       }
       (this.roles[event.index].sort((prev, next) => (prev.bandId > next.bandId) ? 1 : -1)).reverse();
-      this.otherBandArray = this.splitIntoSubArrays(this.otherBandArray.reverse(), "3")
-      this.roles[event.index] = this.splitIntoSubArrays(this.roles[event.index], "3")
+      this.otherBandArray = this.splitIntoSubArrays(this.otherBandArray.reverse(), this.step)
+      this.roles[event.index] = this.splitIntoSubArrays(this.roles[event.index], this.step)
 
     }
     this.switchBoard.getJob(this.roles[event.index]);

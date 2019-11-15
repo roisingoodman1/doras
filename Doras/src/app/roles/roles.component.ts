@@ -94,6 +94,7 @@ export class RolesComponent implements OnInit {
         this.pageCount++;
       }
     }
+
     this.data.getCompetenciesBand(this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
       this.firstCompetency = c;
     })

@@ -23,8 +23,7 @@ export class DataService {
   public getJobFamily(): Observable<JobFamily[]> {
     return this.http.get<JobFamily[]>('/api/jobFamily');
   }
-
-
+  
   public getBand(): Observable<Band[]> {
     return this.http.get<Band[]>('/api/band');
   }
