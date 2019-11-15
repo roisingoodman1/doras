@@ -212,6 +212,27 @@ app.get('/trainingByJobId', function(req, res) {
   })
 })
 
+function editJobFamily(updatedJf, editJobFamilyReadyFn) {
+  console.log("1")
+  db.editJobFamily(updatedJf, function(rows) {
+      result = rows
+      editJobFamilyReadyFn()
+  })
+}
+
+app.put('/editJobFamily', function(req, res) {
+  console.log("2")
+  editJobFamily(req.body, function() {
+      res.send(result)
+  })
+})
+
+function getCapabilityById(capId, getCapabilityReadyFn) {
+    db.getCapabilityById(capId, function(rows) {
+        cap = rows
+        getCapabilityReadyFn()
+    })
+}
 function getCompetenciesForBand(bandId, getCompReadyfn) {
   db.getCompetenciesForBand(bandId, function(rows) {
     comp = rows
@@ -223,6 +244,32 @@ app.get('/competencies', function(req, res){
   getCompetenciesForBand(req.query.bandId, function(){
     res.send(comp)
   })
+})
+
+function getJobFamilyById(capId, getJobFamilyReadyFn) {
+  db.getJobFamilyById(capId, function(rows) {
+      jf = rows
+      getJobFamilyReadyFn()
+  })
+}
+
+app.get('/getJobFamilyByID/:id', function(req, res) {
+  getJobFamilyById(req.params.id, function() {
+      res.send(jf)
+  })
+})
+
+function getJobRolesByCapId(id, getJobRolesByCapIdReadyFn) {
+    db.getJobRolesByCapId(id, function(rows) {
+        jobs = rows
+        getJobRolesByCapIdReadyFn()
+    })
+}
+
+app.get('/getJobRolesByCapId', function(req, res) {
+    getJobRolesByCapId(req.query.capId, function() {
+        res.send(jobs)
+    })
 })
 
 app.listen(8003, function() {

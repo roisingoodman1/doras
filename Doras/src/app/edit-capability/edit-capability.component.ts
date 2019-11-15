@@ -34,9 +34,8 @@ export class EditCapabilityComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.data.editCapability(this.cap).subscribe((c) => {
-        console.log(c);
-      });
+      this.data.editCapability(this.cap).subscribe();
+      window.location.reload();
     }
   }
 

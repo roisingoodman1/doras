@@ -169,6 +169,18 @@ exports.editCapability = function(newCapDetails, callback) {
     )
 }
 
+exports.editJobFamily = function(newJfDetails, callback) {
+  console.log(newJfDetails)
+  db.query(
+      "UPDATE JobFamily SET title = ? WHERE jfid = ?",
+      [newJfDetails.title, newJfDetails.jfid],
+      function(err, rows) {
+          if (err) { throw err }
+          callback(rows)
+      }
+  )
+}
+
 exports.getCapabilityById = function(capId, callback) {
     db.query(
         "SELECT capId, capName, leadId, jfid FROM Capability WHERE capId = ?",
@@ -178,6 +190,29 @@ exports.getCapabilityById = function(capId, callback) {
             callback(rows)
         }
     )
+}
+
+exports.getJobFamilyById = function(jfid, callback) {
+  db.query(
+      "SELECT jfid, title FROM JobFamily WHERE jfid = ?",
+      [jfid],
+      function(err, rows) {
+          if (err) { throw err }
+          callback(rows)
+      }
+  )
+}
+
+exports.getJobRolesByCapId = function(capId, callback) {
+    db.query(
+        "SELECT jid FROM Job WHERE capId = ?",
+        [capId],
+        function(err, rows) {
+            if (err) { throw err }
+                callback(rows)
+        }
+    )
+}
 exports.getCompetenciesForBand = function(bandId, callback) {
   db.query(
     "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",

@@ -28,8 +28,8 @@ export class AddCapabilityComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.data.newCapability(form.form.value).subscribe((c) => {
-      });
+      this.data.newCapability(form.form.value).subscribe();
+      window.location.reload();
     }
 
   }

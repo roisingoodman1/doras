@@ -20,8 +20,12 @@ export class DeleteCapabilityComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.data.deleteCapability(form.value.cap).subscribe((c) => {
-    })
+    this.data.getJobRolesByCapId(form.value.cap).subscribe((c) => {
+      if (c.length === 0) {
+        this.data.deleteCapability(form.value.cap).subscribe();
+        window.location.reload();
+      }
+    });
   }
 
 }
