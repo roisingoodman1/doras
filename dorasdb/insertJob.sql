@@ -266,4 +266,3 @@ Assess and review the appraisals created by people that you manage", 4, 9),
 4. Actively identify and develop talent and highlight to your BU talent manager
 5. Contribute to presales activities – completion of bids, presenting, tender qualification, bid management etc….
 6. Provide constructive feedback and record it on Workday", 5, 12);
-

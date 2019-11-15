@@ -9,6 +9,8 @@ import { Observable } from 'rxjs'
 import { Job } from './models/job'
 import { CapabilityLead } from './models/capabilityLead'
 import { User } from './models/user';
+import { Training } from './models/training';
+import { Competency } from './models/Competency'
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   public getCapabilities(): Observable<Capability[]> {
-    return this.http.get<Capability[]>('/api/getCapabilities');
+    return this.http.get<Capability[]>('/api/capabilities');
   }
 
   public getCapabilityLeads(): Observable<CapabilityLead[]>{
@@ -25,35 +27,44 @@ export class DataService {
   }
 
   public getJobFamily(): Observable<JobFamily[]> {
-    return this.http.get<JobFamily[]>('/api/getJobFamily');
+    return this.http.get<JobFamily[]>('/api/jobFamily');
   }
 
-  public getJobFamilyByCap(id): Observable<JobFamily> {
-    return this.http.get<JobFamily>('/api/getJobFamilyByCap/' + id);
-  }
-
-  public getJobRoles(): Observable<JobRole[]> {
-    return this.http.get<JobRole[]>('/api/getJobRoles');
-  }
 
   public getBand(): Observable<Band[]> {
-    return this.http.get<Band[]>('/api/getBand');
+    return this.http.get<Band[]>('/api/band');
   }
 
   public getCapNameByJfId(id): Observable<Capability[]> {
-    return this.http.get<Capability[]>('/api/getCapNameByJfId/' + id);
+    return this.http.get<Capability[]>('api/capabilities/?jobFamilyId=' + id);
   }
 
   public getDistinctJfids(): Observable<JobFamily[]> {
-    return this.http.get<JobFamily[]>('/api/getDistinct');
+    return this.http.get<JobFamily[]>('api/distinctJobFamilies');
   }
 
   public getJobRole(capId, bandId): Observable<Job[]> {
-    return this.http.get<Job[]>('/api/getJobRoleTitle/' + capId + '/' + bandId);
+    return this.http.get<Job[]>('api/jobs/?capabilityId='+capId+'&'+'bandId='+bandId);
   }
 
   public getUser(username): Observable<User> {
-    return this.http.get<User>('/api/getUser/' + username);
+    return this.http.get<User>('/api/User/' + username);
+  }
+
+  public getCompetenciesBand(bandId): Observable<Competency[]> {
+    return this.http.get<Competency[]>('/api/competencies/?bandId=' + bandId);
+  }
+
+  public getTrainingByJid(jId): Observable<Training[]> {
+    return this.http.get<Training[]>('/api/trainingByJobId/?jobId=' + jId);
+  }
+
+  public login(username, password) {
+    return this.http.post('/api/login/', {username, password});
+  }
+
+  public authenticate(token) {
+    return this.http.post('/api/authenticate/', {token});
   }
 
   public newCapability(newCapability) {
@@ -81,3 +92,4 @@ export class DataService {
   }
 
 }
+

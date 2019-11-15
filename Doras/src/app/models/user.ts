@@ -3,5 +3,5 @@ export class User {
   username: string;
   userPassword: string;
   isAdmin: boolean;
-  token?: string;
+  token: string;
 }

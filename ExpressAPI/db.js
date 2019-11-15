@@ -13,10 +13,19 @@ db.connect(function(err) {
 
 exports.getUser = function(username, callback) {
     db.query(
-        "SELECT userId, username, userPassword, isAdmin FROM users WHERE username =?", [username],
+        "SELECT userId, username, userPassword, isAdmin, token FROM users WHERE username =?", [username],
         function(err, rows) {
             if (err) { throw err }
             callback(rows[0])
+        }
+    )
+}
+
+exports.updateUserToken = function(token, username) {
+    db.query(
+        'UPDATE users SET token =? WHERE username =?', [token, username],
+        function(err) {
+            if (err) { throw err }
         }
     )
 }
@@ -137,6 +146,11 @@ exports.deleteJobFamily = function(jfid, callback) {
   db.query(
       "DELETE FROM JobFamily WHERE jfid = ?",
       [jfid],
+
+exports.getTraining = function(jId, callback) {
+  db.query(
+      "SELECT Training.tId, Training.title, Training.trainingType, Training.link, Training.trainingDescription FROM Job INNER JOIN TrainingJob ON Job.jId = TrainingJob.jId INNER JOIN Training ON TrainingJob.tId = Training.tId WHERE Job.jId = ?",
+      [jId],
       function(err, rows) {
           if (err) { throw err }
           callback(rows)
@@ -164,4 +178,13 @@ exports.getCapabilityById = function(capId, callback) {
             callback(rows)
         }
     )
+exports.getCompetenciesForBand = function(bandId, callback) {
+  db.query(
+    "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",
+    [bandId],
+    function(err, rows) {
+      if (err) { throw err }
+      callback(rows)
+    }
+  )
 }
