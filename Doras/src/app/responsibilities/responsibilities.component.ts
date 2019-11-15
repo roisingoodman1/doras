@@ -16,6 +16,7 @@ export class ResponsibilitiesComponent {
   }
 
   onExit(): void {
+
     this.dialogRef.close();
   }
 
