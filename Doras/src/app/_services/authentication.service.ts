@@ -59,4 +59,7 @@ export class AuthenticationService {
     // }
   }
 
+  isAdmin() {
+    return this.currentUserValue.isAdmin === 1 ? true : false;
+  }
 }

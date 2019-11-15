@@ -7,11 +7,14 @@ import { User } from './models/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentUser: User;
   constructor(
     private authenticationService: AuthenticationService
   ) {}
   logout() {
     this.authenticationService.logout();
+  }
+
+  isAdmin() {
+    this.authenticationService.isAdmin();
   }
 }

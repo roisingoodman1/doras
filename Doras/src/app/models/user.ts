@@ -2,6 +2,6 @@ export class User {
   userId: number;
   username: string;
   userPassword: string;
-  isAdmin: boolean;
+  isAdmin: number;
   token: string;
 }

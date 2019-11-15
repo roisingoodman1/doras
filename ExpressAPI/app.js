@@ -81,6 +81,18 @@ app.get('/band', function(req, res) {
     })
 })
 
+function getCapLeads(capLeadsReadyFn) {
+      db.getCapLeads(function(rows) {
+          capLeads = rows
+          capLeadsReadyFn()
+      })
+  }
+
+  app.get('/getCapLeads', function(req, res){
+      getCapLeads(function(){
+          res.send(capLeads)
+      })
+  })
 
 function getJobFamily(jobReadyFn) {
     db.getJobFamily(function(rows) {
@@ -148,27 +160,106 @@ app.get('/User/?:username', function(req, res) {
     })
 })
 
-app.post('/login', function(req, res) {
-    handlers.login(req, res);
-});
-
-app.post('/authenticate', function(req, res) {
-    handlers.checkToken(req, res);
-});
-
-app.get('/', middleware.checkToken, handlers.index);
-
-
-function getCompetenciesForBand(bandId, getCompReadyfn) {
-    db.getCompetenciesForBand(bandId, function(rows) {
-        comp = rows
-        getCompReadyfn()
+function getJobTitles(jobsReadyFn) { /* get jobs methods here returns only title for sake of ryan and thomas*/
+    db.getJobTitles(function(rows) {
+        jobTitles = rows
+        jobsReadyFn()
     })
 }
 
-app.get('/competencies', function(req, res) {
-    getCompetenciesForBand(req.query.bandId, function() {
-        res.send(comp)
+app.get('/getJobTitles', function(req, res) {
+    getJobTitles( function() {
+        res.send(jobTitles)
+    })
+})
+
+function newCapability(capName, leadId, jfid, newCapabilityReadyFn) {
+    db.newCapability(capName, leadId, jfid, function(rows) {
+        x = rows
+        newCapabilityReadyFn()
+    })
+}
+
+app.post('/capabilities', function(req, res) {
+    newCapability(req.body.capName, req.body.leadId, req.body.jfid, function() {
+        res.send(x)
+    })
+})
+
+function getDistinctCapLeads(distinctCapLeadsReadyFn) {
+    db.getDistinctCapLeads(function(rows) {
+        distinctCapLeads = rows
+        distinctCapLeadsReadyFn()
+    })
+}
+
+app.get('/getDistinctCapLeads', function(req, res) {
+    getDistinctCapLeads(function() {
+        res.send(distinctCapLeads)
+    })
+})
+
+function deleteCapability(capId, deleteCapabilityReadyFn) {
+    db.deleteCapability(capId, function(rows) {
+        result = rows
+        deleteCapabilityReadyFn()
+    })
+}
+
+app.delete('/deleteCapability/:capId', function(req, res) {
+    deleteCapability(req.params.capId, function() {
+        res.send(result)
+    })
+})
+
+function editCapability(updatedCap, editCapabilityReadyFn) {
+    db.editCapability(updatedCap, function(rows) {
+        result = rows
+        editCapabilityReadyFn()
+    })
+}
+
+app.put('/editCapability', function(req, res) {
+    editCapability(req.body, function() {
+        res.send(result)
+    })
+})
+
+function getCapabilityById(capId, getCapabilityReadyFn) {
+    db.getCapabilityById(capId, function(rows) {
+        cap = rows
+        getCapabilityReadyFn()
+    })
+}
+
+app.get('/getCapability/:id', function(req, res) {
+    getCapabilityById(req.params.id, function() {
+        res.send(cap)
+    })
+})
+
+function getCapabilities(getCapabilitiesReadyFn) {
+    db.getCapabilities(function(rows) {
+        caps = rows
+        getCapabilitiesReadyFn()
+    })
+}
+
+app.get('/capabilities', function(req, res) {
+    getCapabilities(function(rows) {
+        res.send(caps)
+    })
+})
+
+function getJobRolesByCapId(id, getJobRolesByCapIdReadyFn) {
+    db.getJobRolesByCapId(id, function(rows) {
+        getJobRolesByCapIdReadyFn(rows)
+    })
+}
+
+app.get('/getJobRolesByCapId', function(req, res) {
+    getJobRolesByCapId(req.query.capId, function(jobs) {
+        res.send(jobs)
     })
 })
 
@@ -197,6 +288,16 @@ app.get('/competencies', function(req, res){
     res.send(comp)
   })
 })
+
+app.post('/login', function(req, res) {
+    handlers.login(req, res);
+});
+
+app.post('/authenticate', function(req, res) {
+    handlers.checkToken(req, res);
+});
+
+app.get('/', middleware.checkToken, handlers.index);
 
 function getSameJobByBand(bandId, getSameJobReadyfn) {
     db.getSameJobByBand(bandId, function(rows) {

@@ -3,6 +3,7 @@
   vertical-align: bottom;
 }
 @import '~bootstrap/dist/css/bootstrap.css';
+
 .page-header {
     margin-top: 0;
   }
@@ -183,6 +184,42 @@
       box-shadow: none;
       box-shadow: none !important;
   }
+
+  .buttonCapLead{
+    margin:auto;
+    display:block;
+    background-color: #cfd60000;
+    height: 40px;
+    width: 200px;
+    color: black;
+    border-radius: 25px;
+    border: 3px solid #ec6608; /* Kainos Orange */
+    text-align: center;
+    transition-duration: 0.4s;
+}
+
+.buttonCapLead:hover{
+  background-color: #ec6608;
+  color: white
+}
+
+.adminButton {
+  float: right;
+  color: #61a83f;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 2px;
+  margin-left: 5px;
+}
+
+.logoutButton {
+  color: #61a83f;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 2px;
+}
 
   .buttonTable:focus {outline:0 !important;}
   .carouselTop:focus {outline:0 !important;}

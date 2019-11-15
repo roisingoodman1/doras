@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Capability } from './models/capability';
-import { JobFamily } from './models/jobFamily';
-import { JobRole } from './models/jobRole';
-import { Band } from './models/Band';
-import { Observable } from 'rxjs';
-import { Job } from './models/job';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Capability } from './models/capability'
+import { JobFamily } from './models/jobFamily'
+import { JobRole } from './models/jobRole'
+import { Band } from './models/Band'
+import { Observable } from 'rxjs'
+import { Job } from './models/job'
+import { CapabilityLead } from './models/capabilityLead'
 import { User } from './models/user';
 import { Training } from './models/training';
 import { Competency } from './models/Competency'
@@ -20,10 +21,14 @@ export class DataService {
     return this.http.get<Capability[]>('/api/capabilities');
   }
 
+  public getCapabilityLeads(): Observable<CapabilityLead[]>{
+    return this.http.get<CapabilityLead[]>('/api/getCapLeads');
+  }
+
   public getJobFamily(): Observable<JobFamily[]> {
     return this.http.get<JobFamily[]>('/api/jobFamily');
   }
-  
+
   public getBand(): Observable<Band[]> {
     return this.http.get<Band[]>('/api/band');
   }
@@ -50,6 +55,30 @@ export class DataService {
 
   public getTrainingByJid(jId): Observable<Training[]> {
     return this.http.get<Training[]>('/api/trainingByJobId/?jobId=' + jId);
+  }
+
+  public newCapability(newCapability) {
+    return this.http.post('/api/capabilities', newCapability);
+  }
+
+  public getDistinctCapLeads(): Observable<CapabilityLead[]> {
+    return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
+  }
+
+  public deleteCapability(capId) {
+    return this.http.delete('/api/deleteCapability/' + capId);
+  }
+
+  public editCapability(updatedCap) {
+    return this.http.put('/api/editCapability', updatedCap);
+  }
+
+  public getCapabilityById(capId) {
+    return this.http.get<Capability[]>('/api/getCapability/' + capId);
+  }
+
+  public getJobRolesByCapId(capId) {
+    return this.http.get<Job[]>('/api/getJobRolesByCapId?capId=' + capId);
   }
 
   public login(username, password) {

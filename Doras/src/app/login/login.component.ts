@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
-import * as bcrypt from 'bcryptjs';
 import { DataService } from '../data.service';
 import { AuthenticationService } from '../_services/authentication.service';
 
