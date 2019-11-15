@@ -9,13 +9,12 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
   providers: [MatDialogModule]
 })
 export class ResponsibilitiesComponent {
-  public responsibilities: string[]
+
   constructor(public dialogRef: MatDialogRef<ResponsibilitiesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) {
-      this.responsibilities = this.data.data[0].responsibilities.split(';');
+    @Inject(MAT_DIALOG_DATA) public data: Job) {
   }
 
-  onExit(): void {
+  onNoClick(): void {
     this.dialogRef.close();
   }
 

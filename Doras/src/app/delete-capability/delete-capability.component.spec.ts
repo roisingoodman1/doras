@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminComponent } from './admin.component';
+import { DeleteCapabilityComponent } from './delete-capability.component';
 
-describe('AdminComponent', () => {
-  let component: AdminComponent;
-  let fixture: ComponentFixture<AdminComponent>;
+describe('DeleteCapabilityComponent', () => {
+  let component: DeleteCapabilityComponent;
+  let fixture: ComponentFixture<DeleteCapabilityComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminComponent ]
+      declarations: [ DeleteCapabilityComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminComponent);
+    fixture = TestBed.createComponent(DeleteCapabilityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
