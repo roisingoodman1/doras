@@ -10,6 +10,7 @@ import { CarouselTabsComponent } from './carousel-tabs/carousel-tabs.component';
 import { RolesComponent } from './roles/roles.component';
 import { TrainingPopupComponent } from './training-popup/training-popup.component';
 import { ResponsibilitiesComponent } from './responsibilities/responsibilities.component';
+import { CapabilityLeadsComponent } from './capability-leads/capability-leads.component'
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -21,6 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpecificationComponent } from './specification/specification.component'
 import { BandCompetenciesComponent } from './band-competencies/band-competencies.component';
 import { AdminComponent } from './admin/admin.component';
+import { AddCapabilityComponent } from './add-capability/add-capability.component';
+import { DeleteCapabilityComponent } from './delete-capability/delete-capability.component';
+import { EditCapabilityComponent } from './edit-capability/edit-capability.component';
+import { DeleteJobFamilyComponent } from './delete-job-family/delete-job-family.component';
 
 
 @NgModule({
@@ -32,13 +37,18 @@ import { AdminComponent } from './admin/admin.component';
     RolesComponent,
     TrainingPopupComponent,
     ResponsibilitiesComponent,
+    CapabilityLeadsComponent,
     LoginComponent,
     MainComponent,
     PageNotFoundComponent,
     ForgotPasswordComponent,
+    AdminComponent,
+    AddCapabilityComponent,
+    DeleteCapabilityComponent,
+    EditCapabilityComponent,
+    DeleteJobFamilyComponent,
     SpecificationComponent,
-    BandCompetenciesComponent,
-    AdminComponent
+    BandCompetenciesComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +64,10 @@ import { AdminComponent } from './admin/admin.component';
     provide: MatDialogRef,
     useValue: {},
   }, {
-    provide: MAT_DIALOG_DATA,
-    useValue: {},
-  },
+  provide: MAT_DIALOG_DATA,
+  useValue: {},
+},
+  ],
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],

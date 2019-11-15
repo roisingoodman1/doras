@@ -36,17 +36,28 @@ exports.getBand = function(callback) {
         function(err, rows) {
             if (err) { throw err }
             callback(rows)
-        })
+        }
+    )
 }
 
 exports.getCapabilities = function(callback) {
     db.query(
-        "SELECT capName FROM Capability",
+        "SELECT capId, capName FROM Capability",
         function(err, rows) {
             if (err) { throw err }
             callback(rows)
         }
     )
+}
+
+exports.getCapLeads = function(callback){  //also returns name of capability from capability table for simplicities sake
+  db.query(
+      "SELECT CapabilityLead.leadId, CapabilityLead.capLeadName, CapabilityLead.capLeadPath, CapabilityLead.capLeadQuote, Capability.capName FROM CapabilityLead INNER JOIN Capability ON CapabilityLead.leadId = Capability.leadId",
+      function(err, rows) {
+          if(err) { throw err }
+          callback (rows)
+      }
+  )
 }
 
 exports.getJobFamily = function(callback) {
@@ -89,6 +100,53 @@ exports.getJobRoleTitle = function(capId, bandId, callback) {
     )
 }
 
+exports.getJobTitles = function(callback){
+  db.query(
+    "SELECT title FROM job",
+    function(err, rows) {
+      if (err){ throw err }
+      callback(rows)
+    }
+  )
+}
+
+exports.newCapability = function(capName, leadId, jfid, callback) {
+    db.query(
+        "INSERT INTO Capability (capName, leadId, jfid) VALUES (?, ?, ?)",
+        [capName, leadId, jfid],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.getDistinctCapLeads = function(callback) {
+    db.query(
+        "SELECT leadId, capLeadName FROM CapabilityLead",
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.deleteCapability = function(capId, callback) {
+    db.query(
+        "DELETE FROM Capability WHERE capId = ?",
+        [capId],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.deleteJobFamily = function(jfid, callback) {
+  db.query(
+      "DELETE FROM JobFamily WHERE jfid = ?",
+      [jfid],
+
 exports.getTraining = function(jId, callback) {
   db.query(
       "SELECT Training.tId, Training.title, Training.trainingType, Training.link, Training.trainingDescription FROM Job INNER JOIN TrainingJob ON Job.jId = TrainingJob.jId INNER JOIN Training ON TrainingJob.tId = Training.tId WHERE Job.jId = ?",
@@ -100,6 +158,26 @@ exports.getTraining = function(jId, callback) {
   )
 }
 
+exports.editCapability = function(newCapDetails, callback) {
+    db.query(
+        "UPDATE Capability SET capName = ?, leadId = ?, jfid = ? WHERE capId = ?",
+        [newCapDetails.capName, newCapDetails.leadId, newCapDetails.jfid, newCapDetails.capId],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
+}
+
+exports.getCapabilityById = function(capId, callback) {
+    db.query(
+        "SELECT capId, capName, leadId, jfid FROM Capability WHERE capId = ?",
+        [capId],
+        function(err, rows) {
+            if (err) { throw err }
+            callback(rows)
+        }
+    )
 exports.getCompetenciesForBand = function(bandId, callback) {
   db.query(
     "SELECT Competencies.compName, Competencies.compDesc FROM Band INNER JOIN CompetenciesBand ON Band.bandId = CompetenciesBand.bandId INNER JOIN Competencies ON CompetenciesBand.compId = Competencies.compId WHERE Band.bandId = ?;",

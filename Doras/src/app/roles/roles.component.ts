@@ -10,9 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { SpecificationComponent } from '../specification/specification.component';
 import { TrainingPopupComponent } from '../training-popup/training-popup.component';
 import { Training } from '../models/training';
-
-
 import { SwitchBoardService } from '../switch-board.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CapabilityLeadsComponent } from '../capability-leads/capability-leads.component';
 import { Competency } from '../models/Competency';
 import { BandCompetenciesComponent } from '../band-competencies/band-competencies.component';
 
@@ -81,7 +81,7 @@ export class RolesComponent implements OnInit {
       }
     }
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][0].bandId).subscribe(c => {
       this.firstJob = c;
       if (!this.firstJob[0]) {
         this.firstJob.push(null);
@@ -93,7 +93,7 @@ export class RolesComponent implements OnInit {
       } catch {}
     })
 
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][1].bandId).subscribe(c => {
       this.secondJob = c;
       if (!this.secondJob[0]) {
         this.secondJob.push(null);
@@ -104,7 +104,7 @@ export class RolesComponent implements OnInit {
       })
     } catch {}
   })
-    this.data.getJobRole(this.capability.capId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
+    this.data.getJobRole(this.capability.jfId, this.jobBandArray[this.pageCount][2].bandId).subscribe(c => {
       this.thirdJob = c;
       if (!this.thirdJob[0]) {
         this.thirdJob.push(null);

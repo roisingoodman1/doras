@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Capability } from './models/capability';
-import { JobFamily } from './models/jobFamily';
-import { JobRole } from './models/jobRole';
-import { Band } from './models/Band';
-import { Observable } from 'rxjs';
-import { Job } from './models/job';
+
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Capability } from './models/capability'
+import { JobFamily } from './models/jobFamily'
+import { JobRole } from './models/jobRole'
+import { Band } from './models/Band'
+import { Observable } from 'rxjs'
+import { Job } from './models/job'
+import { CapabilityLead } from './models/capabilityLead'
 import { User } from './models/user';
 import { Training } from './models/training';
 import { Competency } from './models/Competency'
@@ -18,6 +20,10 @@ export class DataService {
 
   public getCapabilities(): Observable<Capability[]> {
     return this.http.get<Capability[]>('/api/capabilities');
+  }
+
+  public getCapabilityLeads(): Observable<CapabilityLead[]>{
+    return this.http.get<CapabilityLead[]>('/api/getCapLeads');
   }
 
   public getJobFamily(): Observable<JobFamily[]> {
@@ -59,6 +65,30 @@ export class DataService {
 
   public authenticate(token) {
     return this.http.post('/api/authenticate/', {token});
+  }
+
+  public newCapability(newCapability) {
+    return this.http.post('/api/newCapability', newCapability);
+  }
+
+  public getDistinctCapLeads(): Observable<CapabilityLead[]> {
+    return this.http.get<CapabilityLead[]>('/api/getDistinctCapLeads');
+  }
+
+  public deleteCapability(capId) {
+    return this.http.delete('/api/deleteCapability/' + capId);
+  }
+
+  public deleteJobFamily(jfid) {
+    return this.http.delete('/api/deleteJobFamily/' + jfid);
+  }
+
+  public editCapability(updatedCap) {
+    return this.http.put('/api/editCapability', updatedCap);
+  }
+
+  public getCapabilityById(capId) {
+    return this.http.get<Capability[]>('/api/getCapability/' + capId);
   }
 
 }

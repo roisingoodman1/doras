@@ -1,0 +1,17 @@
+<hr>
+<h3>Delete job family</h3>
+<hr>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<div class="row">
+		<div class="col-sm">
+			<label for="jf">Job family</label>
+			<br>
+			<select ngModel name="jf" required>
+				<option disabled>Please select...</option>
+				<option *ngFor="let jobf of jobfamily" value="{{jobf.jfid}}">{{ jobf.title }}</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<button type="submit">Submit</button>
+</form>

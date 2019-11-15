@@ -1,0 +1,33 @@
+<hr>
+<h3>Add new capability</h3>
+<hr>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<div class="row">
+		<div class="col-sm">
+			<label for="capName">Capability name</label>
+			<br>
+			<input ngModel name="capName" required>
+		</div>
+		<div class="col-sm" id="capLead">
+			<label for="leadId">Capability lead</label>
+			<br>
+			<select ngModel name="leadId" required>
+				<option disabled>Please select...</option>
+				<option *ngFor="let capLead of capLeads" value="{{ capLead.leadId }}">{{ capLead.capLeadName }}</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm">
+			<label for="jfid">Job family</label>
+			<br>
+			<select ngModel name="jfid" required>
+				<option disabled>Please select...</option>
+				<option *ngFor="let jobFam of jobFams" value="{{ jobFam.jfid }}">{{ jobFam.title }}</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<button type="submit">Submit</button>
+</form>
